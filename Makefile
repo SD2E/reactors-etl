@@ -19,7 +19,7 @@ docker-base-build:
 	touch .docker-base-build
 
 docker-base-release: .docker-base-build
-	build/admin/docker.sh $(TENANT_DOCKER_ORG) $(sdk_version) release
+	build/admin/baseimages.sh $(TENANT_DOCKER_ORG) $(sdk_version) release
 
 docker-base-clean:
 	build/admin/baseimages.sh $(TENANT_DOCKER_ORG) $(sdk_version) clean && \
