@@ -99,7 +99,7 @@
 				"type":						"geo_mean_std",
 				"plots": 					true,
 				"plots_folder":					"plots",
-				"file": 					"data/output/output.csv"
+				"file": 					"/data/output.csv"
 			}
 	}
 }
