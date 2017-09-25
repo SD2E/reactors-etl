@@ -8,7 +8,7 @@
 # script while on an interactive (CLI) system, the script itself is 
 # executed in this directory on the host
 
-_CONTAINER_ENGINE=${_CONTAINER_ENGINE:-singularity} 
+_CONTAINER_ENGINE=${_CONTAINER_ENGINE:-singularity}
 . _util/container_exec.sh
 
 CONTAINER_IMAGE="sd2e/fcs:latest" # ${docker_org}${docker_image}${image_tag}

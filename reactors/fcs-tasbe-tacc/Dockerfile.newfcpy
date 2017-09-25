@@ -1,3 +1,0 @@
-FROM fcs
-
-ADD src/fc.py /opt/src/fc.py

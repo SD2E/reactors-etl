@@ -1,21 +1,20 @@
 ---
 inputs:
   files:
-    default: "file:///LacI-CAGop_B10_B10_P3.fcs"
-    test: "file:///LacI-CAGop_B10_B10_P3.fcs"
+    default_value: "file:///LacI-CAGop_B10_B10_P3.fcs"
+    test_value: "file:///LacI-CAGop_B10_B10_P3.fcs"
+    label: "Flow cytometry file"
   config:
-    default: "file:///fc.json"
-    test: "file:///fc.json"
-    min: 1
-    max: 1
+    default_value: "file:///fc.json"
+    test_value: "file:///fc.json"
+    label: "Configuration file (JSON)"
 parameters:
   type:
-    defaultValue: "geo_mean_std"
-    test_value: "geo_mean_std"
+    default_value: "geo_mean_std"
     type: "string"
   label:
-    default: "Dox_0.1"
-    test: "Dox_0.1"
+    default_value: "Experiment_label"
+    test_value: "Dox_0.1"
     type: "string"
 outputs:
 runtime:
