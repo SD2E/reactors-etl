@@ -1,0 +1,149 @@
+---
+inputs:
+- id: transcripts
+  value:
+    default: 
+    test: file:///localtest/transcripts.fasta.gz
+    order: 0
+    required: true
+    visible: true
+  semantics:
+    ontology:
+    - http://edamontology.org/format_1929
+    minCardinality: 1
+    maxCardinality: 1
+  details:
+    description: Transcripts FASTA file
+    showArgument: false
+- id: fastq1
+  value:
+    default: 
+    test: file:///localtest/reads_1.fastq.gz
+    order: 0
+    required: true
+    visible: true
+  semantics:
+    ontology:
+    - http://edamontology.org/format_1930
+    minCardinality: 1
+    maxCardinality: 1
+  details:
+    description: 
+    label: First reads file of a FASTQ pair (or single)
+    showArgument: false
+- id: fastq2
+  value:
+    default: 
+    test: file:///localtest/reads_2.fastq.gz
+    order: 0
+    required: true
+    visible: true
+  semantics:
+    ontology:
+    - http://edamontology.org/format_1930
+    minCardinality: 1
+    maxCardinality: 1
+  details:
+    description: 
+    label: Second reads file of a FASTQ pair
+    showArgument: false
+parameters:
+- id: bootstrap
+  value:
+    default: 0
+    test: 100
+    required: false
+    type: number
+    validator: ''
+    visible: true
+  semantics:
+    ontology:
+    - xs:integer
+  details:
+    description: 'Number of bootstrap samples (default: 0)'
+    showArgument: false
+    argument: "-b "
+- id: seed
+  value:
+    default: 42
+    test: 128
+    order: 1
+    required: false
+    type: number
+    validator: ''
+    visible: true
+  semantics:
+    ontology:
+    - xs:integer
+  details:
+    description: 'Seed for the bootstrap sampling (default: 42)'
+    showArgument: true
+    argument: "--seed="
+- id: output
+  value:
+    required: true
+    type: string
+    validator: ''
+    visible: true
+    default: "kallisto_output"
+    test: "kallisto_output"
+  semantics:
+    ontology:
+    - xs:string
+  details:
+    description: Name of output directory
+    showArgument: true
+    argument: "-o "
+outputs:
+- id: abundance
+  value:
+    default: "output/abundance.tsv"
+  semantics:
+    ontology:
+    - http://edamontology.org/format_3475
+    minCardinality: 1
+    maxCardinality: 1
+  details:
+    label: "Abundances tabular file"
+- id: run_info
+  value:
+    default: "output/run_info.json"
+  semantics:
+    ontology:
+    - http://edamontology.org/format_3464
+    minCardinality: 1
+    maxCardinality: 1
+  details:
+    label: "Metadata about the Kallisto run"
+app:
+  name: kallisto
+  version: 0.43.1
+  label: Kallisto
+  shortDescription: "Quantifies RNA-Seq transcripts"
+  longDescription: ""
+  templatePath: kallisto.template
+  testPath: kallisto-test.sh
+  checkpointable: false
+  deploymentPath: apps/kallisto-0.43.1
+  deploymentSystem: data-sd2e-app-assets
+  executionSystem: hpc-tacc-maverick
+  helpURI: https://pachterlab.github.io/kallisto/
+  parallelism: SERIAL
+  git:
+    repository: ssh://github.com:SD2E/etl-kallisto.git
+    branch: master
+    tag:
+    defaultcomment: 
+runtime:
+  container:
+    docker_reg: "index.docker.io"
+    docker_org: "sd2e"
+    docker_image: "kallisto"
+    image_tag: "0.43.1--hdf51.8.17_0"
+  hpc:
+    defaultMemoryPerNode: "32"
+    defaultProcessorsPerNode: "10"
+    defaultMaxRunTime: "04:00:00"
+    defaultNodeCount: "1"
+    defaultQueue: "normal"
+    executionType: "HPC"
