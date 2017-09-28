@@ -86,7 +86,6 @@ function [cm] = process_experiment(i_channels,color_model,color_files,color_pair
   end
 
   cn
-
   'call per analysis'
   [results sampleresults] = per_color_constitutive_analysis(CM,file_pairs,cn,AP);
 
@@ -109,7 +108,7 @@ function [cm] = process_experiment(i_channels,color_model,color_files,color_pair
   s = " "
   for i=1:3
     for j=1:length(cn)
-      s=[s "," cn{i} ]
+      s=[s "," cn{j} ]
     end
   end  
  
