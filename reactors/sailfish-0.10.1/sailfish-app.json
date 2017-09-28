@@ -1,0 +1,142 @@
+{
+	"checkpointable": false,
+	"defaultMemoryPerNode": 256,
+	"defaultProcessorsPerNode": 20,
+	"defaultMaxRunTime": "00:30:00",
+	"defaultNodeCount": 1,
+	"defaultQueue": "normal",
+	"modules": ["load tacc-singularity"],
+	"deploymentPath": "apps/sailfish-0.10.1",
+	"deploymentSystem": "data-sd2e-app-assets",
+	"executionSystem": "hpc-tacc-maverick",
+	"executionType": "HPC",
+	"helpURI": "http://sailfish.readthedocs.io/en/master/index.html",
+	"label": "Sailfish",
+	"longDescription": "A tool for transcript quantification from RNA-seq data",
+	"name": "sailfish",
+	"parallelism": "SERIAL",
+	"shortDescription": "Quantifies RNA-Seq transcripts",
+	"ontology": [
+		"http://edamontology.org/operation_3800",
+		"http://edamontology.org/topic_3053"
+	],
+	"tags": [
+		"RNA-Seq",
+		"Quantification",
+		"Abundance"
+	],
+	"templatePath": "sailfish.sh.template",
+	"testPath": "sailfish-tester.sh",
+	"version": "0.10.1",
+	"inputs": [{
+			"id": "transcripts",
+			"value": {
+				"default": "",
+				"required": true,
+				"visible": true
+			},
+			"semantics": {
+				"ontology": [
+					"http://edamontology.org/format_1929"
+				],
+				"minCardinality": 1,
+				"maxCardinality": 1
+			},
+			"details": {
+				"description": "FASTA file of transcript sequences"
+			}
+		},
+		{
+			"id": "fastq1",
+			"value": {
+				"default": "",
+				"required": true,
+				"visible": true
+			},
+			"semantics": {
+				"ontology": [
+					"http://edamontology.org/format_1930"
+				],
+				"minCardinality": 1,
+				"maxCardinality": 1
+			},
+			"details": {
+				"description": "",
+				"label": "First reads file of a FASTQ pair (or single)"
+			}
+		},
+		{
+			"id": "fastq2",
+			"value": {
+				"default": "",
+				"required": true,
+				"visible": true
+			},
+			"semantics": {
+				"ontology": [
+					"http://edamontology.org/format_1930"
+				],
+				"minCardinality": 1,
+				"maxCardinality": 1
+			},
+			"details": {
+				"label": "Second reads file of a FASTQ pair"
+			}
+		}
+	],
+	"parameters": [{
+			"id": "bootstrap",
+			"value": {
+				"default": 0,
+				"required": false,
+				"type": "number",
+				"validator": "",
+				"visible": true
+			},
+			"semantics": {
+				"ontology": [
+					"xs:integer"
+				]
+			},
+			"details": {
+				"description": "Number of bootstrap samples (default: 0)",
+				"showArgument": true,
+				"argument": "--numBootstraps "
+			}
+		},
+		{
+			"id": "libtype",
+			"value": {
+				"required": true,
+				"type": "enumeration",
+				"enumValues": ["IU", "ISR", "ISF"],
+				"visible": true
+			},
+			"details": {
+				"label": "Library type",
+				"description": "Format and orientation of the fragment (read) library. See http://sailfish.readthedocs.io/en/master/library_type.html",
+				"showArgument": true,
+				"argument": "-l "
+			}
+		},
+		{
+			"id": "output",
+			"value": {
+				"required": false,
+				"type": "string",
+				"validator": "",
+				"visible": true,
+				"default": "output"
+			},
+			"semantics": {
+				"ontology": [
+					"xs:string"
+				]
+			},
+			"details": {
+				"description": "Output directory",
+				"showArgument": false
+			}
+		}
+	]
+}
