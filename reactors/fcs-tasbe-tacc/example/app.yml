@@ -1,0 +1,25 @@
+---
+inputs:
+  files:
+    default_value: "file:///LacI-CAGop_B10_B10_P3.fcs"
+    test_value: "file:///LacI-CAGop_B10_B10_P3.fcs"
+    label: "Flow cytometry file"
+  config:
+    default_value: "file:///fc.json"
+    test_value: "file:///fc.json"
+    label: "Configuration file (JSON)"
+parameters:
+  type:
+    default_value: "geo_mean_std"
+    type: "string"
+  label:
+    default_value: "Experiment_label"
+    test_value: "Dox_0.1"
+    type: "string"
+outputs:
+runtime:
+  template: "agave-runner.sh"
+  container:
+    docker_org: "sd2e/"
+    docker_image: "fcs"
+    image_tag: ":latest"

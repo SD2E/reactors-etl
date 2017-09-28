@@ -1,0 +1,183 @@
+{
+ "checkpointable": false,
+ "defaultMemoryPerNode": 256,
+ "defaultProcessorsPerNode": 20,
+ "defaultMaxRunTime": "00:30:00",
+ "defaultNodeCount": 1,
+ "defaultQueue": "normal",
+ "deploymentPath": "apps/kallisto-0.43.1",
+ "deploymentSystem": "data-sd2e-app-assets",
+ "executionSystem": "hpc-tacc-maverick",
+ "executionType": "HPC",
+ "helpURI": "https://pachterlab.github.io/kallisto/",
+ "label": "Kallisto",
+ "longDescription": "A program for quantifying abundances of transcripts from RNA-Seq data",
+ "modules": ["load tacc-singularity"],
+ "name": "kallisto",
+ "parallelism": "SERIAL",
+ "shortDescription": "Quantifies RNA-Seq transcripts",
+ "ontology": [
+  "http://edamontology.org/operation_3800",
+  "http://edamontology.org/topic_3053"
+ ],
+ "tags": [
+  "RNA-Seq",
+  "Quantification",
+  "Abundance"
+ ],
+ "templatePath": "kallisto.sh.template",
+ "testPath": "kallisto-tester.sh",
+ "version": "0.43.1",
+ "inputs": [{
+   "id": "transcripts",
+   "value": {
+    "default": "",
+    "required": true,
+    "visible": true
+   },
+   "semantics": {
+    "ontology": [
+     "http://edamontology.org/format_1929"
+    ],
+    "minCardinality": 1,
+    "maxCardinality": 1
+   },
+   "details": {
+    "description": "FASTA file of transcript sequences",
+    "showArgument": false
+   }
+  },
+  {
+   "id": "fastq1",
+   "value": {
+    "default": "read1.fastq",
+    "required": true,
+    "visible": true
+   },
+   "semantics": {
+    "ontology": [
+     "http://edamontology.org/format_1930"
+    ],
+    "minCardinality": 1,
+    "maxCardinality": 1
+   },
+   "details": {
+    "label": "First reads file of a FASTQ pair (or single)",
+    "showArgument": false
+   }
+  },
+  {
+   "id": "fastq2",
+   "value": {
+    "default": "",
+    "required": true,
+    "visible": true
+   },
+   "semantics": {
+    "ontology": [
+     "hhttp://edamontology.org/format_1930"
+
+    ],
+    "minCardinality": 1,
+    "maxCardinality": 1
+   },
+   "details": {
+    "label": "Second reads file of a FASTQ pair",
+    "showArgument": false
+   }
+  }
+ ],
+ "parameters": [{
+   "id": "bootstrap",
+   "value": {
+    "default": 0,
+    "required": false,
+    "type": "number",
+    "validator": "",
+    "visible": true
+   },
+   "semantics": {
+    "ontology": [
+     "xs:integer"
+    ]
+   },
+   "details": {
+    "description": "Number of bootstrap samples (default: 0)",
+    "showArgument": true,
+    "argument": "-b "
+   }
+  },
+  {
+   "id": "seed",
+   "value": {
+    "default": 42,
+    "required": false,
+    "type": "number",
+    "validator": "",
+    "visible": true
+   },
+   "semantics": {
+    "ontology": [
+     "xs:integer"
+    ]
+   },
+   "details": {
+    "description": "Seed for the bootstrap sampling (default: 42)",
+    "showArgument": true,
+    "argument": "--seed="
+   }
+  },
+  {
+   "id": "output",
+   "value": {
+    "order": 1,
+    "required": true,
+    "type": "string",
+    "validator": "",
+    "visible": true,
+    "default": "output"
+   },
+   "semantics": {
+    "ontology": [
+     "xs:string"
+    ]
+   },
+   "details": {
+    "description": "Output directory name",
+    "showArgument": true,
+    "argument": "-o "
+   }
+  }
+ ],
+ "outputs": [{
+  "id": "abundance",
+  "value": {
+   "default": "output/abundance.tsv"
+  },
+  "semantics": {
+   "ontology": [
+    "http://edamontology.org/format_3475"
+   ],
+   "minCardinality": 1,
+   "maxCardinality": 1
+  },
+  "details": {
+   "label": "Abundances tabular file"
+  }
+ }, {
+  "id": "run_info",
+  "value": {
+   "default": "output/run_info.json"
+  },
+  "semantics": {
+   "ontology": [
+    "http://edamontology.org/format_3464"
+   ],
+   "minCardinality": 1,
+   "maxCardinality": 1
+  },
+  "details": {
+   "label": "Metadata about the Kallisto run"
+  }
+ }]
+}

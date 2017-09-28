@@ -1,0 +1,14 @@
+{
+  "name": "sailfish_test-1506444487",
+  "appId": "sailfish-0.10.1",
+  "archive": false,
+  "inputs": {
+    "transcripts": "agave://data-sd2e-community/sample/sailfish/test/transcripts.fasta",
+    "fastq1": "agave://data-sd2e-community/sample/sailfish/test/reads_1.fastq",
+    "fastq2": "agave://data-sd2e-community/sample/sailfish/test/reads_2.fastq"
+  },
+  "parameter": {
+    "libtype": "IU",
+    "output": "output"
+  }
+}

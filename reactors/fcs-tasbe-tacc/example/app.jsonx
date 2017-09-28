@@ -1,0 +1,23 @@
+{
+	"checkpointable": false,
+	"name": "${APP_NAME}",
+	"executionSystem": "${APP_EXECUTIONSYSTEM}",
+	"executionType": "${APP_TYPE}",
+	"deploymentPath": "apps/docker-run",
+	"deploymentSystem": "data-sd2e-app-assets",
+	"helpURI": "https://sd2e.org/develop/",
+	"label": "docker run (${APP_TYPE})",
+	"longDescription": "Automatically generated: ${GENDATE}",
+	"modules": ['load singularity'],
+	"ontology": ["http://sswapmeet.sswap.info/agave/apps/Application"],
+	"parallelism": "SERIAL",
+	"shortDescription": "Pull and execute the default ENTRYPOINT of a Docker container image using Singularity",
+	"tags": ["test", "hello"],
+	"templatePath": "code/runner.sh",
+	"testPath": "code/tester.sh",
+	"version": "${APP_VERSION}",
+	"inputs": [],
+	"parameters": [],
+	"outputs": [],
+	"defaultMaxRunTime": "00:10:00"
+}

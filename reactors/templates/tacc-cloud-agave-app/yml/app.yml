@@ -1,0 +1,27 @@
+---
+tacc-cloud:
+  app:
+    name: hello-tacc-cloud
+    version: 0.1.0
+    label: "Hello AgaveAPI (CLI)"
+    shortDescription: "Get a cheery greeting from a remote computer"
+    longDescription: "Automatically generated: 2017-09-20T21:51:42.3NZ"
+    helpURI: "https://sd2e.org/develop/"
+    inputs: []
+    parameters: []
+    outputs: []
+    executionSystem: cli-tacc-maverick
+    modules: []
+    defaultMaxRunTime: "00:05:00"
+    checkpointable: false
+    parallelism: SERIAL
+    executionType: CLI
+    deploymentSystem: data-sd2e-app-assets
+    deploymentPath: apps/hello-agave
+    templatePath: code/hello.sh
+    testPath: code/hello.sh
+    ontology:
+    - http://sswapmeet.sswap.info/agave/apps/Application
+  reactor:
+    name: hello-tacc-cloud
+    

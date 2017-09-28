@@ -1,0 +1,20 @@
+--
+inputs:
+parameters:
+outputs:
+app:
+    name: "sailfish"
+    version: "0.10.1"
+    deploymentPath: "apps/sailfish-0.10.1"
+runtime:
+  container:
+    docker_reg: "index.docker.io"
+    docker_org: "sd2e"
+    docker_image: "sailfish"
+    image_tag: "0.10.1--1"
+  hpc:
+    defaultProcessorsPerNode: 20
+    defaultMaxRunTime: "01:00:00"
+    defaultNodeCount: 1
+    defaultQueue: "normal"
+    executionType: "HPC"
