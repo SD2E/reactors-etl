@@ -39,7 +39,8 @@ parser.add_argument('--files', help='Input file(s) for experiment')
 #        -File2.fcs
 #        -File3.fcs
 
-parser.add_argument('--label', help='Experiment label')
+parser.add_argument('--label', help='Experiment label',
+                    default='Experiment_label_0.1')
 parser.add_argument('--title', help='Analysis title', default='sample_run')
 # [TODO] Learn if there is a dictionary of analysis types for validating 
 #        this parameter
@@ -55,8 +56,7 @@ parser.add_argument('--config', help='Configuration file for FC',
                     default='fc.json')
 parser.add_argument('--octave-method-path',
                     help='directory for the helper octave functions',
-                    defaults='/opt/scripts/')
-
+                    default='/opt/scripts/')
 
 class Cytometer:
     def __init__(self, obj):
@@ -174,7 +174,7 @@ def main(args):
         'plots_folder': 'plots',
         'file': args.output
     }
-    #print json.dumps(configuration_object, indent=4)
+    print json.dumps(configuration_object, indent=4)
     #sys.exit(0)
     # END NEW CODE
 

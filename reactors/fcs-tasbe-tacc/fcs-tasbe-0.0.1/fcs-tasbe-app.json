@@ -1,0 +1,123 @@
+{
+  "checkpointable": false,
+  "name": "fcs-tasbe",
+  "executionSystem": "hpc-tacc-maverick",
+  "executionType": "HPC",
+  "deploymentPath": "apps/fcs-tasbe-0.0.1",
+  "deploymentSystem": "data-sd2e-app-assets",
+  "helpURI": "https://sd2e.org/develop/",
+  "label": "FCS TABSE Demo",
+  "longDescription": "",
+  "modules": ["load tacc-singularity/2.3.1"],
+  "ontology": ["http://purl.obolibrary.org/obo/NCIT_C16585", "http://purl.obolibrary.org/obo/CHMO_0000061"],
+  "parallelism": "SERIAL",
+  "shortDescription": "",
+  "tags": ["Analytical FACS"],
+  "templatePath": "runner-template.sh",
+  "testPath": "tester.sh",
+  "version": "0.1.0",
+  "inputs": [{
+    "id": "files",
+    "details": {
+      "label": "Flow cytometry file",
+      "showAttribute": false
+    },
+    "semantics": {
+      "minCardinality": 1,
+      "maxCardinality": 1,
+      "ontology": [
+        "http://edamontology.org/format_2333"
+      ]
+    },
+    "value": {
+      "default": "",
+      "required": true,
+      "visible": true
+    }
+  }],
+  "parameters": [{
+      "id": "type",
+      "value": {
+        "default": "geo_mean_std",
+        "type": "string",
+        "validator": "",
+        "visible": true,
+        "required": false
+      },
+      "details": {
+        "label": "Analysis Type"    
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      }
+    },
+    {
+      "id": "output",
+      "value": {
+        "default": "output.txt",
+        "type": "string",
+        "validator": "",
+        "visible": false,
+        "required": false
+      },
+      "details": {
+        "label": "Output file name"
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      }
+    },
+    {
+      "id": "label",
+      "value": {
+        "default": "Dox_0.1",
+        "type": "string",
+        "validator": "",
+        "visible": true,
+        "required": false
+      },
+      "details": {
+        "label": "Label"
+      },
+      "semantics": {
+        "ontology": [
+          "xs:string"
+        ]
+      }
+    }
+  ],
+  "outputs": [{
+    "id": "plots",
+    "value": {
+      "default": "plots"
+    },
+    "semantics": {
+      "ontology": [
+        "http://edamontology.org/data_1049"
+      ]
+    },
+    "details": {
+      "label": "Directory containing charts and graphs"
+    }
+  }, {
+    "id": "output_text",
+    "value": {
+      "default": "output.txt"
+    },
+    "semantics": {
+      "ontology": [
+        "http://edamontology.org/data_3671"
+      ],
+      "minCardinality": 1,
+      "maxCardinality": 1
+    },
+    "details": {
+      "label": "Simple textual report on the analysis run"
+    }
+  }],
+  "defaultMaxRunTime": "00:30:00"
+}

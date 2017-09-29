@@ -1,0 +1,88 @@
+
+function container_exec() {
+
+    # [TODO] Check for existence of docker or singularity executable
+    # [TODO] Enable honoring a DEBUG global
+    # [TODO] Figure out how to accept more optional arguments (env-file, etc)
+    # [TODO] Better error handling and reporting
+    # [TODO] Handle "urllib2.URLError: <urlopen error [Errno -3] Temporary failure in name resolution>"
+
+    local CONTAINER_IMAGE=$1
+    shift
+    local COMMAND=$1
+    shift
+    local PARAMS=$@
+
+    # A litte logging to help with the edge cases
+    echo $CONTAINER_IMAGE > .container_exec.$$.log
+    echo $COMMAND >> .container_exec.$$.log
+    echo $PARAMS >> .container_exec.$$.log
+    echo $PWD >> .container_exec.$$.log
+    echo $(ls $PWD) >> .container_exec.$$.log
+
+    if [ -z "$SINGULARITY_PULLFOLDER" ];
+    then
+        if [ ! -z "$STOCKYARD" ];
+        then
+            SINGULARITY_PULLFOLDER="${STOCKYARD}/.singularity"
+        else
+            SINGULARITY_PULLFOLDER="$HOME/.singularity"
+        fi
+    fi
+
+    if [ -z "$SINGULARITY_CACHEDIR" ];
+    then
+        if [ ! -z "$STOCKYARD" ];
+        then
+            SINGULARITY_CACHEDIR="${STOCKYARD}/.singularity"
+        else
+            SINGULARITY_CACHEDIR="$HOME/.singularity"
+        fi
+    fi
+
+    if [[ "$_CONTAINER_ENGINE" == "docker" ]];
+    then
+        local OPTS="-v $PWD:/home:rw -w /home --rm=true"
+        if [ ! -z "$ENVFILE" ]
+        then
+            OPTS="$OPTS --env-file ${ENVFILE}"
+        fi
+        set -x
+        docker run $OPTS ${CONTAINER_IMAGE} ${COMMAND} ${PARAMS}
+        set +x
+    elif [[ "$_CONTAINER_ENGINE" == "singularity" ]];
+    then
+        # [TODO] Detect if a .img has been passed it (rare)
+        # [TODO]
+        singularity exec docker://${CONTAINER_IMAGE} ${COMMAND} ${PARAMS}
+    else
+        echo "_CONTAINER_ENGINE needs to be 'docker' or 'singularity' [$_CONTAINER_ENGINE]"
+    fi
+
+}
+
+
+function count_logical_cores() {
+
+    local _count_cores=4
+    local _uname=$(uname)
+
+    if [ "$_uname" == "Darwin" ]
+    then
+        _count_cores=$(sysctl -n hw.logicalcpu)
+    elif [ "$_uname" == "Linux" ]
+    then
+        _count_cores=$(grep -c processor /proc/cpuinfo)
+    fi
+
+    echo $_count_cores
+
+}
+
+function auto_maxthreads() {
+
+    local hwcore=$(count_logical_cores)
+    hwcore=$((hwcore-1))
+    echo $hwcore
+
+}

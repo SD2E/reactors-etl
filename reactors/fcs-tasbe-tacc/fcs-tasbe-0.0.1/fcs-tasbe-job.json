@@ -1,0 +1,12 @@
+{
+  "name": "fcs-tasbe TesT #/!@ JoB",
+  "appId": "fcs-tasbe-0.1.0",
+  "archive": false,
+  "inputs": {
+    "files": "agave://data-sd2e-community/sample/fcs-tasbe/test/LacI-CAGop_B10_B10_P3.fcs"
+  },
+  "parameters": {
+    "type": "geo_mean_std",
+    "label": "Dox_0.1"
+  }
+}

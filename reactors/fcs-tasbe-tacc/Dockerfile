@@ -38,14 +38,16 @@ RUN mkdir tasbe && \
     make install && \
     rm -rf master.zip TASBEFlowAnalytics-master 
 
-#RUN cd tasbe
-#RUN wget https://github.com/jegentile/TASBEFlowAnalytics/archive/master.zip
-#RUN unzip master.zip
-#RUN cd /TASBEFlowAnalytics-master && make install
-
 RUN mkdir -p /opt/scripts
 
 ADD src /opt/scripts
 
 #CMD python /opt/scripts/fc.py --octave-method-path /opt/scripts/ --config $CONFIG 
 CMD /usr/bin/env
+
+#### This is a temporary fix for an issue with OverlayFS on TACC systems ###
+
+LABEL description="Additional root-level directories to avoid needing OverlayFS @ TACC HPC"
+RUN mkdir -p /work && chown root:root /work
+RUN mkdir -p /gpfs && chown root:root /gpfs
+RUN mkdir -p /data && chown root:root /data

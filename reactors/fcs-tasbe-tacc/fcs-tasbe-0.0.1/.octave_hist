@@ -1,0 +1,330 @@
+PS1('PEXPECT_PROMPT>'); PS2('PEXPECT_PROMPT_')
+available_graphics_toolkits
+graphics_toolkit('gnuplot')
+more off; source ~/.octaverc; cd("/root");
+addpath("/usr/local/lib/python2.7/dist-packages/octave_kernel")
+set(0, 'defaultfigurevisible', 'off');
+addpath("/usr/local/lib/python2.7/dist-packages/oct2py");
+exist("addpath")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpK7dgmw/writer.mat", "/tmp/tmpK7dgmw/reader.mat");
+exist("create_color_channel")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpK7dgmw/writer.mat", "/tmp/tmpK7dgmw/reader.mat");
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpK7dgmw/writer.mat", "/tmp/tmpK7dgmw/reader.mat");
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpK7dgmw/writer.mat", "/tmp/tmpK7dgmw/reader.mat");
+exist("create_color_model_object")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpK7dgmw/writer.mat", "/tmp/tmpK7dgmw/reader.mat");
+exist("create_batch_histogram_output_object")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpK7dgmw/writer.mat", "/tmp/tmpK7dgmw/reader.mat");
+exist("create_output_file_list")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpK7dgmw/writer.mat", "/tmp/tmpK7dgmw/reader.mat");
+exist("process_experiment")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpK7dgmw/writer.mat", "/tmp/tmpK7dgmw/reader.mat");
+# Octave 4.0.0, Fri Sep 29 13:27:57 2017 UTC <root@b67b89c2385b>
+PS1('PEXPECT_PROMPT>'); PS2('PEXPECT_PROMPT_')
+available_graphics_toolkits
+graphics_toolkit('gnuplot')
+more off; source ~/.octaverc; cd("/root");
+addpath("/usr/local/lib/python2.7/dist-packages/octave_kernel")
+set(0, 'defaultfigurevisible', 'off');
+addpath("/usr/local/lib/python2.7/dist-packages/oct2py");
+exist("addpath")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpIgeVKW/writer.mat", "/tmp/tmpIgeVKW/reader.mat");
+exist("create_color_channel")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpIgeVKW/writer.mat", "/tmp/tmpIgeVKW/reader.mat");
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpIgeVKW/writer.mat", "/tmp/tmpIgeVKW/reader.mat");
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpIgeVKW/writer.mat", "/tmp/tmpIgeVKW/reader.mat");
+exist("create_color_model_object")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpIgeVKW/writer.mat", "/tmp/tmpIgeVKW/reader.mat");
+exist("create_batch_histogram_output_object")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpIgeVKW/writer.mat", "/tmp/tmpIgeVKW/reader.mat");
+exist("create_output_file_list")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpIgeVKW/writer.mat", "/tmp/tmpIgeVKW/reader.mat");
+exist("process_experiment")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpIgeVKW/writer.mat", "/tmp/tmpIgeVKW/reader.mat");
+# Octave 4.0.0, Fri Sep 29 13:29:51 2017 UTC <root@b67b89c2385b>
+PS1('PEXPECT_PROMPT>'); PS2('PEXPECT_PROMPT_')
+available_graphics_toolkits
+graphics_toolkit('gnuplot')
+more off; source ~/.octaverc; cd("/root");
+addpath("/usr/local/lib/python2.7/dist-packages/octave_kernel")
+set(0, 'defaultfigurevisible', 'off');
+addpath("/usr/local/lib/python2.7/dist-packages/oct2py");
+exist("addpath")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmp26SZX5/writer.mat", "/tmp/tmp26SZX5/reader.mat");
+exist("create_color_channel")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmp26SZX5/writer.mat", "/tmp/tmp26SZX5/reader.mat");
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmp26SZX5/writer.mat", "/tmp/tmp26SZX5/reader.mat");
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmp26SZX5/writer.mat", "/tmp/tmp26SZX5/reader.mat");
+exist("create_color_model_object")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmp26SZX5/writer.mat", "/tmp/tmp26SZX5/reader.mat");
+exist("create_batch_histogram_output_object")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmp26SZX5/writer.mat", "/tmp/tmp26SZX5/reader.mat");
+exist("create_output_file_list")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmp26SZX5/writer.mat", "/tmp/tmp26SZX5/reader.mat");
+exist("process_experiment")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmp26SZX5/writer.mat", "/tmp/tmp26SZX5/reader.mat");
+# Octave 4.0.0, Fri Sep 29 13:30:20 2017 UTC <root@b67b89c2385b>
+PS1('PEXPECT_PROMPT>'); PS2('PEXPECT_PROMPT_')
+available_graphics_toolkits
+graphics_toolkit('gnuplot')
+more off; source ~/.octaverc; cd("/root");
+addpath("/usr/local/lib/python2.7/dist-packages/octave_kernel")
+set(0, 'defaultfigurevisible', 'off');
+addpath("/usr/local/lib/python2.7/dist-packages/oct2py");
+exist("addpath")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpxe4Gie/writer.mat", "/tmp/tmpxe4Gie/reader.mat");
+exist("create_color_channel")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpxe4Gie/writer.mat", "/tmp/tmpxe4Gie/reader.mat");
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpxe4Gie/writer.mat", "/tmp/tmpxe4Gie/reader.mat");
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpxe4Gie/writer.mat", "/tmp/tmpxe4Gie/reader.mat");
+exist("create_color_model_object")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpxe4Gie/writer.mat", "/tmp/tmpxe4Gie/reader.mat");
+exist("create_batch_histogram_output_object")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpxe4Gie/writer.mat", "/tmp/tmpxe4Gie/reader.mat");
+exist("create_output_file_list")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpxe4Gie/writer.mat", "/tmp/tmpxe4Gie/reader.mat");
+exist("process_experiment")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpxe4Gie/writer.mat", "/tmp/tmpxe4Gie/reader.mat");
+# Octave 4.0.0, Fri Sep 29 13:30:40 2017 UTC <root@b67b89c2385b>
+PS1('PEXPECT_PROMPT>'); PS2('PEXPECT_PROMPT_')
+available_graphics_toolkits
+graphics_toolkit('gnuplot')
+more off; source ~/.octaverc; cd("/root");
+addpath("/usr/local/lib/python2.7/dist-packages/octave_kernel")
+set(0, 'defaultfigurevisible', 'off');
+addpath("/usr/local/lib/python2.7/dist-packages/oct2py");
+exist("addpath")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpGU3CTy/writer.mat", "/tmp/tmpGU3CTy/reader.mat");
+exist("create_color_channel")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpGU3CTy/writer.mat", "/tmp/tmpGU3CTy/reader.mat");
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpGU3CTy/writer.mat", "/tmp/tmpGU3CTy/reader.mat");
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpGU3CTy/writer.mat", "/tmp/tmpGU3CTy/reader.mat");
+exist("create_color_model_object")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpGU3CTy/writer.mat", "/tmp/tmpGU3CTy/reader.mat");
+exist("create_batch_histogram_output_object")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpGU3CTy/writer.mat", "/tmp/tmpGU3CTy/reader.mat");
+exist("create_output_file_list")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpGU3CTy/writer.mat", "/tmp/tmpGU3CTy/reader.mat");
+exist("process_experiment")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpGU3CTy/writer.mat", "/tmp/tmpGU3CTy/reader.mat");
+# Octave 4.0.0, Fri Sep 29 13:31:48 2017 UTC <root@b67b89c2385b>
+PS1('PEXPECT_PROMPT>'); PS2('PEXPECT_PROMPT_')
+available_graphics_toolkits
+graphics_toolkit('gnuplot')
+more off; source ~/.octaverc; cd("/root");
+addpath("/usr/local/lib/python2.7/dist-packages/octave_kernel")
+set(0, 'defaultfigurevisible', 'off');
+addpath("/usr/local/lib/python2.7/dist-packages/oct2py");
+exist("addpath")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpEnqPKi/writer.mat", "/tmp/tmpEnqPKi/reader.mat");
+exist("create_color_channel")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpEnqPKi/writer.mat", "/tmp/tmpEnqPKi/reader.mat");
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpEnqPKi/writer.mat", "/tmp/tmpEnqPKi/reader.mat");
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpEnqPKi/writer.mat", "/tmp/tmpEnqPKi/reader.mat");
+exist("create_color_model_object")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpEnqPKi/writer.mat", "/tmp/tmpEnqPKi/reader.mat");
+exist("create_batch_histogram_output_object")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpEnqPKi/writer.mat", "/tmp/tmpEnqPKi/reader.mat");
+exist("create_output_file_list")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpEnqPKi/writer.mat", "/tmp/tmpEnqPKi/reader.mat");
+exist("process_experiment")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpEnqPKi/writer.mat", "/tmp/tmpEnqPKi/reader.mat");
+# Octave 4.0.0, Fri Sep 29 13:34:14 2017 UTC <root@bbbef7a57281>
+PS1('PEXPECT_PROMPT>'); PS2('PEXPECT_PROMPT_')
+available_graphics_toolkits
+graphics_toolkit('gnuplot')
+more off; source ~/.octaverc; cd("/root");
+addpath("/usr/local/lib/python2.7/dist-packages/octave_kernel")
+set(0, 'defaultfigurevisible', 'off');
+addpath("/usr/local/lib/python2.7/dist-packages/oct2py");
+exist("addpath")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmp1cRrh0/writer.mat", "/tmp/tmp1cRrh0/reader.mat");
+exist("create_color_channel")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmp1cRrh0/writer.mat", "/tmp/tmp1cRrh0/reader.mat");
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmp1cRrh0/writer.mat", "/tmp/tmp1cRrh0/reader.mat");
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmp1cRrh0/writer.mat", "/tmp/tmp1cRrh0/reader.mat");
+exist("create_color_model_object")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmp1cRrh0/writer.mat", "/tmp/tmp1cRrh0/reader.mat");
+exist("create_batch_histogram_output_object")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmp1cRrh0/writer.mat", "/tmp/tmp1cRrh0/reader.mat");
+exist("create_output_file_list")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmp1cRrh0/writer.mat", "/tmp/tmp1cRrh0/reader.mat");
+exist("process_experiment")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmp1cRrh0/writer.mat", "/tmp/tmp1cRrh0/reader.mat");
+# Octave 4.0.0, Fri Sep 29 13:36:20 2017 UTC <root@28e2839b47cd>
+PS1('PEXPECT_PROMPT>'); PS2('PEXPECT_PROMPT_')
+available_graphics_toolkits
+graphics_toolkit('gnuplot')
+more off; source ~/.octaverc; cd("/root");
+addpath("/usr/local/lib/python2.7/dist-packages/octave_kernel")
+set(0, 'defaultfigurevisible', 'off');
+addpath("/usr/local/lib/python2.7/dist-packages/oct2py");
+exist("addpath")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpvpOBev/writer.mat", "/tmp/tmpvpOBev/reader.mat");
+exist("create_color_channel")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpvpOBev/writer.mat", "/tmp/tmpvpOBev/reader.mat");
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpvpOBev/writer.mat", "/tmp/tmpvpOBev/reader.mat");
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpvpOBev/writer.mat", "/tmp/tmpvpOBev/reader.mat");
+exist("create_color_model_object")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpvpOBev/writer.mat", "/tmp/tmpvpOBev/reader.mat");
+exist("create_batch_histogram_output_object")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpvpOBev/writer.mat", "/tmp/tmpvpOBev/reader.mat");
+exist("create_output_file_list")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpvpOBev/writer.mat", "/tmp/tmpvpOBev/reader.mat");
+exist("process_experiment")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpvpOBev/writer.mat", "/tmp/tmpvpOBev/reader.mat");
+# Octave 4.0.0, Fri Sep 29 13:37:23 2017 UTC <root@28e2839b47cd>
+PS1('PEXPECT_PROMPT>'); PS2('PEXPECT_PROMPT_')
+available_graphics_toolkits
+graphics_toolkit('gnuplot')
+more off; source ~/.octaverc; cd("/root");
+addpath("/usr/local/lib/python2.7/dist-packages/octave_kernel")
+set(0, 'defaultfigurevisible', 'off');
+addpath("/usr/local/lib/python2.7/dist-packages/oct2py");
+exist("addpath")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpvtkH02/writer.mat", "/tmp/tmpvtkH02/reader.mat");
+exist("create_color_channel")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpvtkH02/writer.mat", "/tmp/tmpvtkH02/reader.mat");
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpvtkH02/writer.mat", "/tmp/tmpvtkH02/reader.mat");
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpvtkH02/writer.mat", "/tmp/tmpvtkH02/reader.mat");
+exist("create_color_model_object")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpvtkH02/writer.mat", "/tmp/tmpvtkH02/reader.mat");
+exist("create_batch_histogram_output_object")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpvtkH02/writer.mat", "/tmp/tmpvtkH02/reader.mat");
+exist("create_output_file_list")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpvtkH02/writer.mat", "/tmp/tmpvtkH02/reader.mat");
+exist("process_experiment")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpvtkH02/writer.mat", "/tmp/tmpvtkH02/reader.mat");
+# Octave 4.0.0, Fri Sep 29 13:38:31 2017 UTC <root@4064ea361979>
+PS1('PEXPECT_PROMPT>'); PS2('PEXPECT_PROMPT_')
+available_graphics_toolkits
+graphics_toolkit('gnuplot')
+more off; source ~/.octaverc; cd("/root");
+addpath("/usr/local/lib/python2.7/dist-packages/octave_kernel")
+set(0, 'defaultfigurevisible', 'off');
+addpath("/usr/local/lib/python2.7/dist-packages/oct2py");
+exist("addpath")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpQ_BdaJ/writer.mat", "/tmp/tmpQ_BdaJ/reader.mat");
+exist("create_color_channel")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpQ_BdaJ/writer.mat", "/tmp/tmpQ_BdaJ/reader.mat");
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpQ_BdaJ/writer.mat", "/tmp/tmpQ_BdaJ/reader.mat");
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpQ_BdaJ/writer.mat", "/tmp/tmpQ_BdaJ/reader.mat");
+exist("create_color_model_object")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpQ_BdaJ/writer.mat", "/tmp/tmpQ_BdaJ/reader.mat");
+exist("create_batch_histogram_output_object")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpQ_BdaJ/writer.mat", "/tmp/tmpQ_BdaJ/reader.mat");
+exist("create_output_file_list")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpQ_BdaJ/writer.mat", "/tmp/tmpQ_BdaJ/reader.mat");
+exist("process_experiment")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpQ_BdaJ/writer.mat", "/tmp/tmpQ_BdaJ/reader.mat");
+# Octave 4.0.0, Fri Sep 29 13:44:16 2017 UTC <root@fab42e5a9f5c>
+PS1('PEXPECT_PROMPT>'); PS2('PEXPECT_PROMPT_')
+available_graphics_toolkits
+graphics_toolkit('gnuplot')
+more off; source ~/.octaverc; cd("/root");
+addpath("/usr/local/lib/python2.7/dist-packages/octave_kernel")
+set(0, 'defaultfigurevisible', 'off');
+addpath("/usr/local/lib/python2.7/dist-packages/oct2py");
+exist("addpath")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpHVIcxK/writer.mat", "/tmp/tmpHVIcxK/reader.mat");
+exist("create_color_channel")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpHVIcxK/writer.mat", "/tmp/tmpHVIcxK/reader.mat");
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpHVIcxK/writer.mat", "/tmp/tmpHVIcxK/reader.mat");
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpHVIcxK/writer.mat", "/tmp/tmpHVIcxK/reader.mat");
+exist("create_color_model_object")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpHVIcxK/writer.mat", "/tmp/tmpHVIcxK/reader.mat");
+exist("create_batch_histogram_output_object")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpHVIcxK/writer.mat", "/tmp/tmpHVIcxK/reader.mat");
+exist("create_output_file_list")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpHVIcxK/writer.mat", "/tmp/tmpHVIcxK/reader.mat");
+exist("process_experiment")
+set(0, 'defaultfigurevisible', 'off');
+_pyeval("/tmp/tmpHVIcxK/writer.mat", "/tmp/tmpHVIcxK/reader.mat");
+# Octave 4.0.0, Fri Sep 29 13:44:59 2017 UTC <root@fab42e5a9f5c>
