@@ -5,7 +5,7 @@ This is a tool to auto-generate data set summaries.
 Example:
     Recommended way to run this tool is:
 
-        $ python lcms.py --in <input_filename> --out <output_filename>
+        $ python lcms.py --files <input_filename> --output <output_filename>
 
 """
 import pandas as pd
@@ -13,14 +13,18 @@ import numpy as np
 import argparse
 from pyteomics import mgf, mzml, fasta, auxiliary 
 
+parser = argparse.ArgumentParser()
+parser.add_argument('--files', help='Input fasta or mzML file(s) for parsing', required=True)
+parser.add_argument('--output', help='Name of output CSV file', default='output.csv')
+
 def ingest_mgf(input_filename):
-    """Ingest an mgf file given it's name and return a dataframe of the file
+    """Ingest an mgf file given its name and return a dataframe of the file
     """
     with mgf.read('tests/test.mgf') as reader:
         auxiliary.print_tree(next(reader))
 
 def ingest_fasta(input_filename):
-    """Ingest an fasta file given it's name and return a dataframe of the file
+    """Ingest an fasta file given its name and return a dataframe of the file
     """
     with fasta.read(input_filename) as reader:
         for entry in reader:
@@ -35,24 +39,16 @@ def ingest_mzML(input_filename):
     with mzml.read('tests/test.mzML') as reader:
         auxiliary.print_tree(next(reader))
         
-def main():
+def main(args):
     
-    #Parse the arguments to read in the file name and export another file
-    parser = argparse.ArgumentParser(description='LC/MS ETL')
-    parser.add_argument("--in", help="Input Filename",  required=True)
-    parser.add_argument("--out", help="Output Filename", required=True)
-    args = vars(parser.parse_args())
-    
-    #variables will be
-    print "args",args["in"],"---",args["out"]
-    
-    if "mgf" in args["in"]:
-        ingest_mgf(args["in"])
-    elif "fasta" in args["in"]:
-        df = ingest_fasta(args["in"])
-        print df.shape
+    if "mgf" in args.files:
+        ingest_mgf(args.files)
+    elif "fasta" in args.files:
+        df = ingest_fasta(args.files)
+        df.to_csv(args.output)
     else:
-        ingest_mzML(args["in"])
+        ingest_mzML(args.files)
 
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    args = parser.parse_args()
+    main(args)
