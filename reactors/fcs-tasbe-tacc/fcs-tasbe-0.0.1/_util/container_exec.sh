@@ -14,11 +14,16 @@ function container_exec() {
     local PARAMS=$@
 
     # A litte logging to help with the edge cases
-    echo $CONTAINER_IMAGE > .container_exec.$$.log
-    echo $COMMAND >> .container_exec.$$.log
-    echo $PARAMS >> .container_exec.$$.log
-    echo $PWD >> .container_exec.$$.log
-    echo $(ls $PWD) >> .container_exec.$$.log
+    if [ ! -z "DEBUG" ];
+    then
+        local _PID=$$
+        echo $CONTAINER_IMAGE > .container_exec.${_PID}.log
+        echo $COMMAND >> .container_exec.${_PID}.log
+        echo $PARAMS >> .container_exec.${_PID}.log
+        echo $PWD >> .container_exec.${_PID}.log
+        echo $(ls $PWD) >> .container_exec.${_PID}.log
+        env > .container_exec.${_PID}.env
+    fi
 
     if [ -z "$SINGULARITY_PULLFOLDER" ];
     then
@@ -52,8 +57,7 @@ function container_exec() {
         set +x
     elif [[ "$_CONTAINER_ENGINE" == "singularity" ]];
     then
-        # [TODO] Detect if a .img has been passed it (rare)
-        # [TODO]
+        # [TODO] Detect and deal if an .img has been passed it (rare)
         singularity exec docker://${CONTAINER_IMAGE} ${COMMAND} ${PARAMS}
     else
         echo "_CONTAINER_ENGINE needs to be 'docker' or 'singularity' [$_CONTAINER_ENGINE]"

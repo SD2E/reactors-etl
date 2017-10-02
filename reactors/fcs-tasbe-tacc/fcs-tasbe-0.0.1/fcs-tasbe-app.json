@@ -45,18 +45,13 @@
         "required": false
       },
       "details": {
-        "label": "Analysis Type"    
-      },
-      "semantics": {
-        "ontology": [
-          "xs:string"
-        ]
+        "label": "Analysis Type"
       }
     },
     {
       "id": "output",
       "value": {
-        "default": "output.txt",
+        "default": "output.csv",
         "type": "string",
         "validator": "",
         "visible": false,
@@ -64,11 +59,6 @@
       },
       "details": {
         "label": "Output file name"
-      },
-      "semantics": {
-        "ontology": [
-          "xs:string"
-        ]
       }
     },
     {
@@ -82,18 +72,13 @@
       },
       "details": {
         "label": "Label"
-      },
-      "semantics": {
-        "ontology": [
-          "xs:string"
-        ]
       }
     }
   ],
   "outputs": [{
     "id": "plots",
     "value": {
-      "default": "plots"
+      "default": "tasbe_plots_dir"
     },
     "semantics": {
       "ontology": [
@@ -101,22 +86,22 @@
       ]
     },
     "details": {
-      "label": "Directory containing charts and graphs"
+      "label": "Directory containing charts and graphs from TASBE analysis"
     }
   }, {
-    "id": "output_text",
+    "id": "tabse_output_csv",
     "value": {
-      "default": "output.txt"
+      "default": "output.csv"
     },
     "semantics": {
       "ontology": [
-        "http://edamontology.org/data_3671"
+        "http://edamontology.org/format_3752"
       ],
       "minCardinality": 1,
       "maxCardinality": 1
     },
     "details": {
-      "label": "Simple textual report on the analysis run"
+      "label": "CSV output from TASBE analysis run"
     }
   }],
   "defaultMaxRunTime": "00:30:00"
