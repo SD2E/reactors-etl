@@ -1,6 +1,4 @@
-sdk_version := $(shell cat VERSION)
-api_version := v2
-api_release := 2.2.5
+include config.mk
 
 PREFIX := $(HOME)
 
@@ -15,13 +13,13 @@ test:
 	echo "Not implemented"
 
 docker-base-build:
-	build/admin/baseimages.sh $(TENANT_DOCKER_ORG) $(sdk_version) build && \
+	build/admin/baseimages.sh $(TENANT_DOCKER_ORG) $(SYSTEM_VERSION) build && \
 	touch .docker-base-build
 
 docker-base-release: .docker-base-build
-	build/admin/baseimages.sh $(TENANT_DOCKER_ORG) $(sdk_version) release
+	build/admin/baseimages.sh $(TENANT_DOCKER_ORG) $(SYSTEM_VERSION) release
 
 docker-base-clean:
-	build/admin/baseimages.sh $(TENANT_DOCKER_ORG) $(sdk_version) clean && \
+	build/admin/baseimages.sh $(TENANT_DOCKER_ORG) $(SYSTEM_VERSION) clean && \
 	rm -f .docker-base-build
 

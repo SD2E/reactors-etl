@@ -14,14 +14,28 @@ function container_exec() {
     local PARAMS=$@
 
     # A litte logging to help with the edge cases
-    if [ ! -z "DEBUG" ];
+    if [ ! -z "$DEBUG" ];
     then
-        echo $CONTAINER_IMAGE > .container_exec.$$.log
-        echo $COMMAND >> .container_exec.$$.log
-        echo $PARAMS >> .container_exec.$$.log
-        echo $PWD >> .container_exec.$$.log
-        echo $(ls $PWD) >> .container_exec.$$.log
-        env > .container_exec.**.env
+        local _PID=$$
+        echo $CONTAINER_IMAGE > .container_exec.${_PID}.log
+        echo $COMMAND >> .container_exec.${_PID}.log
+        echo $PARAMS >> .container_exec.${_PID}.log
+        echo $PWD >> .container_exec.${_PID}.log
+        echo $(ls $PWD) >> .container_exec.${_PID}.log
+        env > .container_exec.${_PID}.env
+    fi
+
+    # Detect container engine
+    local _CONTAINER_APP=$(which singularity)
+    if [ ! -z "${_CONTAINER_APP}" ]
+    then
+        _CONTAINER_ENGINE="singularity"
+    else
+        _CONTAINER_APP=$(which docker)
+        if [ ! -z "${_CONTAINER_APP}" ]
+        then
+            _CONTAINER_ENGINE="docker"
+        fi
     fi
 
     if [ -z "$SINGULARITY_PULLFOLDER" ];
@@ -44,16 +58,30 @@ function container_exec() {
         fi
     fi
 
+    local _UID=$(id -u)
+    local _GID=$(id -g)
+    chmod g+rwxs .
+    umask 002 .
+
     if [[ "$_CONTAINER_ENGINE" == "docker" ]];
     then
-        local OPTS="-v $PWD:/home:rw -w /home --rm=true"
+        #local OPTS="--network=none --cpus=1.0000 --memory=1G --device-read-iops=/dev/sda:1500 --device-read-iops=/dev/sda:1500"
+
+        # Set group ownership on all files making them readable by archive process
+        OPTS="$OPTS --rm  --user=0:${_GID} -v $PWD:/home:rw -w /home"
         if [ ! -z "$ENVFILE" ]
         then
             OPTS="$OPTS --env-file ${ENVFILE}"
         fi
-        set -x
+        if [ ! -z "$DEBUG" ];
+        then
+            set -x
+        fi
         docker run $OPTS ${CONTAINER_IMAGE} ${COMMAND} ${PARAMS}
-        set +x
+        if [ ! -z "$DEBUG" ];
+        then
+            set +x
+        fi
     elif [[ "$_CONTAINER_ENGINE" == "singularity" ]];
     then
         # [TODO] Detect and deal if an .img has been passed it (rare)
