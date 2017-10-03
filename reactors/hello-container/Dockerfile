@@ -8,11 +8,3 @@ ADD /src/hello.sh /opt/scripts/hello.sh
 
 CMD /opt/scripts/hello.sh "This is an example container app"
 
-#### This is a temporary fix for an issue with OverlayFS on TACC systems ###
-
-LABEL description="Additional root-level directories to avoid needing OverlayFS @ TACC HPC"
-RUN mkdir -p /work && chown root:root /work
-RUN mkdir -p /gpfs && chown root:root /gpfs
-RUN mkdir -p /data && chown root:root /data
-RUN mkdir -p /scratch && chown root:root /scratch
-
