@@ -1,4 +1,5 @@
-CONTAINER_IMAGE="index.docker.io/sd2e/fcs:0.0.6"
+_CONTAINER_ENGINE=singularity
+CONTAINER_IMAGE="index.docker.io/sd2e/fcs:0.0.4"
 
 # Temporary until we get the container executor configured each TACC system
 . _util/container_exec.sh

@@ -1,6 +1,8 @@
 import json
 import argparse
 from oct2py import octave
+import logging
+from oct2py import Oct2Py, get_log
 import pprint
 
 # python fc.py --octave-method-path /opt/scripts/
@@ -158,6 +160,10 @@ class Experiment:
 
 
 def main(args):
+
+    oc = Oct2Py(logger=get_log())
+    oc.logger = get_log('new_log')
+    oc.logger.setLevel(logging.DEBUG)
 
     with open(args.config) as f:
         configuration_object = json.load(f)

@@ -1,7 +1,7 @@
 {
   "name": "fcs-tasbe-TesT-j0b",
   "appId": "fcs-tasbe-0.1.0",
-  "archive": false,
+  "archive": true,
   "inputs": {
     "files": "agave://data-sd2e-community/sample/fcs-tasbe/test/LacI-CAGop_B10_B10_P3.fcs"
   },

@@ -16,26 +16,12 @@ function container_exec() {
     # A litte logging to help with the edge cases
     if [ ! -z "DEBUG" ];
     then
-        local _PID=$$
-        echo $CONTAINER_IMAGE > .container_exec.${_PID}.log
-        echo $COMMAND >> .container_exec.${_PID}.log
-        echo $PARAMS >> .container_exec.${_PID}.log
-        echo $PWD >> .container_exec.${_PID}.log
-        echo $(ls $PWD) >> .container_exec.${_PID}.log
-        env > .container_exec.${_PID}.env
-    fi
-
-    # Detect container engine
-    local _CONTAINER_APP=$(which singularity)
-    if [ ! -z "${_CONTAINER_APP}" ]
-    then
-        _CONTAINER_ENGINE="singularity"
-    else
-        _CONTAINER_APP=$(which docker)
-        if [ ! -z "${_CONTAINER_APP}" ]
-        then
-            _CONTAINER_ENGINE="docker"
-        fi
+        echo $CONTAINER_IMAGE > .container_exec.$$.log
+        echo $COMMAND >> .container_exec.$$.log
+        echo $PARAMS >> .container_exec.$$.log
+        echo $PWD >> .container_exec.$$.log
+        echo $(ls $PWD) >> .container_exec.$$.log
+        env > .container_exec.**.env
     fi
 
     if [ -z "$SINGULARITY_PULLFOLDER" ];
@@ -60,9 +46,7 @@ function container_exec() {
 
     if [[ "$_CONTAINER_ENGINE" == "docker" ]];
     then
-        local OPTS="--rm --network=none --cpus=1.0000 --memory=1G --device-read-iops=/dev/sda:1500 --device-read-iops=/dev/sda:1500"
-
-        OPTS="$OPTS -v $PWD:/home:rw -w /home"
+        local OPTS="-v $PWD:/home:rw -w /home --rm=true"
         if [ ! -z "$ENVFILE" ]
         then
             OPTS="$OPTS --env-file ${ENVFILE}"

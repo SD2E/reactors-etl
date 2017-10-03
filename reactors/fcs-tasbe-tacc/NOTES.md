@@ -29,3 +29,7 @@ octave_core_file_name (".octave-workspace")
 ```
 CMD python /opt/scripts/fc.py --octave-method-path /opt/octave-methods --config $CONFIG 
 ```
+
+### Singularity
+
+[TODO] Build a Vagrant box emulating the TACC HPC environment for testing
