@@ -2,7 +2,7 @@
 # xenial = 16.0.4 LTS
 # trusty = 14.0.4 LTS
 
-FROM ubuntu:xenial
+FROM sd2e/base:ubuntu16
 
 RUN apt-get update
 RUN apt-get install git -y
@@ -51,13 +51,6 @@ ADD src /opt/scripts
 # Print help by default
 CMD python /opt/scripts/fc.py --help
 
-#### This is a temporary fix for an issue with OverlayFS on TACC systems ###
-
-LABEL description="Additional root-level directories to avoid needing OverlayFS @ TACC HPC"
-RUN mkdir -p /work && chown root:root /work
-RUN mkdir -p /gpfs && chown root:root /gpfs
-RUN mkdir -p /data && chown root:root /data
-RUN mkdir -p /scratch && chown root:root /scratch
-
 RUN chmod a+rx /root && \
     chmod a+r /root/.octaverc
+
