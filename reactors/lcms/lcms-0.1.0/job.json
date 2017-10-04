@@ -1,0 +1,11 @@
+{
+  "name": "lcms_test-1507148614",
+  "appId": "lcms-0.1.0",
+  "archive": false,
+  "inputs": {
+    "lcmsDataFile": "agave://data-sd2e-community/sample/lcms/ec_K12.fasta"
+  },
+  "parameters": {
+    "outputFileName": "lcms-output.csv"
+  }
+}
