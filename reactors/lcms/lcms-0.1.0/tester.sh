@@ -9,7 +9,7 @@ CONTAINER_IMAGE="index.docker.io/sd2e/lcms:latest"
 . _util/container_exec.sh
 
 COMMAND='python'
-PARAMS='/opt/scripts/lcms.py --file localtest/ec_K12.fasta --output ec_K12.csv'
+PARAMS='/opt/scripts/lcms.py --files localtest/ec_K12.fasta --output ec_K12.csv'
 
 DEBUG=1 container_exec ${CONTAINER_IMAGE} ${COMMAND} ${PARAMS}
 
