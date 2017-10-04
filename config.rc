@@ -1,9 +1,0 @@
-# API tenant config
-export TENANT_NAME=DARPA-SD2E
-export TENANT_KEY=sd2e
-# Make support
-export MAKE_OBJ=reactors
-# Docker
-export TENANT_DOCKER_ORG=sd2e
-
-export _REACTOR_BASE_VERSION=$(cat VERSION)

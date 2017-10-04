@@ -1,17 +1,28 @@
 #!/usr/bin/env bash
 
 _TENANT_DOCKER_ORG=$1
-_VERSION=$2
+_APIVERSION=$2
 _COMMAND=$3
 
-if [ -z "$_COMMAND" ]; then COMMAND="build"; fi
+echo "Command: $_COMMAND"
 
 if [[ -z "$DIR" ]]; then
     DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 fi
 
-for BASE in alpine_36 ubuntu_xenial centos_7
+OWD=$PWD
+for _BASE in base
 do
-    cd $DIR/docker/reactor_$BASE
-    ../../docker.sh "$_TENANT_DOCKER_ORG/reactor_${BASE}" "${_VERSION}" Dockerfile ${_COMMAND}
+    echo "Building base..."
+    cd $DIR/docker/$_BASE
+    for _VERSION in alpine36 ubuntu14 ubuntu16
+    do
+        echo "Version: $_VERSION"
+        ls 
+        if [ -f "Dockerfile.${_VERSION}" ];
+        then
+            ../../docker.sh "$_TENANT_DOCKER_ORG/$_BASE" "${_VERSION}" "Dockerfile.${_VERSION}" "${_COMMAND}"
+        fi
+    done
+    cd $OWD
 done

@@ -2,7 +2,7 @@
 # xenial = 16.0.4 LTS
 # trusty = 14.0.4 LTS
 
-FROM ubuntu:xenial
+FROM sd2e/base:ubuntu16
 
 RUN apt-get update
 RUN apt-get install git -y
@@ -28,24 +28,29 @@ RUN apt-get install python-scipy -y
 # 6. Don't actually have the default ENTRYPOINT or 
 #    CMD do work. Enlist it for debugging instead.
 
-WORKDIR /root
+RUN apt-get -y install liboctave-dev
+RUN octave --no-gui --quiet --eval "pkg install -forge io"
 
-RUN mkdir tasbe && \
-    cd tasbe && \
-    wget https://github.com/jegentile/TASBEFlowAnalytics/archive/master.zip && \
-    unzip master.zip && \
-    cd TASBEFlowAnalytics-master && \
-    make install && \
-    rm -rf master.zip TASBEFlowAnalytics-master 
+RUN mkdir tasbe
+RUN cd tasbe
+RUN wget https://github.com/jegentile/TASBEFlowAnalytics/archive/master.zip
+RUN unzip master.zip
+RUN cd /TASBEFlowAnalytics-master && make install
 
-#RUN cd tasbe
-#RUN wget https://github.com/jegentile/TASBEFlowAnalytics/archive/master.zip
-#RUN unzip master.zip
-#RUN cd /TASBEFlowAnalytics-master && make install
+# There may be a better global solution for Octave containers
+# but reading from ~/.octaverc is fraught with peril in a container
+# as we can't assure that the username or $HOME path will be stable
+# across invocations. Alternatives might be to override OCTAVE_SITE_INITFILE
+# and point it to /root/.octaverc
+#RUN cat /root/.octaverc >> /usr/share/octave/site/m/startup/octaverc && rm -f /root/.octaverc
 
 RUN mkdir -p /opt/scripts
 
 ADD src /opt/scripts
 
-#CMD python /opt/scripts/fc.py --octave-method-path /opt/scripts/ --config $CONFIG 
-CMD /usr/bin/env
+# Print help by default
+CMD python /opt/scripts/fc.py --help
+
+RUN chmod a+rx /root && \
+    chmod a+r /root/.octaverc
+
