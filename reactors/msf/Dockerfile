@@ -2,11 +2,12 @@
 # xenial = 16.0.4 LTS
 # trusty = 14.0.4 LTS
 
-FROM ubuntu:xenial
+FROM sd2e/base:ubuntu16
 
-RUN apt-get update
-RUN apt-get install python -y
-RUN apt-get install python-pip -y
+RUN apt-get -y update && \
+    apt-get -y install python python-pip && \
+    apt-get clean
+
 RUN pip install --upgrade pip
 RUN pip install pandas
 
@@ -27,4 +28,6 @@ RUN mkdir -p /opt/scripts
 
 ADD src /opt/scripts
 
-CMD /usr/bin/env
+# After much discussion, it seems that a standard is for
+# the default code in the container at least return help/usage
+CMD python /opt/scripts/msf.py --help

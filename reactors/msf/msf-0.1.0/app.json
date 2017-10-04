@@ -1,0 +1,82 @@
+{
+    "checkpointable": false,
+    "name": "msf",
+    "executionSystem": "hpc-tacc-maverick",
+    "executionType": "HPC",
+    "deploymentPath": "sd2eadm/apps/msf-0.1.0",
+    "deploymentSystem": "data-sd2e-projects-q0-sharing",
+    "helpURI": "https://sd2e.org/develop/",
+    "label": "MSF Parser",
+    "longDescription": "",
+    "modules": ["load tacc-singularity/2.3.1"],
+    "ontology": ["http://edamontology.org/topic_3520"],
+    "parallelism": "SERIAL",
+    "shortDescription": "",
+    "tags": ["msf", "docker://index.docker.io/sd2e/msf:latest"],
+    "templatePath": "runner-template.sh",
+    "testPath": "tester.sh",
+    "version": "0.1.0",
+    "inputs": [{
+      "id": "msfDataFile",
+      "details": {
+        "label": "MSF (Magellan storage file) file",
+        "showAttribute": false
+      },
+      "semantics": {
+        "minCardinality": 1,
+        "ontology": [
+          "http://edamontology.org/format_3702"
+        ]
+        
+      },
+      "value": {
+        "default": "agave://data-sd2e-community/sample/msf/exp2801-04-ds731218.msf",
+        "required": true,
+        "visible": true
+      }
+    }],
+    "parameters": [
+        {
+            "id": "outputFileName",
+            "value": {
+                "default": "msf-output.csv",
+                "type": "string",
+                "validator": "",
+                "visible": true,
+                "required": false
+            },
+            "details": {
+                "label": "Output file name",
+                "attribute": "--output ",
+                "showAttribute": false
+            },
+            "semantics": {
+                "ontology": [
+                    "http://edamontology.org/data_2536",
+                    "http://edamontology.org/format_3752"
+                ]
+            }
+        }
+    ],
+    "outputs": [
+{
+    "id": "analysisOutput",
+    "value": {
+      "default": "msf-output.csv"
+    },
+    "semantics": {
+      "ontology": [
+        "http://edamontology.org/format_3475",
+        "http://edamontology.org/data_2536"
+      ],
+      "minCardinality": 1,
+      "maxCardinality": 1
+    },
+    "details": {
+      "label": "Comma-separated value from LCMS code"
+    }
+}
+
+    ],
+    "defaultMaxRunTime": "00:30:00"
+}

@@ -4,7 +4,7 @@ import pandas as pd
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--files', help='Input MSF file(s) for parsing', required=True)
-parser.add_argument('--output', help='Name of output CS  file', default='output.csv')
+parser.add_argument('--output', help='Name of output CSV file', default='output.csv')
 
 class ProteomeDiscovererMSF():
 
