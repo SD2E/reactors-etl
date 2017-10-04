@@ -1,5 +1,5 @@
 _CONTAINER_ENGINE=docker
-CONTAINER_IMAGE="index.docker.io/sd2e/fcs:0.0.4"
+CONTAINER_IMAGE="index.docker.io/sd2e/fcs:0.0.6"
 
 # Temporary until we get the container executor configured each TACC system
 . _util/container_exec.sh

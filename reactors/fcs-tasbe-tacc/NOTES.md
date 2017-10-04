@@ -72,7 +72,7 @@ source _util/container_exec.sh
 container_exec stegosarus:0.0.2 thagomize --target ${input1} --punctures ${punct}
 ```
 
-Basically, we took away the lines that set the values for `input1` and `punct` and added the hub location for the image (not mandatory, but prevents any ambiguity). All that's left now is to tell the Agave environment.
+Basically, we took away the lines that set the values for `input1` and `punct` and added the hub location for the image (not mandatory, but prevents any ambiguity). All that's left now is to tell the Agave environment how to run this application. 
 
 
 
