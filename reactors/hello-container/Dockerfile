@@ -6,5 +6,5 @@ RUN mkdir /opt/scripts
 
 ADD /src/hello.sh /opt/scripts/hello.sh
 
-CMD /opt/scripts/hello.sh "This is an example container app"
+CMD /opt/scripts/hello.sh "I am a container-basd app"
 

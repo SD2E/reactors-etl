@@ -1,0 +1,19 @@
+---
+inputs:
+parameters:
+outputs:
+app:
+    name: "hello-container"
+    version: "0.1.0"
+    label: "Hello, Container!"
+    short_description: "It's so nice to have root back where it belongs"
+    deployment_path: "demouser/apps/hello-container-0.1.0"
+runtime:
+  container:
+    docker_reg: "index.docker.io"
+    docker_org: "sd2e"
+    docker_image: "hello-container"
+    image_tag: "latest"
+  execution_host:
+    system_id: "hpc-tacc-maverick"
+    parallelism: "serial"

@@ -12,6 +12,9 @@ SOURCES = customize
 test:
 	echo "Not implemented"
 
+help:
+	echo "You can run docker-base-build, docker-base-release, and docker-base-clean"
+
 docker-base-build:
 	build/admin/baseimages.sh $(TENANT_DOCKER_ORG) $(SYSTEM_VERSION) build && \
 	touch .docker-base-build
