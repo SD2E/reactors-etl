@@ -4,7 +4,7 @@
     "executionSystem": "hpc-tacc-maverick",
     "executionType": "HPC",
     "parallelism": "SERIAL",
-    "deploymentPath": "demouser/apps/hello-container-0.1.0",
+    "deploymentPath": "sd2eadm/apps/hello-container-0.1.0",
     "deploymentSystem": "data-sd2e-projects-q0-sharing",
     "label": "Hello, Container!",
     "modules": ["load tacc-singularity/2.3.1"],

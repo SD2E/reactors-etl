@@ -7,7 +7,7 @@ app:
     version: "0.1.0"
     label: "Hello, Container!"
     short_description: "It's so nice to have root back where it belongs"
-    deployment_path: "demouser/apps/hello-container-0.1.0"
+    deployment_path: "sd2eadm/apps/hello-container-0.1.0"
 runtime:
   container:
     docker_reg: "index.docker.io"
