@@ -28,10 +28,11 @@ This repository holds source code and test materials for developing various ETL 
     * ubuntu14
     * alpine36
 
-[1] http://agaveapi.tacc.cloud/
-[2] https://cyverse.org/
-[3] https://www.designsafe-ci.org/
-[4] https://pypi.python.org/pypi/agavepy/
-[5] https://github.com/SD2E/sd2e-cli/#overview
-[6] https://hub.docker.com/r/sd2e/base/
-[7] https://hub.docker.com/r/sd2e/python2/
+[1]: http://agaveapi.tacc.cloud/
+[2]: https://cyverse.org/
+[3]: https://www.designsafe-ci.org/
+[4]: https://pypi.python.org/pypi/agavepy/
+[5]: https://github.com/SD2E/sd2e-cli/#overview
+[6]: https://hub.docker.com/r/sd2e/base/
+[7]: https://hub.docker.com/r/sd2e/python2/
+[8]: http://sd2e.org/api-user-guide/
