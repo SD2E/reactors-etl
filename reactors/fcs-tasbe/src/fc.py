@@ -81,7 +81,7 @@ class ColorModel:
   def make_octave_color_model_object(self):  
     o = self.obj
     self.octave_object = octave.create_color_model_object(o['bead_file'],o['blank_file'],o['bead_model'],o['bead_batch'],
-o['translation_plot'],o['noise_plot'],o['FITC_channel_name'],self.channel_min_list)
+o['translation_plot'],o['noise_plot'],o['FITC_channel_name'],self.channel_min_list,o['min_valid_count'],o['pem_drop_threshold'])
 
 
 class Experiment:
