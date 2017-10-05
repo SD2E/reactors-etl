@@ -1,0 +1,6 @@
+from alpine:3.6
+
+RUN apk add --update alpine-sdk musl python python-dev py-pip && \
+    rm /var/cache/apk/*
+
+RUN pip install --upgrade pip

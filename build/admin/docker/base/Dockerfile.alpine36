@@ -1,6 +1,12 @@
 FROM alpine:3.6
 LABEL ORG=sd2e.org IMAGE=base
 
+RUN apk add --update bash curl git vim && \
+    rm -f /var/cache/apk/*
+
+RUN curl -L -sk -o /usr/local/bin/jq "https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64" \
+    && chmod a+x /usr/local/bin/jq
+
 #### This is a temporary fix for an issue with OverlayFS on TACC systems ###
 
 LABEL description="Additional root-level directories to avoid needing OverlayFS @ TACC HPC"
@@ -9,3 +15,4 @@ RUN mkdir -p /gpfs && chown root:root /gpfs
 RUN mkdir -p /data && chown root:root /data
 RUN mkdir -p /scratch && chown root:root /scratch
 
+#### End temporary fix

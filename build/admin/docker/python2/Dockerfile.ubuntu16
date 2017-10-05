@@ -1,0 +1,8 @@
+FROM sd2e/base:ubuntu16
+LABEL ORG=sd2e.org IMAGE=python2
+
+RUN apt-get -y update && \
+    apt-get -y install build-essential python python-dev python-pip python-setuptools && \
+    apt-get clean
+
+RUN pip install --upgrade pip
