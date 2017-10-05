@@ -14,9 +14,7 @@ RUN pip install --upgrade pip
 RUN pip install oct2py 
 RUN apt-get install python-numpy -y
 RUN apt-get install python-scipy -y
-RUN mkdir tasbe
 
-RUN cd tasbe
 RUN wget https://github.com/jegentile/TASBEFlowAnalytics/archive/master.zip
 RUN unzip master.zip
 RUN cd /TASBEFlowAnalytics-master && make install

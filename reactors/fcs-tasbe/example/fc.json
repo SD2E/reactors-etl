@@ -58,7 +58,7 @@
                          "file": "/data/controls/2012-03-12_mkate_EBFP2_EYFP_P3.fcs"
                        },
                        {
-                         "channels": ["FITC-A","PE-Tx-Red-YG-A","Pacific Blue-A"],
+                         "channels": ["FITC-A","Pacific Blue-A","PE-Tx-Red-YG-A"],
                          "file": "/data/controls/2012-03-12_mkate_EBFP2_EYFP_P3.fcs" 
                        }
                 ],
@@ -84,6 +84,9 @@
 		"min_valid_count": 100,
 		"pem_drop_threshold": 5,
 		"FITC_channel_name":"FITC-A",
+		"bin_min": 0,
+		"bin_max":6,
+		"bin_width": 0.1,
 		"translation_plot": false,
 		"noise_plot": false
 	},

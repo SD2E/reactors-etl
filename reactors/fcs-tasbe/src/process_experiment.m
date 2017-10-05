@@ -59,7 +59,7 @@ function [cm] = process_experiment(i_channels,color_model,color_files,color_pair
   'done resolve'
   
   experimentName = output.title; 
-  bins = BinSequence(1,0.1,10,'log_bins');
+  bins = BinSequence(color_model.bin_min,color_model.bin_width,color_model.bin_max,'log_bins');
   
   
   % Designate which channels have which roles
