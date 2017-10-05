@@ -11,7 +11,7 @@ if [[ -z "$DIR" ]]; then
 fi
 
 OWD=$PWD
-for _BASE in base
+for _BASE in base python2
 do
     echo "Building base..."
     cd $DIR/docker/$_BASE

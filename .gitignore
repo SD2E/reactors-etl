@@ -44,3 +44,5 @@ Thumbs.db
 *.pyc
 *.sqlite
 .env
+
+.docker-base-build
