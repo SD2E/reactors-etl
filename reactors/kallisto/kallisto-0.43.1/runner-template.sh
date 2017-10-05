@@ -1,4 +1,3 @@
-_CONTAINER_ENGINE=singularity
 CONTAINER_IMAGE="index.docker.io/sd2e/kallisto:0.43.1--hdf51.8.17_0"
 
 . _util/container_exec.sh

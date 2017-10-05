@@ -6,8 +6,8 @@
 	"defaultNodeCount": 1,
 	"defaultQueue": "normal",
 	"modules": ["load tacc-singularity"],
-	"deploymentPath": "apps/sailfish-0.10.1",
-	"deploymentSystem": "data-sd2e-app-assets",
+	"deploymentPath": "sd2eadm/apps/sailfish-0.10.1",
+	"deploymentSystem": "data-sd2e-projects-q0-sharing",
 	"executionSystem": "hpc-tacc-maverick",
 	"executionType": "HPC",
 	"helpURI": "http://sailfish.readthedocs.io/en/master/index.html",
@@ -23,10 +23,11 @@
 	"tags": [
 		"RNA-Seq",
 		"Quantification",
-		"Abundance"
+		"Abundance",
+		"docker://index.docker.io/sd2e/sailfish:0.10.1--1"
 	],
-	"templatePath": "sailfish.sh.template",
-	"testPath": "sailfish-tester.sh",
+	"templatePath": "runner-template.sh",
+	"testPath": "tester.sh",
 	"version": "0.10.1",
 	"inputs": [{
 			"id": "transcripts",

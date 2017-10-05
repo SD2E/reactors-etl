@@ -121,9 +121,8 @@ app:
   label: Kallisto
   shortDescription: "Quantifies RNA-Seq transcripts"
   longDescription: ""
-  templatePath: kallisto.template
-  testPath: kallisto-test.sh
-  checkpointable: false
+  templatePath: runner-template.sh
+  testPath: tester.sh
   deploymentPath: apps/kallisto-0.43.1
   deploymentSystem: data-sd2e-app-assets
   executionSystem: hpc-tacc-maverick

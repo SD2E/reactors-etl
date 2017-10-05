@@ -1,4 +1,3 @@
-_CONTAINER_ENGINE=singularity
 CONTAINER_IMAGE="index.docker.io/sd2e/sailfish:0.10.1--1"
 
 . _util/container_exec.sh

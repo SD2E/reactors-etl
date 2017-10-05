@@ -5,8 +5,8 @@
  "defaultMaxRunTime": "00:30:00",
  "defaultNodeCount": 1,
  "defaultQueue": "normal",
- "deploymentPath": "apps/kallisto-0.43.1",
- "deploymentSystem": "data-sd2e-app-assets",
+ "deploymentPath": "sd2eadm/apps/kallisto-0.43.1",
+ "deploymentSystem": "data-sd2e-projects-q0-sharing",
  "executionSystem": "hpc-tacc-maverick",
  "executionType": "HPC",
  "helpURI": "https://pachterlab.github.io/kallisto/",
@@ -23,10 +23,11 @@
  "tags": [
   "RNA-Seq",
   "Quantification",
-  "Abundance"
+  "Abundance",
+  "docker://index.docker.io/sd2e/kallisto:0.43.1--hdf51.8.17_0"
  ],
- "templatePath": "kallisto.sh.template",
- "testPath": "kallisto-tester.sh",
+ "templatePath": "runner-template.sh",
+ "testPath": "tester.sh",
  "version": "0.43.1",
  "inputs": [{
    "id": "transcripts",

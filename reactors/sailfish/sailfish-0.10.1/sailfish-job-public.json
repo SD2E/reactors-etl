@@ -1,7 +1,7 @@
 {
   "name": "sailfish_public_test-1506444487",
-  "appId": "sailfish-0.10.1u1",
-  "archive": false,
+  "appId": "sailfish-0.10.1u2",
+  "archive": true,
   "inputs": {
     "transcripts": "agave://data-sd2e-community/sample/sailfish/test/transcripts.fasta",
     "fastq1": "agave://data-sd2e-community/sample/sailfish/test/reads_1.fastq",

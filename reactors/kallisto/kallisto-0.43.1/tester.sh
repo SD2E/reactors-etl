@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 
-_CONTAINER_ENGINE=docker
 CONTAINER_IMAGE="index.docker.io/sd2e/kallisto:0.43.1--hdf51.8.17_0"
 
 . _util/container_exec.sh
 
 threads=3
 
-container_exec ${CONTAINER_IMAGE} kallisto index -i local.test/transcript.idx local.test/transcripts.fasta.gz
-container_exec ${CONTAINER_IMAGE} kallisto quant -i local.test/transcript.idx -t ${threads} -b 100 --seed=42 -o local.output local.test/reads_1.fastq.gz local.test/reads_2.fastq.gz
+DEBUG=1 container_exec ${CONTAINER_IMAGE} kallisto index -i local.test/transcript.idx local.test/transcripts.fasta.gz
+DEBUG=1 container_exec ${CONTAINER_IMAGE} kallisto quant -i local.test/transcript.idx -t ${threads} -b 100 --seed=42 -o local.output local.test/reads_1.fastq.gz local.test/reads_2.fastq.gz
 
 
 function run_tests() {
