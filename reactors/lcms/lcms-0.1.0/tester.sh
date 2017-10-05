@@ -13,6 +13,8 @@ PARAMS='/opt/scripts/lcms.py --files localtest/ec_K12.fasta --output ec_K12.csv'
 
 DEBUG=1 container_exec ${CONTAINER_IMAGE} ${COMMAND} ${PARAMS}
 
+#PARAMS='/opt/scripts/lcms.py --files localtest/exp1720-04-ds259269.mzML --output exp1720-04-ds259269.csv'
+#DEBUG=1 container_exec ${CONTAINER_IMAGE} ${COMMAND} ${PARAMS}
 
 ######################
 #  FUNCTIONAL TESTS  #
@@ -24,23 +26,40 @@ DEBUG=1 container_exec ${CONTAINER_IMAGE} ${COMMAND} ${PARAMS}
 function run_tests() {
 
     validate_csv ec_K12.csv
+    if [ $? -ne 0 ]; then
+        return 1
+    fi
+    #validate_csv exp1720-04-ds259269.csv
+    #if [ $? -ne 0 ]; then
+    #    return 1
+    #fi
     return 0
 }
 
 function validate_csv() {
-
-    return 0
-
+    if [ -f "$1" ]; then
+        return 0
+    else
+        echo "$1 not found"
+        return 1
+    fi
 }
 
 function cleanup() {
 
+    echo "Cleaning up..."
     rm -f ec_K12.csv
+    #rm -f exp1720-04-ds259269.csv
     rm -f .container_exec.*
-
 }
 
-run_tests && \
-    echo "Success" && \
-    cleanup
+trap cleanup EXIT
 
+run_tests
+if [ $? -eq 0 ]; then
+    echo "Success!"
+    exit 0
+else
+    echo "Test failed!"!
+    exit 1
+fi

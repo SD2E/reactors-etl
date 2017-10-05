@@ -36,8 +36,73 @@ def ingest_fasta(input_filename):
 def ingest_mzML(input_filename):
     """Ingest an mzML or mzXML file given it's name and return a dataframe of the file
     """
-    with mzml.read('tests/test.mzML') as reader:
-        auxiliary.print_tree(next(reader))
+    '''
+    {'count': 2,
+    'index': 2,
+    'highest observed m/z': 2020.216835219264,
+    'm/z array': array([  346.51808351
+    'ms level': 1,
+    'total ion current': 5284812.0,
+    'profile spectrum': '',
+    'lowest observed m/z': 346.518083514683,
+    'defaultArrayLength': 6305,
+    'intensity array':,
+    'positive scan': '',
+    'MS1 spectrum': '',
+    'spectrum title': 'exp1720-04-ds259269.3.3. File:"exp1720-04-ds259269.raw", NativeID:"controllerType=0 controllerNumber=1 scan=3"',
+    'base peak intensity': 836452.44,
+    'scanList': {'count': 1, 'no combination': '', 'scan': [{'filter string': 'FTMS + p NSI Full ms [350.00-2000.00]',
+    'scan start time': 5.0165227,
+    'ion injection time': 100.000001490116,
+    'scanWindowList': {'count': 1, 'scanWindow': [{'scan window lower limit': 350.0, 'scan window upper limit': 2000.0}]}, 'preset scan configuration': 1.0}]},
+    'id': 'controllerType=0 controllerNumber=1 scan=3',
+    'base peak m/z': 371.1017749}
+        '''
+    with mzml.read(input_filename) as reader:
+        mzml_list = [
+            #item["count"],
+            #item["index"],
+            [float(item["highest observed m/z"]),
+             #item["m/z array"],
+             int(item["ms level"]),
+             float(item["total ion current"]),
+             #item["profile spectrum"],
+             float(item["lowest observed m/z"]),
+             #item["intensity array"],
+             #item["positive scan"],
+             #item["MS1 spectrum"],
+             #exp1720-04-ds259269.3.3. File:"exp1720-04-ds259269.raw", NativeID:"controllerType=0 controllerNumber=1 scan=3"
+             str(item["spectrum title"].split("File:\"")[1].split("\",")[0]),
+             int(item["spectrum title"].split("controllerType=")[1].split(" ")[0]),
+             int(item["spectrum title"].split("controllerNumber=")[1].split(" ")[0]),
+             int(item["spectrum title"].split("scan=")[1].split("\"")[0]),
+             float(item["base peak intensity"]),
+             #item["scanList"],
+             #item["id"],
+             float(item["base peak m/z"])
+             ] for item in reader]
+    df = pd.DataFrame(mzml_list,columns=[
+        #"count",
+        #"index",
+        "highest observed m/z",
+        #"m/z array",
+        "ms level",
+        "total ion current",
+        #"profile spectrum",
+        "lowest observed m/z",
+        #"intensity array",
+        #"positive scan",
+        #"MS1 spectrum",
+        "filename",
+        "controllerType",
+        "controllerNumber",
+        "scan",
+        "base peak intensity",
+        #"scanList",
+        #"id",
+        "base peak m/z"])
+
+    return df
         
 def main(args):
     
@@ -45,9 +110,12 @@ def main(args):
         ingest_mgf(args.files)
     elif "fasta" in args.files:
         df = ingest_fasta(args.files)
-        df.to_csv(args.output)
+    elif "mzML" in args.files:
+        df = ingest_mzML(args.files)
     else:
-        ingest_mzML(args.files)
+        raise ValueError('Could not parse:' + args.files)
+
+    df.to_csv(args.output)
 
 if __name__ == '__main__':
     args = parser.parse_args()
