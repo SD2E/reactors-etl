@@ -9,7 +9,7 @@ CONTAINER_IMAGE="index.docker.io/sd2e/lcms:latest"
 . _util/container_exec.sh
 
 COMMAND='python'
-PARAMS='/opt/scripts/lcms.py --files localtest/ec_K12.fasta --output ec_K12.csv'
+PARAMS='/opt/scripts/lcms.py --files localtest/exp1720-04-ds259269.mzML --output exp1720-04-ds259269.mzML.csv'
 
 DEBUG=1 container_exec ${CONTAINER_IMAGE} ${COMMAND} ${PARAMS}
 
@@ -25,14 +25,10 @@ DEBUG=1 container_exec ${CONTAINER_IMAGE} ${COMMAND} ${PARAMS}
 
 function run_tests() {
 
-    validate_csv ec_K12.csv
+    validate_csv exp1720-04-ds259269.mzML.csv
     if [ $? -ne 0 ]; then
         return 1
     fi
-    #validate_csv exp1720-04-ds259269.csv
-    #if [ $? -ne 0 ]; then
-    #    return 1
-    #fi
     return 0
 }
 
@@ -48,8 +44,7 @@ function validate_csv() {
 function cleanup() {
 
     echo "Cleaning up..."
-    rm -f ec_K12.csv
-    #rm -f exp1720-04-ds259269.csv
+    rm -f exp1720-04-ds259269.mzML.csv
     rm -f .container_exec.*
 }
 

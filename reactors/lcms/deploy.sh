@@ -15,6 +15,15 @@ then
     exit 0
 fi
 
+# stage-test-data.csv marks localtest with a hidden file to indicate that its a bad idea to deploy it
+if [[ -n $(find "${APP}" -name ".dirty" ) ]]
+then
+    echo "Error: A localtest directory inside $APP is marked as dirty. Please run clean-test-data.sh $APP <local-test-path> before deploying."
+    exit 1
+fi
+
+exit 0
+
 if [ -z "$NODOCKER" ]
 then
     if [ ! -f "./Dockerfile" ]
