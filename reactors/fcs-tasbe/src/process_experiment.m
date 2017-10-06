@@ -59,15 +59,16 @@ function [cm] = process_experiment(i_channels,color_model,color_files,color_pair
   'done resolve'
   
   experimentName = output.title; 
-  bins = BinSequence(0,0.1,10,'log_bins');
+  bins = BinSequence(color_model.bin_min,color_model.bin_width,color_model.bin_max,'log_bins');
   
   
   % Designate which channels have which roles
   AP = AnalysisParameters(bins,{});
   % Ignore any bins with less than valid count as noise
-  AP=setMinValidCount(AP,100');
+  AP=setMinValidCount(AP,color_model.min_valid_count');
   % Ignore any raw fluorescence values less than this threshold as too contaminated by instrument noise
-  AP=setPemDropThreshold(AP,0');
+  AP=setPemDropThreshold(AP,color_model.pem_drop_threshold');
+
   % Add autofluorescence back in after removing for compensation?
   AP=setUseAutoFluorescence(AP,false');
 
