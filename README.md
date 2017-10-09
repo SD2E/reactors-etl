@@ -16,6 +16,7 @@ This repository holds source code and test materials for developing various ETL 
 
 1. [SD2E API User's Guide][8]
 2. [Agave API Developer Docs][1]
+3. [SD2 App ETL Example](sd2-app-etl.md)
 
 ## Base images
 
