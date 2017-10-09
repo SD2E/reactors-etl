@@ -1,4 +1,4 @@
-##SD2 App ETL Submission
+## SD2 App ETL Submission
 
 Assumes you have a working, authenticated sd2e client. Abbreviated steps for this below.
 
