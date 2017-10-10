@@ -30,6 +30,7 @@ then
     else
         {
             bash build.sh
+            bash push.sh
         } || { 
             echo "No ./build.sh script. Image not built."
         }
@@ -42,9 +43,16 @@ _APPNAME=$(jq -r .name $APPJSON)
 _APPVERS=$(jq -r .version $APPJSON)
 _APPID="${_APPNAME}-${_APPVERS}"
 
+# username/apps/app-0.1.0
 _DEPPATH=$(jq -r .deploymentPath $APPJSON)
+# username/apps/app-0.1.0 -> username/apps
 _DEPAPPSPATH=$(dirname "${_DEPPATH}")
 _DEPSYS=$(jq -r .deploymentSystem $APPJSON)
+
+# username/apps -> username
+_USERDIRECTORY=$(dirname "${_DEPAPPSPATH}")
+# username/apps -> apps
+_APPDIRECTORY=$(basename "${_DEPAPPSPATH}")
 
 # Deploy application assets
 #
@@ -64,7 +72,8 @@ then
 set -x
 # DESTRUCTIVE
     files-delete ${_FILEOPTS} ${_DEPPATH}
-    files-mkdir ${_FILEOPTS} -N ${_DEPAPPSPATH} /
+    # files-mkdir -S system -N apps username
+    files-mkdir ${_FILEOPTS} -N ${_APPDIRECTORY} ${_USERDIRECTORY}
     files-upload -q ${_FILEOPTS} -F ${APP} ${_DEPAPPSPATH}/
 set +x
 fi
