@@ -4,7 +4,7 @@
   "executionSystem": "hpc-tacc-maverick",
   "executionType": "HPC",
   "deploymentPath": "sd2eadm/apps/lcms-0.1.0",
-  "deploymentSystem": "data-sd2e-projects-q0-sharing",
+  "deploymentSystem": "data-sd2e-projects-users",
   "helpURI": "https://sd2e.org/develop/",
   "label": "LCMS Parser",
   "longDescription": "",

@@ -5,7 +5,7 @@
     "executionType": "HPC",
     "parallelism": "SERIAL",
     "deploymentPath": "sd2eadm/apps/hello-container-0.1.0",
-    "deploymentSystem": "data-sd2e-projects-q0-sharing",
+    "deploymentSystem": "data-sd2e-projects-users",
     "label": "Hello, Container!",
     "modules": ["load tacc-singularity/2.3.1"],
     "shortDescription": "It's so nice to have root back where it belongs",

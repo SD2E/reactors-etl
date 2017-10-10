@@ -6,7 +6,7 @@
  "defaultNodeCount": 1,
  "defaultQueue": "normal",
  "deploymentPath": "sd2eadm/apps/kallisto-0.43.1",
- "deploymentSystem": "data-sd2e-projects-q0-sharing",
+ "deploymentSystem": "data-sd2e-projects-users",
  "executionSystem": "hpc-tacc-maverick",
  "executionType": "HPC",
  "helpURI": "https://pachterlab.github.io/kallisto/",

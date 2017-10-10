@@ -7,7 +7,7 @@
 	"defaultQueue": "normal",
 	"modules": ["load tacc-singularity"],
 	"deploymentPath": "sd2eadm/apps/sailfish-0.10.1",
-	"deploymentSystem": "data-sd2e-projects-q0-sharing",
+	"deploymentSystem": "data-sd2e-projects-users",
 	"executionSystem": "hpc-tacc-maverick",
 	"executionType": "HPC",
 	"helpURI": "http://sailfish.readthedocs.io/en/master/index.html",
