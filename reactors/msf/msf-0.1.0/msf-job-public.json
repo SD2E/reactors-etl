@@ -1,6 +1,6 @@
 {
   "name": "msf_test-1507156359",
-  "appId": "msf-0.1.0u1",
+  "appId": "msf-0.1.0u3",
   "archive": true,
   "inputs": {
     "msfDataFile": "agave://data-sd2e-community/sample/msf/exp2801-04-ds731218.msf"

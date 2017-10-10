@@ -1,6 +1,6 @@
 {
   "name": "kallisto_test-1506444487",
-  "appId": "kallisto-0.43.1u2",
+  "appId": "kallisto-0.43.1u3",
   "archive": false,
   "inputs": {
     "transcripts": "agave://data-sd2e-community/sample/kallisto/test/transcripts.fasta.gz",
