@@ -22,8 +22,6 @@ then
     exit 1
 fi
 
-exit 0
-
 if [ -z "$NODOCKER" ]
 then
     if [ ! -f "./Dockerfile" ]
