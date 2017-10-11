@@ -1,6 +1,6 @@
 {
   "name": "lcms_test-1507152665",
-  "appId": "lcms-0.1.0u2",
+  "appId": "lcms-0.1.0u4",
   "archive": true,
   "inputs": {
     "lcmsDataFile": "agave://data-sd2e-community/sample/lcms/ec_K12.fasta"

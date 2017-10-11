@@ -2,7 +2,7 @@
 
 This repository holds source code and test materials for developing various ETL components to power data and metdata extraction, transformation, and loading for the DARPA SD2 program. ETL components are developed and operated in TACC's Cloud API platform, which features the Agave and Reactors application runtimes. 
 
-* *[Agave][1]* is platform-as-a-service which is the foundation of several large cyberinfrastructure platforms, including [CyVerse][2] and [DesignSafe[3]. Designed from the ground up to support reproducible, collaborative science, it provides data management and marshalling, full application lifecycle support, identity management and access control, document store functionality, callback-driven programming, and integration with diverse cloud, hpc, and htc resource types. 
+* *[Agave][1]* is platform-as-a-service which is the foundation of several large cyberinfrastructure platforms, including [CyVerse][2] and [DesignSafe][3]. Designed from the ground up to support reproducible and collaborative science, it provides data management and marshalling, full application lifecycle support, identity management and access control, document store functionality, callback-driven programming, and integration with diverse cloud, hpc, and htc resource types. 
 * *Reactors* is a REST-based web service that brings _functions-as-a-service_ to analytical computing. This system is in active development and will be integrated into the ETL process after the Q0 working meeting. More information will be available soon about Reactors. 
 
 ## Assumptions
@@ -11,6 +11,17 @@ This repository holds source code and test materials for developing various ETL 
 2. These containers are either derived from SD2E's base images or are constructed to align with operational requirements for the SD2E platform
 3. Each application is deployed as either an Agave application or a Reactor (or both). The process for doing so is documented in tutorial materials as well as via the working codes found in this repository.
 4. Applications can be used in the TACC Cloud API via an interactive web workspace, inside Jupyter notebooks (SD2E-hosted or 3rd party), within Python scripts and programs using the [AgavePy library][4], or via an [interactive CLI][5]
+
+## Requirements
+
+* Docker 17.X.X-ce
+* Python 2.7.10+
+* Bash 3.2.57+
+* Git 2.12+
+* jq 1.5+
+* A GitHub account
+* A Docker Hub account
+* An active SD2E account
 
 ## Relevant documentation
 
@@ -28,6 +39,9 @@ This repository holds source code and test materials for developing various ETL 
     * ubuntu16 (recommended)
     * ubuntu14
     * alpine36
+* sd2e/python3 (coming soon)
+
+## References
 
 [1]: http://agaveapi.tacc.cloud/
 [2]: https://cyverse.org/
