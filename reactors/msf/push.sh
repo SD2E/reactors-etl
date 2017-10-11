@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
-CONTAINER_IMAGE="sd2e/msf:latest"
+version=$(cat ../VERSION)
+
+CONTAINER_IMAGE="sd2e/msf:$version"
 
 docker push ${CONTAINER_IMAGE}
