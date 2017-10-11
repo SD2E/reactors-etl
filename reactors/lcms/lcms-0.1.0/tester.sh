@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
+version=$(cat VERSION)
+
 # No need to set _CONTAINER_ENGINE now. The container_exec function detects
 # Docker and Singularity, preferring to run with Docker
-CONTAINER_IMAGE="index.docker.io/sd2e/lcms:latest"
+CONTAINER_IMAGE="index.docker.io/sd2e/lcms:$version"
 
 # Temporary until we get the container executor configured each TACC system
 # This code is evolving and will eventually become a service on the host
