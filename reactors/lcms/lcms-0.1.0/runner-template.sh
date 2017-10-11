@@ -1,4 +1,4 @@
-version=$(cat ../VERSION)
+version=$(cat VERSION)
 
 CONTAINER_IMAGE="index.docker.io/sd2e/lcms:$version"
 
