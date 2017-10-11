@@ -1,4 +1,4 @@
-## SD2 App ETL Submission
+## SD2 App ETL Submission and Deployment
 
 ## LCMS .msf Example
 Assumes you have a working, authenticated sd2e client. Abbreviated steps for this below.
@@ -339,3 +339,88 @@ Sample rows from ec_K12.csv:
 | gi:16127996 | NP_414543.1 | aspartokinase I, homoserine dehydrogenase I [Escherichia coli K12] | MRVLKFGGTSVANAER... |
 | gi:16127997 | NP_414544.1 | homoserine kinase [Escherichia coli K12]                           | MVKVYAPASSANMSVG....                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | gi:16127998 | NP_414545.1 | threonine synthase [Escherichia coli K12]                          | MKLYNLKDHNEQVSFA...                                                                                                                                                                                                                                                                                                                                                                                                        |
+
+## App Deployment
+
+The lcms and msf apps currently support the ability to deploy private versions of these apps. Upon successful testing, a TACC admin can promote the private app to a public one, making it available for all users.
+
+To begin, select an app to modify and deploy:
+
+[lcms](https://github.com/SD2E/reactors-etl/tree/master/reactors/lcms)
+
+[msf](https://github.com/SD2E/reactors-etl/tree/master/reactors/msf)
+
+As an example, we will be updating and deploying the "lcms" app.
+
+[1] Edit the VERSION file located in the lcms-0.1.0 directory.
+
+This file contains the tag of the docker image that will be built, pushed, tested, and executed for the lcms app. Change the current content of that VERSION file, latest, to a named tag you want to test with. This change affects the relevant scripts:
+
+	build.sh
+	push.sh
+	<lcms-0.1.0>tester.sh
+	<lcms-0.1.0>runner-template.sh
+	
+which will substitute latest with whatever is in your VERSION file. Pick a name that is unique and meaningful, e.g. username-feature, where you're substituting username with your TACC account username. We'll be using **"mweston-fix-import"** for this example for our VERSION information.
+
+[2] We need to modify the name in the app.json file in the app-0.1.0 directory from its current value:
+
+	"name": "lcms",
+
+This is the **name** of the app that will show up in apps-list. Note this can be different from the docker tag that is built! The docker tag is already on the lcms image, so we include "lcms" here to help fully identify this app.
+	
+	"name": "lcms-mweston-fix-import",
+ 
+[3]
+ 
+	"executionSystem": "hpc-tacc-maverick",
+
+Needs to be changed to your private maverick system:
+
+	"executionSystem": "hpc-tacc-maverick-mweston",
+
+[4]
+
+	"deploymentPath": "sd2eadm/apps/lcms-0.1.0",
+	
+Needs to change to look exactly like the following. We're going to be loading the app from our personal workspace, not the sd2eadm user.
+
+	"deploymentPath": "mweston/apps/lcms-0.1.0",
+
+[5]
+
+	"tags": ["lcms", "docker://index.docker.io/sd2e/lcms:latest"],
+	
+Change this to the tag you edited into the VERSION file. This tells the app to use your custom docker image.
+
+	"tags": ["lcms", "docker://index.docker.io/sd2e/lcms:mweston-fix-import"],
+
+Next, we can deploy our app!
+
+	./deploy.sh lcms-0.1.0 
+
+If all goes well, check to see if the app shows in your list of private apps. Note that deployment requires docker.io push permissions to the SD2E organization.
+
+	apps-list -Q
+
+To test your app, run:
+
+	jobs-submit -F yourapp.json
+	
+Where yourapp.json references your new, private app, e.g.
+
+	{
+	  "name": "lcms-mweston-test-1",
+	  "appId": "lcms-mweston-fix-import", <--- here
+	  "archive": false,
+	  "inputs": {
+	    "lcmsDataFile": "agave://data-sd2e-community/sample/lcms/ec_K12.fasta"
+	  },
+	  "parameters": {
+	    "outputFileName":"ec_K12.csv"
+	  }
+	}
+	
+If the app runs and produces the desired output, contact TACC staff and ask them to promote your app. Currently, users cannot globally publish private apps. 
+
+However, the process is very quick from the TACC side. They can also disable previous versions of an app, or leave those up, allowing users to choose which version they want to run against. 

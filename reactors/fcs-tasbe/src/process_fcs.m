@@ -64,6 +64,7 @@ colorfiles{3} = color_channel_3_file;
 colorpairfiles{1} = {channels{1}, channels{2}, channels{3}, color_file_123};
 colorpairfiles{2} = {channels{1}, channels{3}, channels{2}, color_file_132};
 
+
 CM = ColorModel(bead_file, blank_file, channels, colorfiles, colorpairfiles);
 CM=set_bead_plot(CM,0 ); % 2 = detailed plots; 1 = minimal plot; 0 = no plot
 CM=set_translation_plot(CM, true);
@@ -85,6 +86,8 @@ settings = setSetting(settings, 'path', 'plots');
 % When dealing with very strong fluorescence, use secondary channel to segment
 %settings = setSetting(settings,'SecondaryBeadChannel','PE-Texas_Red-A');
 CM = add_filter(CM,autogate);
+
+settings = setSetting(settings,'override_units',1)
 
 % Execute and save the model
 CM=resolve(CM, settings);

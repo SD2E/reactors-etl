@@ -21,15 +21,12 @@ function _import_agave_uri() {
     local RECURSE=
     case "$APATH" in
         */)
-            RECURSE="--recursive "
+            files-get "--recursive" -S "${ASYS}" -N "${DEST}" "${APATH}"
             ;;
         *)
-            RECURSE=""
+            files-get -S "${ASYS}" -N "${DEST}" "${APATH}"
             ;;
     esac
-
-    files-get "${RECURSE}" -S "${ASYS}" -N "${DEST}" "${APATH}"
-
 }
 
 function _import_public_uri() {
