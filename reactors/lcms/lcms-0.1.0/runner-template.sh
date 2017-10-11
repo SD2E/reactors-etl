@@ -1,4 +1,6 @@
-CONTAINER_IMAGE="index.docker.io/sd2e/lcms:latest"
+version=$(cat VERSION)
+
+CONTAINER_IMAGE="index.docker.io/sd2e/lcms:$version"
 
 . _util/container_exec.sh
 

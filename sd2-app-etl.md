@@ -1,5 +1,6 @@
 ## SD2 App ETL Submission
 
+## LCMS .msf Example
 Assumes you have a working, authenticated sd2e client. Abbreviated steps for this below.
 
 TACC's documentation is also quite good if you want to try that out as well: [http://sd2e.org/api-user-guide/](http://sd2e.org/api-user-guide/)
@@ -17,27 +18,31 @@ TACC's documentation is also quite good if you want to try that out as well: [ht
 	auth-tokens-create -S
 	auth-check
 
-Let's list some apps:
+Let's list some apps, passing -P to get all publically accessible apps:
 
-	apps-list
+	apps-list -P
 	>
-	kallisto-0.43.1u2
-	msf-0.1.0u2
-	lcms-0.1.0u1
-	fcs-tasbe-0.1.0u1
-	sailfish-0.10.1u1
+	lcms-0.1.0u4
+	lcms-0.1.0u3
+	hello-agave-hpc-0.1.0u1
+	hello-agave-cli-0.1.0u1
+	sailfish-0.10.1u2
+	fcs-tasbe-0.1.0u2
+	msf-0.1.0u3
+	kallisto-0.43.1u3
+	hello-container-0.1.0u1
 
 Digging in. In general "command -h" will provide command help.
 
-	apps-list -v msf-0.1.0u2
+	apps-list -v msf-0.1.0u3
 
 Lots of JSON. We'll want to focus on inputs and parameters.
 
 	{
-	  "id": "msf-0.1.0u2",
+	  "id": "msf-0.1.0u3",
 	  "name": "msf",
 	  "icon": null,
-	  "uuid": "5176379387814744551-242ac115-0001-005",
+	  "uuid": "1033233682410892825-242ac115-0001-005",
 	  "parallelism": "SERIAL",
 	  "defaultProcessorsPerNode": 1,
 	  "defaultMemoryPerNode": 1,
@@ -45,7 +50,7 @@ Lots of JSON. We'll want to focus on inputs and parameters.
 	  "defaultMaxRunTime": "00:30:00",
 	  "defaultQueue": null,
 	  "version": "0.1.0",
-	  "revision": 2,
+	  "revision": 3,
 	  "isPublic": true,
 	  "helpURI": "https://sd2e.org/develop/",
 	  "label": "MSF Parser",
@@ -61,12 +66,12 @@ Lots of JSON. We'll want to focus on inputs and parameters.
 	  ],
 	  "executionType": "HPC",
 	  "executionSystem": "hpc-tacc-maverick",
-	  "deploymentPath": "${foundation.service.apps.default.public.dir}/msf-0.1.0u2.zip",
-	  "deploymentSystem": "data-sd2e-projects-q0-sharing",
+	  "deploymentPath": "/.public-apps/msf-0.1.0u3.zip",
+	  "deploymentSystem": "data-sd2e-projects-users",
 	  "templatePath": "runner-template.sh",
 	  "testPath": "tester.sh",
 	  "checkpointable": false,
-	  "lastModified": "2017-10-04T18:18:08.000-05:00",
+	  "lastModified": "2017-10-10T14:12:23.000-05:00",
 	  "modules": [
 	    "load tacc-singularity/2.3.1"
 	  ],
@@ -153,36 +158,36 @@ Lots of JSON. We'll want to focus on inputs and parameters.
 	  ],
 	  "_links": {
 	    "self": {
-	      "href": "https://api.sd2e.org/apps/v2/msf-0.1.0u2"
+	      "href": "https://api.sd2e.org/apps/v2/msf-0.1.0u3"
 	    },
 	    "executionSystem": {
 	      "href": "https://api.sd2e.org/systems/v2/hpc-tacc-maverick"
 	    },
 	    "storageSystem": {
-	      "href": "https://api.sd2e.org/systems/v2/data-sd2e-projects-q0-sharing"
+	      "href": "https://api.sd2e.org/systems/v2/data-sd2e-projects-users"
 	    },
 	    "history": {
-	      "href": "https://api.sd2e.org/apps/v2/msf-0.1.0u2/history"
+	      "href": "https://api.sd2e.org/apps/v2/msf-0.1.0u3/history"
 	    },
 	    "metadata": {
-	      "href": "https://api.sd2e.org/meta/v2/data/?q=%7B%22associationIds%22%3A%225176379387814744551-242ac115-0001-005%22%7D"
+	      "href": "https://api.sd2e.org/meta/v2/data/?q=%7B%22associationIds%22%3A%221033233682410892825-242ac115-0001-005%22%7D"
 	    },
 	    "owner": {
 	      "href": "https://api.sd2e.org/profiles/v2/sd2eadm"
 	    },
 	    "permissions": {
-	      "href": "https://api.sd2e.org/apps/v2/msf-0.1.0u2/pems"
+	      "href": "https://api.sd2e.org/apps/v2/msf-0.1.0u3/pems"
 	    }
 	  }
 	}
 
 This creates a template input for running this app. Neat.
 
-	jobs-template lcms-0.1.0u1 > lcms.json
+	jobs-template msf-0.1.0u3 > msf.json
 
 	{
 	  "name": "msf test-1507578206",
-	  "appId": "msf-0.1.0u2",
+	  "appId": "msf-0.1.0u3",
 	  "archive": true,
 	  "inputs": {
 	    "msfDataFile": "agave://data-sd2e-community/sample/msf/exp2801-04-ds731218.msf"
@@ -227,7 +232,7 @@ Edit msf.json, modifying the name to something ***unique*** and with the desired
 
 	{
 	  "name": "msf-test-exp3818-4-ds1190884",
-	  "appId": "msf-0.1.0u2",
+	  "appId": "msf-0.1.0u3",
 	  "archive": false,
 	  "inputs": {
 	    "msfDataFile": "agave://data-sd2e-projects-q0-ingest/uploads/sd2.ginkgo.upload/yeastgates/proteomics/exp3818/exp3818-4-ds1190884.msf"
@@ -282,8 +287,55 @@ Looks like we got a CSV! Let's grab it.
 
 	jobs-output-get 7321434283412558311-242ac11b-0001-007 exp3818-4-ds1190884.csv
 
-Success:
+Sample rows from exp3818-4-ds1190884.csv:
 
-	coverage	description	protein_id	protein_score	sequence
-	0	3.03030303	>YBR020W_W303 GAL1 gi|696449286|gb|JRIU01000067.1| 20629-22215 ORF Verified Galactokinase; phosphorylates alpha-D-galactose to alpha-D-galactose-1-phosphate in the first step of galactose catabolism; expression regulated by Gal4p; GAL1 has a paralog, GAL3, that arose from the whole genome duplication	14	0	MTKSHSEEVIVPEFNSSAKELPRPLAEKCPSIIKKFISAYDAKPDFVARSPGRVNLIGEHIDYCDFSVLPLAIDFDMLCAVKVLNEKNPSITLINADPKFAQRKFDLPLDGSYVTIDPSVSDWSNYFKCGLHVAHSFLKKLAPERFASAPLAGLQVFCEGDVPTGSGLSSSAAFICAVALAVVKANMGPGYHMSKQNLMRITVVAEHYVGVNNGGMDQAASVCGEEDHALYVEFKPQLKATPFKFPQLKNHEISFVIANTLVVSNKFETAPTNYNLRVVEVTTAANVLAATYGVVLLSGKEGSSTNKGNLRDFMNVYYARYHNISTPWNGDIESGIERLTKMLVLVEESLANKKQGFSVDDVAQSLNCSREEFTRDYLTTSPVRFQVLKLYQRAKHVYSESLRVLKAVKLMTTASFTADEDFFKQFGALMNESQASCDKLYECSCPEIDKICSIALSNGSYGSRLTGAGWGGCTVHLVPGGPNGNIEKVKEALANEFYKVKYPKITDAELENAIIVSKPALGSCLYEL
+| coverage    | description                                                                                                                                                                                                                                                                                                                                                                            | protein_id | protein_score | sequence                  |
+|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|---------------|---------------------------|
+| 3.03030303  | >YBR020W_W303 GAL1 gi 696449286 gb JRIU01000067.1 20629-22215 ORF Verified Galactokinase; phosphorylates alpha-D-galactose to alpha-D-galactose-1-phosphate in the first step of galactose catabolism; expression regulated by Gal4p; GAL1 has a paralog, GAL3, that arose from the whole genome duplication                                                                          | 14         | 0             | MTKSHSEEVIVPEFNSSAKELPRPL... |
+| 3.846153846 | >YDR009W_W303 GAL3 gi 696449403 gb JRIU01000037.1 234276-235838 ORF Verified Transcriptional regulator; involved in activation of the GAL genes in response to galactose; forms a complex with Gal80p to relieve Gal80p inhibition of Gal4p; binds galactose and ATP but does not have galactokinase activity; GAL3 has a paralog, GAL1, that arose from the whole genome duplication | 15         | 0             | MNTNVPIFSSPVRDLPRSFEQKHH...  |
 
+## LCMS .mzML Example
+
+	{
+	  "name": "lcms-test-exp3781-21-ds1179583",
+	  "appId": "lcms-0.1.0u4",
+	  "archive": false,
+	  "inputs": {
+	    "lcmsDataFile": "agave://data-sd2e-projects-q0-ingest/uploads/sd2.ginkgo.upload/yeastgates/proteomics/exp3781/exp3781-21-ds1179583-t0-Pos.mzML"
+	  },
+	  "parameters": {
+	    "outputFileName":"exp3781-21-ds1179583.csv"
+	  }
+	}
+
+Sample rows from exp3781-21-ds1179583.csv:
+
+| highest observed m/z | ms level | total ion current | lowest observed m/z | filename                        | controllerType | controllerNumber | scan | base peak intensity | base peak m/z |
+|----------------------|----------|-------------------|---------------------|---------------------------------|----------------|------------------|------|---------------------|---------------|
+| 2020.198353          | 1        | 14836067          | 346.5168475         | exp3781-21-ds1179583-t0-Pos.raw | 0              | 1                | 1    | 5210976             | 371.1021293   |
+| 2020.194876          | 1        | 14772954          | 346.5162506         | exp3781-21-ds1179583-t0-Pos.raw | 0              | 1                | 2    | 5289835             | 371.1014135   |
+| 2020.195116          | 1        | 15221287          | 346.5163528         | exp3781-21-ds1179583-t0-Pos.raw | 0              | 1                | 3    | 5467094             | 371.1014796   |
+
+## LCMS .fasta Example
+
+	jobs-template lcms-0.1.0u4 > lcms.json
+
+	{
+	  "name": "lcms-test-ec-K12",
+	  "appId": "lcms-0.1.0u4",
+	  "archive": false,
+	  "inputs": {
+	    "lcmsDataFile": "agave://data-sd2e-community/sample/lcms/ec_K12.fasta"
+	  },
+	  "parameters": {
+	    "outputFileName":"ec_K12.csv"
+	  }
+	}
+
+Sample rows from ec_K12.csv:
+
+| GeneInfo ID | Accession   | Description                                                        | Sequence                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|-------------|-------------|--------------------------------------------------------------------|---------------|
+| gi:16127996 | NP_414543.1 | aspartokinase I, homoserine dehydrogenase I [Escherichia coli K12] | MRVLKFGGTSVANAER... |
+| gi:16127997 | NP_414544.1 | homoserine kinase [Escherichia coli K12]                           | MVKVYAPASSANMSVG....                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| gi:16127998 | NP_414545.1 | threonine synthase [Escherichia coli K12]                          | MKLYNLKDHNEQVSFA...                                                                                                                                                                                                                                                                                                                                                                                                        |
