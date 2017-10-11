@@ -93,7 +93,7 @@
 
 	"experiment":{
 		"readings":[
-			{"label": "Dox 0.2",  "files":   ["/data/assay/LacI-CAGop_B4_B04_P3.fcs"]},
+			{"label": "Dox 0.2",  "files":   ["/data/assay/LacI-CAGop_B4_B04_P3.fcs", "/data/assay/LacI-CAGop_B5_B05_P3.fcs"]},
 			{"label": "Dox 0.5",  "files":   ["/data/assay/LacI-CAGop_B5_B05_P3.fcs"]}
 		],
 		"output":
