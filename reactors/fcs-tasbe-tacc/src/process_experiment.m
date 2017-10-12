@@ -34,10 +34,23 @@ function [cm] = process_experiment(i_channels,color_model,color_files,color_pair
 
   'calling autogate'
   color_model.blank_file
+  
+  %autogate = GMMGating()
   autogate = GMMGating(color_model.blank_file,AGP,'plots');
 
   'done autogate'
   color_model;
+
+
+  color_model
+  length(color_model.bead_file)
+
+  no_beads =  length(color_model.bead_file) == 0
+  if no_beads
+    fprintf('No beads\n')
+    color_model.bead_file = color_model.blank_file
+  end
+
 
   CM = ColorModel(color_model.bead_file, color_model.blank_file, channels, color_files, color_pair_files);
   %CM = set_bead_plot(CM,0)
@@ -50,24 +63,31 @@ function [cm] = process_experiment(i_channels,color_model,color_files,color_pair
   CM = set_FITC_channel_name(CM,color_model.fitc_channel_name);
   
   settings = TASBESettings();
+  settings = setSetting(settings,'channel_template_file',color_model.blank_file)
 
   output.plots_folder
   settings = setSetting(settings,'path',output.plots_folder);  
   CM = add_filter(CM,autogate);
+
+  if no_beads
+    settings = setSetting(settings,'override_units',1)
+  end
+
   'resolving'
   CM=resolve(CM, settings);
   'done resolve'
   
   experimentName = output.title; 
-  bins = BinSequence(0,0.1,10,'log_bins');
+  bins = BinSequence(color_model.bin_min,color_model.bin_width,color_model.bin_max,'log_bins');
   
   
   % Designate which channels have which roles
   AP = AnalysisParameters(bins,{});
   % Ignore any bins with less than valid count as noise
-  AP=setMinValidCount(AP,100');
+  AP=setMinValidCount(AP,color_model.min_valid_count');
   % Ignore any raw fluorescence values less than this threshold as too contaminated by instrument noise
-  AP=setPemDropThreshold(AP,0');
+  AP=setPemDropThreshold(AP,color_model.pem_drop_threshold');
+
   % Add autofluorescence back in after removing for compensation?
   AP=setUseAutoFluorescence(AP,false');
 

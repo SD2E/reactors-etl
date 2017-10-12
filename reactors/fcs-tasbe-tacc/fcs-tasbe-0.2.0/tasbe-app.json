@@ -1,0 +1,86 @@
+{
+  "checkpointable": false,
+  "name": "fcs-tasbe",
+  "executionSystem": "hpc-tacc-jetstream",
+  "defaultMaxRunTime": "00:59:00",
+  "executionType": "CLI",
+  "deploymentPath": "sd2eadm/apps/fcs-tasbe-0.2.0",
+  "deploymentSystem": "data-sd2e-projects-users",
+  "helpURI": "https://sd2e.org/develop/",
+  "label": "FCS-TABSE workflow",
+  "longDescription": "",
+  "modules": [],
+  "ontology": ["http://purl.obolibrary.org/obo/NCIT_C16585", "http://purl.obolibrary.org/obo/CHMO_0000061"],
+  "parallelism": "SERIAL",
+  "shortDescription": "",
+  "tags": ["Analytical FACS"],
+  "templatePath": "runner-template.sh",
+  "testPath": "tester.sh",
+  "version": "0.2.0",
+  "inputs": [{
+    "id": "inputData",
+    "details": {
+      "label": "Flow experiment directory (directory or .zip)",
+      "showAttribute": false
+    },
+    "semantics": {
+      "minCardinality": 1,
+      "maxCardinality": 1,
+      "ontology": [
+        "http://purl.obolibrary.org/obo/ERO_0100366", "http://edamontology.org/data_1049", "http://www.ebi.ac.uk/swo/data/SWO_3000078"
+      ]
+    },
+    "value": {
+      "default": "",
+      "required": true,
+      "visible": true
+    }
+  }, {
+    "id": "fcOverride",
+    "details": {
+      "label": "Optional override fc.json. Allows re-analysis of an experiment series.",
+      "showAttribute": false
+    },
+    "semantics": {
+      "maxCardinality": 1,
+      "ontology": [
+        "http://edamontology.org/format_3464"
+      ]
+    },
+    "value": {
+      "default": "",
+      "required": false,
+      "visible": true
+    }
+  }],
+  "parameters": [],
+  "outputs": [{
+    "id": "plotsDirectory",
+    "value": {
+      "default": "plots"
+    },
+    "semantics": {
+      "ontology": [
+        "http://edamontology.org/data_1049"
+      ]
+    },
+    "details": {
+      "label": "Directory containing charts and graphs from TASBE analysis"
+    }
+  }, {
+    "id": "tabseSummaryCSV",
+    "value": {
+      "default": "output.csv"
+    },
+    "semantics": {
+      "ontology": [
+        "http://edamontology.org/format_3752"
+      ],
+      "minCardinality": 1,
+      "maxCardinality": 1
+    },
+    "details": {
+      "label": "CSV output from TASBE analysis run"
+    }
+  }]
+}

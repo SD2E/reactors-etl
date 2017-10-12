@@ -1,3 +1,7 @@
-DOCKER_IMAGE="sd2e/fcs:0.0.6"
+#!/usr/bin/env bash
 
-docker build -t ${DOCKER_IMAGE} . ; docker push ${DOCKER_IMAGE}
+version=$(cat fcs-tasbe-0.2.0/VERSION)
+
+CONTAINER_IMAGE="sd2e/fcs:$version"
+
+docker build -t ${CONTAINER_IMAGE} .

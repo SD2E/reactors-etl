@@ -1,0 +1,9 @@
+{
+  "name": "fcs-tasbe-test-P004",
+  "appId": "fcs-tasbe-0.2.0u4",
+  "archive": true,
+  "inputs": {
+    "inputData":  "agave://data-sd2e-community/sample/fcs-tasbe/Q0-ProtStab-BioFab-Flow_29092017.zip",
+    "fcOverride": "agave://data-sd2e-community/sample/fcs-tasbe/Q0-ProtStab-BioFab-Flow_29092017-alternate-fc.json"
+  }
+}

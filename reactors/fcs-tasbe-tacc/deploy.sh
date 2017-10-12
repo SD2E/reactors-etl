@@ -6,7 +6,7 @@ APPJSON=$2
 
 if [ -z "${APPJSON}" ]
 then
-APPJSON=$(find $APP -type f -name "*app.json")
+    APPJSON=$(find $APP -type f -name "*app.json")
 fi
 
 if [ -z "${APPJSON}" ]
@@ -15,13 +15,44 @@ then
     exit 0
 fi
 
+# stage-test-data.csv marks localtest with a hidden file to indicate that its a bad idea to deploy it
+if [[ -n $(find "${APP}" -name ".dirty" ) ]]
+then
+    echo "Error: A localtest directory inside $APP is marked as dirty. Please run clean-test-data.sh $APP <local-test-path> before deploying."
+    exit 1
+fi
+
+if [ -z "$NODOCKER" ]
+then
+    if [ ! -f "./Dockerfile" ]
+    then
+        echo "Warning: ./Dockerfile not found. Image not built."
+    else
+        {
+            bash build.sh
+            bash push.sh
+        } || { 
+            echo "No ./build.sh script. Image not built."
+        }
+    fi
+fi
+
+# Agave application management
+# Assumptions: 
 _APPNAME=$(jq -r .name $APPJSON)
 _APPVERS=$(jq -r .version $APPJSON)
 _APPID="${_APPNAME}-${_APPVERS}"
 
+# username/apps/app-0.1.0
 _DEPPATH=$(jq -r .deploymentPath $APPJSON)
+# username/apps/app-0.1.0 -> username/apps
 _DEPAPPSPATH=$(dirname "${_DEPPATH}")
 _DEPSYS=$(jq -r .deploymentSystem $APPJSON)
+
+# username/apps -> username
+_USERDIRECTORY=$(dirname "${_DEPAPPSPATH}")
+# username/apps -> apps
+_APPDIRECTORY=$(basename "${_DEPAPPSPATH}")
 
 # Deploy application assets
 #
@@ -38,10 +69,14 @@ fi
 
 if [ -z "$NOFILEOPS" ]
 then
+
+EMAIL=$(profiles-list -v me | jq -r .email)
+
 set -x
 # DESTRUCTIVE
     files-delete ${_FILEOPTS} ${_DEPPATH}
-    files-mkdir ${_FILEOPTS} -N ${_DEPAPPSPATH} /
+    # files-mkdir -S system -N apps username
+    files-mkdir ${_FILEOPTS} -N ${_APPDIRECTORY} ${_USERDIRECTORY}
     files-upload -q ${_FILEOPTS} -F ${APP} ${_DEPAPPSPATH}/
 set +x
 fi
