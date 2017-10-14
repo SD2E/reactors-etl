@@ -34,6 +34,14 @@ function [cm] = process_experiment(i_channels,color_model,color_files,color_pair
 
   'calling autogate'
   color_model.blank_file
+
+  no_blank = length(color_model.blank_file) == 0
+
+  if no_blank
+    fprintf('no blank file\n')
+    color_model.blank_file = readings{1}.files{1}
+    
+  end
   
   %autogate = GMMGating()
   autogate = GMMGating(color_model.blank_file,AGP,'plots');
@@ -45,12 +53,14 @@ function [cm] = process_experiment(i_channels,color_model,color_files,color_pair
   color_model
   length(color_model.bead_file)
 
+
   no_beads =  length(color_model.bead_file) == 0
   if no_beads
     fprintf('No beads\n')
     color_model.bead_file = color_model.blank_file
   end
 
+  
 
   CM = ColorModel(color_model.bead_file, color_model.blank_file, channels, color_files, color_pair_files);
   %CM = set_bead_plot(CM,0)
@@ -73,6 +83,10 @@ function [cm] = process_experiment(i_channels,color_model,color_files,color_pair
     settings = setSetting(settings,'override_units',1)
   end
 
+  if no_blank
+    settings = setSetting(settings,'override_autofluorescence',1)
+  end
+
   'resolving'
   CM=resolve(CM, settings);
   'done resolve'
@@ -90,6 +104,7 @@ function [cm] = process_experiment(i_channels,color_model,color_files,color_pair
 
   % Add autofluorescence back in after removing for compensation?
   AP=setUseAutoFluorescence(AP,false');
+  %AP=setUseAutoFluorescence(AP,true');
 
   output 
   readings
@@ -132,7 +147,13 @@ function [cm] = process_experiment(i_channels,color_model,color_files,color_pair
   % Dump CSV files:
   fprintf('Dumping CSV files\n');
   fid = fopen(output.file,'w');
-  fprintf(fid,'Device ID,datapoints,,,log10 Mean,,,Std.Dev. of mean (fold)\n'); 
+  spacer = ''
+  for i = 1:length(cn)
+    spacer = strcat(',',spacer)
+  end
+
+
+  fprintf(fid,strcat('Device ID,datapoints',spacer,'log10 Mean',spacer,'Std.Dev. of mean (fold)\n')); 
 
   s = " "
   for i=1:3
