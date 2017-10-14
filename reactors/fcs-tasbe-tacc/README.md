@@ -56,6 +56,7 @@ Change into the `fcs-tasbe-0.2.0` directory. You should be able to just run `bas
 # submit a job request to the public (production) fcs-tasbe application
 % jobs-submit -F ../fcs-tasbe-0.2.0/tasbe-public-job.json -W
 # You can watch your job run live. See the API docs for more.
+```
 
 ## Running an example analysis @ SD2E in Jupyter
 
