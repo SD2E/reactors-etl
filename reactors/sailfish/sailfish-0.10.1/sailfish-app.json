@@ -119,6 +119,20 @@
 				"showArgument": true,
 				"argument": "-l "
 			}
+		}, {
+			"id": "vbopt",
+			"value": {
+				"default": true,
+				"type": "flag",
+				"visible": true,
+				"required": false
+			},
+			"details": {
+				"label": "Variational Bayesian EM",
+				"description": "Use the Variational Bayesian EM rather than the traditional EM algorithm to estimate transcript abundances",
+				"showArgument": true,
+				"argument": "--useVBOpt "
+			}
 		},
 		{
 			"id": "output",
