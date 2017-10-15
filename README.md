@@ -28,6 +28,7 @@ This repository holds source code and test materials for developing various ETL 
 1. [SD2E API User's Guide][8]
 2. [Agave API Developer Docs][1]
 3. [SD2 App ETL Example](sd2-app-etl.md)
+4. [SD2 App ETL Jupyter Notebook]
 
 ## Base images
 
@@ -41,13 +42,11 @@ This repository holds source code and test materials for developing various ETL 
     * alpine36
 * sd2e/python3 (coming soon)
 
-## References
-
-[1]: http://agaveapi.tacc.cloud/
+[1]: http://developer.agaveapi.co/
 [2]: https://cyverse.org/
 [3]: https://www.designsafe-ci.org/
 [4]: https://pypi.python.org/pypi/agavepy/
 [5]: https://github.com/SD2E/sd2e-cli/#overview
 [6]: https://hub.docker.com/r/sd2e/base/
 [7]: https://hub.docker.com/r/sd2e/python2/
-[8]: http://sd2e.org/api-user-guide/
+[8]: https://sd2e.github.io/api-user-guide/
