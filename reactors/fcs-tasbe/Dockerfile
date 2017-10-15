@@ -12,6 +12,7 @@ RUN apt-get install python -y
 RUN apt-get install python-pip -y
 RUN pip install --upgrade pip
 RUN pip install oct2py 
+RUN pip install --upgrade --force-reinstall octave_kernel
 RUN apt-get install python-numpy -y
 RUN apt-get install python-scipy -y
 
