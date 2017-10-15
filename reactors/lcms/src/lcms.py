@@ -106,11 +106,11 @@ def ingest_mzML(input_filename):
         
 def main(args):
     
-    if "mgf" in args.files:
+    if "mgf" in args.files.lower():
         ingest_mgf(args.files)
-    elif "fasta" in args.files:
+    elif "fasta" in args.files.lower():
         df = ingest_fasta(args.files)
-    elif "mzML" in args.files:
+    elif "mzml" in args.files.lower():
         df = ingest_mzML(args.files)
     else:
         raise ValueError('Could not parse:' + args.files)
