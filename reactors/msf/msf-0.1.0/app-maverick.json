@@ -1,6 +1,6 @@
 {
     "checkpointable": false,
-    "name": "msf",
+    "name": "msf-maverick",
     "executionSystem": "hpc-tacc-maverick",
     "executionType": "HPC",
     "deploymentPath": "sd2eadm/apps/msf-0.1.0",

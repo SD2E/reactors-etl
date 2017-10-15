@@ -1,6 +1,6 @@
 {
     "checkpointable": false,
-    "name": "msf",
+    "name": "msf-wrangler",
     "executionSystem": "hpc-tacc-wrangler",
     "executionType": "HPC",
     "deploymentPath": "sd2eadm/apps/msf-0.1.0",
