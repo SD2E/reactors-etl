@@ -29,20 +29,27 @@ function [cm] = process_experiment(i_channels,color_model,color_files,color_pair
   end
 
   
-
   AGP =AutogateParameters();
 
+  if color_model.k_components > -1
+    AGP.k_components = 1;%color_model.k_components
+    
+  end
   'calling autogate'
   color_model.blank_file
 
   no_blank = length(color_model.blank_file) == 0
 
+
+  readings{1}.files{1}
+  fprintf('checking blank\n') 
   if no_blank
     fprintf('no blank file\n')
     color_model.blank_file = readings{1}.files{1}
     
   end
-  
+ 
+  color_model.blank_file 
   %autogate = GMMGating()
   autogate = GMMGating(color_model.blank_file,AGP,'plots');
 

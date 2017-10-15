@@ -1,4 +1,4 @@
-function [cm] = create_color_model_object(bead_file,blank_file,bead_model,bead_batch,translation_plot,noise_plot, fitc_channel_name,channel_mins,min_valid_count,pem_drop_threshold,bin_min,bin_max,bin_width)
+function [cm] = create_color_model_object(bead_file,blank_file,bead_model,bead_batch,translation_plot,noise_plot, fitc_channel_name,channel_mins,min_valid_count,pem_drop_threshold,bin_min,bin_max,bin_width,k_components)
   cm.bead_file = bead_file
   cm.blank_file = blank_file
   cm.bead_model = bead_model
@@ -12,4 +12,5 @@ function [cm] = create_color_model_object(bead_file,blank_file,bead_model,bead_b
   cm.bin_min = bin_min
   cm.bin_max = bin_max
   cm.bin_width = bin_width
+  cm.k_components = k_components
 end
