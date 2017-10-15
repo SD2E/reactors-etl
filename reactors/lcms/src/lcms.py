@@ -58,49 +58,67 @@ def ingest_mzML(input_filename):
     'id': 'controllerType=0 controllerNumber=1 scan=3',
     'base peak m/z': 371.1017749}
         '''
+    columns = []
+    colProc = False
     with mzml.read(input_filename) as reader:
-        mzml_list = [
-            #item["count"],
-            #item["index"],
-            [float(item["highest observed m/z"]),
-             #item["m/z array"],
-             int(item["ms level"]),
-             float(item["total ion current"]),
-             #item["profile spectrum"],
-             float(item["lowest observed m/z"]),
-             #item["intensity array"],
-             #item["positive scan"],
-             #item["MS1 spectrum"],
-             #exp1720-04-ds259269.3.3. File:"exp1720-04-ds259269.raw", NativeID:"controllerType=0 controllerNumber=1 scan=3"
-             str(item["spectrum title"].split("File:\"")[1].split("\",")[0]),
-             int(item["spectrum title"].split("controllerType=")[1].split(" ")[0]),
-             int(item["spectrum title"].split("controllerNumber=")[1].split(" ")[0]),
-             int(item["spectrum title"].split("scan=")[1].split("\"")[0]),
-             float(item["base peak intensity"]),
-             #item["scanList"],
-             #item["id"],
-             float(item["base peak m/z"])
-             ] for item in reader]
-    df = pd.DataFrame(mzml_list,columns=[
-        #"count",
-        #"index",
-        "highest observed m/z",
-        #"m/z array",
-        "ms level",
-        "total ion current",
-        #"profile spectrum",
-        "lowest observed m/z",
-        #"intensity array",
-        #"positive scan",
-        #"MS1 spectrum",
-        "filename",
-        "controllerType",
-        "controllerNumber",
-        "scan",
-        "base peak intensity",
-        #"scanList",
-        #"id",
-        "base peak m/z"])
+      mzml_list = []
+      for item in reader:
+        row = []
+        #item["count"],
+        #item["index"],
+        col = "highest observed m/z"
+        if col in item:
+          row.append(float(item[col]))
+          if not colProc:
+            columns.append(col)
+        #item["m/z array"],
+        col = "ms level"
+        if col in item:
+          row.append(int(item[col]))
+          if not colProc:
+            columns.append(col)
+        col = "total ion current"
+        if col in item:
+          row.append(float(item[col]))
+          if not colProc:
+            columns.append(col)
+       #item["profile spectrum"],
+        col = "lowest observed m/z"
+        if col in item:
+          row.append(float(item[col]))
+          if not colProc:
+            columns.append(col)
+        #item["intensity array"],
+        #item["positive scan"],
+        #item["MS1 spectrum"],
+        #exp1720-04-ds259269.3.3. File:"exp1720-04-ds259269.raw", NativeID:"controllerType=0 controllerNumber=1 scan=3"
+        col = "spectrum title"
+        if col in item:
+          row.append(str(item[col].split("File:\"")[1].split("\",")[0]))
+          row.append(int(item[col].split("controllerType=")[1].split(" ")[0]))
+          row.append(int(item[col].split("controllerNumber=")[1].split(" ")[0]))
+          row.append(int(item[col].split("scan=")[1].split("\"")[0]))
+          if not colProc:
+            columns.append("File")
+            columns.append("controllerType")
+            columns.append("controllerNumber")
+            columns.append("scan")
+        col = "base peak intensity"
+        if col in item:
+          row.append(float(item[col]))
+          if not colProc:
+            columns.append(col)
+        #item["scanList"],
+        #item["id"],
+        col = "base peak m/z"
+        if col in item:
+          row.append(float(item[col]))
+          if not colProc:
+            columns.append(col)
+        if not colProc:
+          colProc = True
+        mzml_list.append(row)
+    df = pd.DataFrame(mzml_list,columns=columns)
 
     return df
         
