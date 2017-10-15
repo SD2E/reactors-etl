@@ -1,0 +1,74 @@
+{
+  "checkpointable": false,
+  "name": "lcms-maverick",
+  "executionSystem": "hpc-tacc-maverick",
+  "executionType": "HPC",
+  "deploymentPath": "sd2eadm/apps/lcms-0.1.0",
+  "deploymentSystem": "data-sd2e-projects-users",
+  "helpURI": "https://sd2e.org/develop/",
+  "label": "LCMS Parser [TACC Maverick]",
+  "longDescription": "",
+  "modules": ["load tacc-singularity/2.3.1"],
+  "ontology": ["http://edamontology.org/topic_3520"],
+  "parallelism": "SERIAL",
+  "shortDescription": "Auto-generate LCMS data set summaries",
+  "tags": ["lcms", "docker://index.docker.io/sd2e/lcms:latest"],
+  "templatePath": "runner-template.sh",
+  "testPath": "tester.sh",
+  "version": "0.1.0",
+  "inputs": [{
+    "id": "lcmsDataFile",
+    "details": {
+      "label": "FASTA or mzML file",
+      "showAttribute": false,
+      "attribute": "--files "
+    },
+    "semantics": {
+      "minCardinality": 1,
+      "maxCardinality": 1,
+      "ontology": [
+        "http://edamontology.org/format_1929",
+        "http://edamontology.org/format_2332",
+        "http://edamontology.org/format_3245"
+      ]
+    },
+    "value": {
+      "default": "agave://data-sd2e-community/sample/lcms/ec_K12.fasta",
+      "required": true,
+      "visible": true
+    }
+  }],
+  "parameters": [{
+    "id": "outputFileName",
+    "value": {
+      "default": "lcms-output.csv",
+      "type": "string",
+      "validator": "",
+      "visible": true,
+      "required": false
+    },
+    "details": {
+      "label": "Output file name",
+      "attribute": "--output ",
+      "showAttribute": false
+    }
+  }],
+  "outputs": [{
+    "id": "analysisOutput",
+    "value": {
+      "default": "lcms-output.csv"
+    },
+    "semantics": {
+      "ontology": [
+        "http://edamontology.org/format_3475",
+        "http://edamontology.org/data_2536"
+      ],
+      "minCardinality": 1,
+      "maxCardinality": 1
+    },
+    "details": {
+      "label": "Comma-separated value from LCMS code"
+    }
+  }],
+  "defaultMaxRunTime": "00:30:00"
+}

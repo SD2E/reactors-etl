@@ -1,7 +1,7 @@
 {
-  "name": "msf_test-1507156359",
-  "appId": "msf-wrangler-0.1.0u1",
-  "archive": true,
+  "name": "msf_test-1507155868",
+  "appId": "msf-wrangler-0.1.0",
+  "archive": false,
   "inputs": {
     "msfDataFile": "agave://data-sd2e-community/sample/msf/exp2801-04-ds731218.msf"
   },
