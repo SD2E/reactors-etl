@@ -1,1 +1,1 @@
-docker build -f Dockerfile.orig -t fcs .
+docker build -f Dockerfile -t fcs .
