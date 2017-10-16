@@ -11,12 +11,14 @@ CONTAINER_IMAGE="sd2e/lcms:$version"
 . _util/container_exec.sh
 
 COMMAND='python'
-PARAMS='/opt/scripts/lcms.py --files localtest/exp1720-04-ds259269.mzml --output exp1720-04-ds259269.mzML.csv'
+
+PARAMS='/opt/scripts/lcms.py --files localtest/exp3825-011-ds1191468-t0-Neg.mzML --output exp3825-011-ds1191468-t0-Neg.mzML.csv'
 
 DEBUG=1 container_exec ${CONTAINER_IMAGE} ${COMMAND} ${PARAMS}
 
-#PARAMS='/opt/scripts/lcms.py --files localtest/exp1720-04-ds259269.mzML --output exp1720-04-ds259269.csv'
-#DEBUG=1 container_exec ${CONTAINER_IMAGE} ${COMMAND} ${PARAMS}
+PARAMS='/opt/scripts/lcms.py --files localtest/exp1720-04-ds259269.mzML --output exp1720-04-ds259269.mzML.csv'
+
+DEBUG=1 container_exec ${CONTAINER_IMAGE} ${COMMAND} ${PARAMS}
 
 ######################
 #  FUNCTIONAL TESTS  #
@@ -27,6 +29,7 @@ DEBUG=1 container_exec ${CONTAINER_IMAGE} ${COMMAND} ${PARAMS}
 
 function run_tests() {
 
+    validate_csv exp3825-011-ds1191468-t0-Neg.mzML.csv
     validate_csv exp1720-04-ds259269.mzML.csv
     if [ $? -ne 0 ]; then
         return 1
@@ -46,6 +49,7 @@ function validate_csv() {
 function cleanup() {
 
     echo "Cleaning up..."
+    rm -f exp3825-011-ds1191468-t0-Neg.mzML.csv
     rm -f exp1720-04-ds259269.mzML.csv
     rm -f .container_exec.*
 }
