@@ -1,102 +1,108 @@
 {
-	"cytometer_configuration": {
-		"channels": [{
-				"name": "FITC-A",
-				"excitation_wavelength": 488,
-				"emission_filter": {
-					"type": "bandpass",
-					"center": 525,
-					"width": 20
+	"cytometer_configuration":{
+			"channels": [
+				{
+					"name":                         "FITC-A",
+                                	"excitation_wavelength":        488, 
+                                	"emission_filter": {
+                                        	"type":"bandpass",
+                                        	"center": 525,
+                                        	"width": 20
+ 					}
+                                },
+				{
+					"name":  "PE-Tx-Red-YG-A",
+					"excitation_wavelength": 561,
+					"emission_filter": {
+						"type":"bandpass",
+						"center":610,
+						"width":20
+					}
+				}, 
+				{
+					"name":"Pacific Blue-A",
+					"excitation_wavelength":405,
+					"emission_filter": {
+						"type":"bandpass",
+						"center":450,
+						"width":50
+					}
 				}
-			},
-			{
-				"name": "PE-Tx-Red-YG-A",
-				"excitation_wavelength": 561,
-				"emission_filter": {
-					"type": "bandpass",
-					"center": 610,
-					"width": 20
-				}
-			},
-			{
-				"name": "Pacific Blue-A",
-				"excitation_wavelength": 405,
-				"emission_filter": {
-					"type": "bandpass",
-					"center": 450,
-					"width": 50
-				}
-			}
-		]
-	},
-	"color_model": {
-		"channels": [{
-				"name": "FITC-A",
-				"min": 2,
-				"label": "EYFP",
-				"calibration_file": "/data/controls/2012-03-12_EYFP_P3.fcs",
-				"chart_color": "y"
-			},
-
-			{
-				"name": "PE-Tx-Red-YG-A",
-				"min": 2,
-				"label": "mKate",
-				"calibration_file": "/data/controls/2012-03-12_mkate_P3.fcs",
-				"chart_color": "r"
-			},
-			{
-				"name": "Pacific Blue-A",
-				"min": 2,
-				"label": "EBFP2",
-				"calibration_file": "/data/controls/2012-03-12_ebfp2_P3.fcs",
-				"chart_color": "b"
-			}
-		],
-		"cross_file_pairs": [{
-				"channels": ["FITC-A", "PE-Tx-Red-YG-A", "Pacific Blue-A"],
-				"file": "/data/controls/2012-03-12_mkate_EBFP2_EYFP_P3.fcs"
-			},
-			{
-				"channels": ["FITC-A", "PE-Tx-Red-YG-A", "Pacific Blue-A"],
-				"file": "/data/controls/2012-03-12_mkate_EBFP2_EYFP_P3.fcs"
-			}
-		],
-		"tasbe_config": {
-			"gating": {
-				"type": "auto"
-			},
-			"autoflourescence": {
-				"type": "placeholder"
-			},
-			"compensation": {
-				"type": "placeholder"
-			},
-			"beads": {
-				"type": "placeholder"
-			}
+			]
 		},
-		"bead_file": "/data/controls/2012-03-12_Beads_P3.fcs",
-		"blank_file": "/data/controls/2012-03-12_blank_P3.fcs",
-		"bead_model": "SpheroTech RCP-30-5A",
-		"bead_batch": "Lot AA01, AA02, AA03, AA04, AB01, AB02, AC01, GAA01-R",
-		"bead_min": 2,
-		"FITC_channel_name": "FITC-A",
+	"color_model":{
+		"channels":[
+			{ 	"name": 			"FITC-A",
+				"min":				2,
+			  	"label":			"EYFP",
+			  	"calibration_file": 		"/data/controls/2012-03-12_EYFP_P3.fcs",
+			  	"chart_color":			"y"
+			 },
+
+			{ 	"name": 			"PE-Tx-Red-YG-A",
+				"min":				2,
+				"label":			"mKate",
+				"calibration_file":		"/data/controls/2012-03-12_mkate_P3.fcs",
+				"chart_color":			"r"
+			},
+			{	"name": 			"Pacific Blue-A",
+				"min":				2,
+				"label": 			"EBFP2",
+				"calibration_file" :		"/data/controls/2012-03-12_ebfp2_P3.fcs",
+				"chart_color":			"b"
+			}
+		],
+                "cross_file_pairs":[
+                       {
+                         "channels": ["FITC-A","PE-Tx-Red-YG-A","Pacific Blue-A"],
+                         "file": "/data/controls/2012-03-12_mkate_EBFP2_EYFP_P3.fcs"
+                       },
+                       {
+                         "channels": ["FITC-A","Pacific Blue-A","PE-Tx-Red-YG-A"],
+                         "file": "/data/controls/2012-03-12_mkate_EBFP2_EYFP_P3.fcs" 
+                       }
+                ],
+		"tasbe_config":{
+			"gating":{
+				"type":"auto"
+			},
+			"autoflourescence":{
+				"type":"placeholder"
+			},
+			"compensation" :{
+				"type":"placeholder"
+			},
+			"beads":{
+				"type":"placeholder"
+			}
+		},	
+                "bead_file": "/data/controls/2012-03-12_Beads_P3.fcs",
+                "blank_file":"/data/controls/2012-03-12_blank_P3.fcs",
+                "bead_model":"SpheroTech RCP-30-5A",
+                "bead_batch":"Lot AA01, AA02, AA03, AA04, AB01, AB02, AC01, GAA01-R",
+	  	"bead_min":2,
+		"min_valid_count": 100,
+		"pem_drop_threshold": 5,
+		"FITC_channel_name":"FITC-A",
+		"bin_min": 0,
+		"bin_max":6,
+		"bin_width": 0.1,
 		"translation_plot": false,
 		"noise_plot": false
 	},
 
-	"experiment": {
-		"readings": [{
-			"label": "Dox 0.1",
-			"files": ["/data/assay/LacI-CAGop_B10_B10_P3.fcs"]
-		}],
-		"output": {
-			"title": "sample_run",
-			"type": "geo_mean_std",
-			"plots": true,
-			"plots_folder": "plots",
-			"file": "/data/output.csv"
-		}
+	"experiment":{
+		"readings":[
+			{"label": "Dox 0.2",  "files":   ["/data/assay/LacI-CAGop_B4_B04_P3.fcs", "/data/assay/LacI-CAGop_B5_B05_P3.fcs"]},
+			{"label": "Dox 0.5",  "files":   ["/data/assay/LacI-CAGop_B5_B05_P3.fcs"]}
+		],
+		"output":
+			{
+				"title":					"sample_run",
+				"type":						"geo_mean_std",
+				"plots": 					true,
+				"plots_folder":					"plots",
+				"file": 					"/data/output/output.csv"
+			}
 	}
 }
