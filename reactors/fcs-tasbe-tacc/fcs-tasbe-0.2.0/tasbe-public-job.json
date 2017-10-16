@@ -1,6 +1,6 @@
 {
-  "name": "fcs-tasbe-test-P005",
-  "appId": "fcs-tasbe-0.2.0u5",
+  "name": "fcs-tasbe-test-P006",
+  "appId": "fcs-tasbe-0.2.0u6",
   "archive": true,
   "inputs": {
     "inputData":  "agave://data-sd2e-community/sample/fcs-tasbe/Q0-ProtStab-BioFab-Flow_29092017.zip",

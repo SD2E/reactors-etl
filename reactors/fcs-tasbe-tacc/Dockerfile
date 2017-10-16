@@ -39,7 +39,7 @@ WORKDIR /opt
 
 RUN wget https://github.com/jegentile/TASBEFlowAnalytics/archive/master.zip
 RUN unzip master.zip
-RUN cd /TASBEFlowAnalytics-master && make install
+RUN cd TASBEFlowAnalytics-master && make install
 RUN octave --eval 'pkg install -forge io'
 
 WORKDIR /root
