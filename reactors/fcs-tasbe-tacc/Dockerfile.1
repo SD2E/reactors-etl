@@ -1,6 +1,13 @@
-FROM sd2e/base:ubuntu16
-ARG OCTAVE_VERSION=4.2
+<<<<<<< HEAD
+# Image: sd2e/fcs
 
+FROM sd2e/base:ubuntu16
+=======
+FROM ubuntu:xenial
+ARG OCTAVE_VERSION=4.2
+>>>>>>> f9708772547644eeb00f09dfc450f5e95bf1e52e
+
+ADD src /src
 RUN apt-get update
 RUN apt-get install software-properties-common python-software-properties -y
 
@@ -34,18 +41,39 @@ RUN pip install --upgrade --force-reinstall octave_kernel
 RUN apt-get install python-numpy -y
 RUN apt-get install python-scipy -y
 
-ADD src /opt/src
-WORKDIR /opt
+<<<<<<< HEAD
+# Revised installation a bit to install
+# in a sub of /opt
+#
+# Avoid working out of top-level root dirs 
+# where possible, as it limits portability
+# to container solutions where we have 
+# actual root inside the container when
+# it is running.
 
+ADD src /opt/src
+
+WORKDIR /opt
 RUN wget https://github.com/jegentile/TASBEFlowAnalytics/archive/master.zip
 RUN unzip master.zip
-RUN cd /TASBEFlowAnalytics-master && make install
-RUN octave --eval 'pkg install -forge io'
+RUN cd TASBEFlowAnalytics-master && make install
 
 WORKDIR /root
 
 # Default command should show usage by
 # convention emerging among other
 # tool builders
-# CMD python /src/fc.py --config $CONFIG --octave-method-path /src/
 CMD python /opt/src/fc.py --help
+=======
+RUN wget https://github.com/jegentile/TASBEFlowAnalytics/archive/master.zip
+RUN unzip master.zip
+RUN cd /TASBEFlowAnalytics-master && make install
+RUN octave --eval 'pkg install -forge io'
+
+#RUN wget ftp://ftp.gnu.org/gnu/octave/octave-4.2.0.tar.gz
+#RUN tar xf octave-4.2.0.tar.gz
+#RUN rm octave-4.2.0.tar.gz
+#RUN cd octave-4.2.0/ && ./configure && make -j8 && make install
+
+CMD python /src/fc.py --config $CONFIG --octave-method-path /src/
+>>>>>>> f9708772547644eeb00f09dfc450f5e95bf1e52e

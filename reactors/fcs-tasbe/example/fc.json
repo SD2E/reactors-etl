@@ -97,8 +97,16 @@
 				"files": ["/data/assay/LacI-CAGop_B4_B04_P3.fcs", "/data/assay/LacI-CAGop_B5_B05_P3.fcs"]
 			},
 			{
+<<<<<<< HEAD
 				"label": "Dox 0.5",
 				"files": ["/data/assay/LacI-CAGop_B5_B05_P3.fcs"]
+=======
+				"title":					"sample_run",
+				"type":						"geo_mean_std",
+				"plots": 					true,
+				"plots_folder":					"plots",
+				"file": 					"/data/output/output.csv"
+>>>>>>> f9708772547644eeb00f09dfc450f5e95bf1e52e
 			}
 		],
 		"output": {
