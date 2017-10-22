@@ -1,0 +1,17 @@
+{
+  "name": "protease_ginkgo_1-sailfish-batch",
+  "appId": "sailfish-batch-maverick-0.10.1",
+  "nodeCount": 1,
+  "processorsPerNode": 20,
+  "maxRunTime": "01:00:00",
+  "archive": false,
+  "archiveSystem": "data-sd2e-community",
+  "archivePath": "/processed/Q0/protease/sd2.ginkgo/RNAseq/171013_NB501485_0087_AHMNKHBGX3",
+  "inputs": {
+    "transcripts": "agave://data-sd2e-community/reference/mirrors/ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Bacillus_subtilis/latest_assembly_versions/GCF_000009045.1_ASM904v1/GCF_000009045.1_ASM904v1_cds_from_genomic.fna"
+  },
+  "parameter": {
+    "libtype": "ISR",
+    "tacc_path": "/processed/Q0/protease/sd2.ginkgo/RNAseq/171013_NB501485_0087_AHMNKHBGX3"
+  }
+}

@@ -2,7 +2,7 @@
 	"checkpointable": false,
 	"defaultMemoryPerNode": 256,
 	"defaultProcessorsPerNode": 20,
-	"defaultMaxRunTime": "00:30:00",
+	"defaultMaxRunTime": "01:00:00",
 	"defaultNodeCount": 1,
 	"defaultQueue": "normal",
 	"modules": ["load tacc-singularity"],
@@ -88,7 +88,7 @@
 	"parameters": [{
 			"id": "bootstrap",
 			"value": {
-				"default": 0,
+				"default": 30,
 				"required": false,
 				"type": "number",
 				"validator": "",
@@ -109,6 +109,7 @@
 			"id": "libtype",
 			"value": {
 				"required": true,
+				"default": "ISR",
 				"type": "enumeration",
 				"enumValues": ["IU", "ISR", "ISF"],
 				"visible": true
@@ -125,7 +126,7 @@
 				"default": true,
 				"type": "flag",
 				"visible": true,
-				"required": false
+				"required": true
 			},
 			"details": {
 				"label": "Variational Bayesian EM",
@@ -137,11 +138,11 @@
 		{
 			"id": "output",
 			"value": {
-				"required": false,
+				"required": true,
 				"type": "string",
 				"validator": "",
 				"visible": true,
-				"default": "output"
+				"default": "sailfish.out"
 			},
 			"semantics": {
 				"ontology": [
