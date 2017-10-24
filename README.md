@@ -39,8 +39,9 @@ This repository holds source code and test materials for developing various ETL 
 * [sd2e/python2][7] 
     * ubuntu16 (recommended)
     * ubuntu14
-    * alpine36
-* sd2e/python3 (coming soon)
+* [sd2e/python3][9]
+    * ubuntu16 (recommended)
+    * ubuntu14
 
 [1]: http://developer.agaveapi.co/
 [2]: https://cyverse.org/
@@ -50,3 +51,4 @@ This repository holds source code and test materials for developing various ETL 
 [6]: https://hub.docker.com/r/sd2e/base/
 [7]: https://hub.docker.com/r/sd2e/python2/
 [8]: https://sd2e.github.io/api-user-guide/
+[9]: https://hub.docker.com/r/sd2e/python3/
