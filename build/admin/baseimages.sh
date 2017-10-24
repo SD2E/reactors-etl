@@ -26,3 +26,19 @@ do
     done
     cd $OWD
 done
+
+for _BASE in unixbench
+do
+    echo "Building unixbench..."
+    cd $DIR/docker/$_BASE
+    for _VERSION in centos69
+    do
+        echo "Version: $_VERSION"
+        ls 
+        if [ -f "Dockerfile.${_VERSION}" ];
+        then
+            ../../docker.sh "$_TENANT_DOCKER_ORG/$_BASE" "${_VERSION}" "Dockerfile.${_VERSION}" "${_COMMAND}"
+        fi
+    done
+    cd $OWD
+done
