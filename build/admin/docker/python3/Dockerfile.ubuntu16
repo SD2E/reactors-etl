@@ -1,0 +1,16 @@
+FROM sd2e/base:ubuntu16
+LABEL ORG=sd2e.org IMAGE=python3
+
+RUN apt-get -y update && \
+    apt-get -y install build-essential \
+                       python3 \
+                       python3-dev \
+                       python3-pip \
+                       python3-setuptools \
+                       build-essential \
+                       libssl-dev \
+                       libffi-dev  && \
+    apt-get clean
+
+RUN pip3 install --upgrade pip
+RUN pip3 install --upgrade virtualenv git+https://github.com/TACC/agavepy.git#egg=agavepy

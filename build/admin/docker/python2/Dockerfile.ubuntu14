@@ -1,8 +1,18 @@
-FROM sd2e/base:ubuntu16
+FROM sd2e/base:ubuntu14
 LABEL ORG=sd2e.org IMAGE=python2
 
 RUN apt-get -y update && \
-    apt-get -y install build-essential python python-dev python-pip python-setuptools && \
+    apt-get -y install build-essential \
+               python python-dev \
+               python-pip \
+               python-setuptools \
+               libssl-dev \
+               libffi-dev  && \
     apt-get clean
 
-RUN pip install --upgrade pip
+# setuptools is key - otherwise cryptography>=1.9 has abandoned Py < 3!
+RUN pip install --upgrade pip setuptools 
+# Installing pyOpenSSL has to happen *after* updating setuptools
+RUN pip install --upgrade pyOpenSSL
+# Now, we can install AgavePy and other HTTPS-intensive modules under Ubu14/Py2
+RUN pip install --upgrade git+https://github.com/TACC/agavepy.git#egg=agavepy
