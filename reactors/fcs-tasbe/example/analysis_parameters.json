@@ -1,0 +1,35 @@
+{
+	"_comment1": "Information linking experiment FCS files to the appropriate cytometer channels, to be supplied by TA1/TA2",
+	"tasbe_analysis_parameters": {
+		"_comment1": "the rdf:about field is a URI that persistently identifies this analysis configuration",
+		"rdf:about": "http://bbn.com/TASBE/Examples/WeissLab/ND/2012-03-12/Run1/Analysis1",
+
+		"_comment2": "identifier linking to the color model for interpreting units",
+		"color_model": "http://bbn.com/TASBE/Examples/WeissLab/ND/2012-03-12/Run1/Colormodel",
+
+		"_comment3": "identifier linking to the data collection to analyze",
+		"experimental_data": "http://mit.edu/Examples/WeissLab/ND/2012-03-12/Run1/ExperimentalData",
+
+		"_comment4": "each replicate group collects a set of samples from the experimental collection under a label",
+		"replicate_groups": [{
+				"label": "Dox 0.2",
+				"samples": ["http://mit.edu/Examples/WeissLab/ND/2012-03-12/Run1/ExperimentalData/Dox0.2R1", 
+					"http://mit.edu/Examples/WeissLab/ND/2012-03-12/Run1/ExperimentalData/Dox0.2R2"
+				]
+			},
+			{
+				"label": "Dox 0.5",
+				"samples": ["http://mit.edu/Examples/WeissLab/ND/2012-03-12/Run1/ExperimentalData/Dox0.5R1"]
+			}
+		],
+
+		"_comment5": "additional configuration parameters",
+		"output": {
+			"title": "sample_run",
+			"type": "geo_mean_std",
+			"plots": true,
+			"plots_folder": "plots",
+			"file": "s3://data/output/output.csv"
+		}
+	}
+}

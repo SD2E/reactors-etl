@@ -1,0 +1,23 @@
+{
+	"_comment1": "Information linking experiment FCS files to the appropriate cytometer channels, to be supplied by TA3",
+	"tasbe_experimental_data": {
+		"_comment1": "the rdf:about field is a URI that persistently identifies this data collection",
+		"rdf:about": "http://mit.edu/Examples/WeissLab/ND/2012-03-12/Run1/ExperimentalData",
+
+		
+		"_comment2": "links from sample URIs to each FCS in the collection of experimental data; they will be groups into replicates in the processing configuration",
+		"samples": [{
+				"sample": "http://mit.edu/Examples/WeissLab/ND/2012-03-12/Run1/ExperimentalData/Dox0.2R1",
+				"file": "s3://data/assay/LacI-CAGop_B4_B04_P3.fcs"
+			},
+			{
+				"sample": "http://mit.edu/Examples/WeissLab/ND/2012-03-12/Run1/ExperimentalData/Dox0.2R2",
+				"file": "s3://data/assay/LacI-CAGop_B5_B05_P3.fcs"
+			},
+			{
+				"sample": "http://mit.edu/Examples/WeissLab/ND/2012-03-12/Run1/ExperimentalData/Dox0.5R1",
+				"file": "s3://data/assay/LacI-CAGop_B5_B05_P3.fcs"
+			}
+		]
+	}
+}
