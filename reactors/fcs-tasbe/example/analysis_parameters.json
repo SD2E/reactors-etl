@@ -4,7 +4,7 @@
 		"_comment1": "the rdf:about field is a URI that persistently identifies this analysis configuration",
 		"rdf:about": "http://bbn.com/TASBE/Examples/WeissLab/ND/2012-03-12/Run1/Analysis1",
 
-		"_comment2": "identifier linking to the color model for interpreting units",
+		"_comment2": "identifier linking to the color model for interpreting units.  Should typically be derived from the same process_control_data as is referenced in the experimental_data",
 		"color_model": "http://bbn.com/TASBE/Examples/WeissLab/ND/2012-03-12/Run1/Colormodel",
 
 		"_comment3": "identifier linking to the data collection to analyze",
