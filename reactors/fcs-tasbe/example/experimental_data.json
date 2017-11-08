@@ -4,13 +4,16 @@
 		"_comment1": "the rdf:about field is a URI that persistently identifies this data collection",
 		"rdf:about": "http://mit.edu/Examples/WeissLab/ND/2012-03-12/Run1/ExperimentalData",
 		
-		"_comment2": "identifier linking to the instrument and optical configuration used for collecting data",
+		"_comment2": "Compatible TASBE interface version, following Semantic Versioning (semver.org).  Note that underspecifying version allows use of backward compatible upgrades.",
+		"tasbe_version": "https://github.com/SD2E/reactors-etl/releases/tag/2",
+
+		"_comment3": "identifier linking to the instrument and optical configuration used for collecting data",
 		"cyometer_configuration": "http://mit.edu/WeissLab/Cytometer1/Config2011-Jan-01",
 		
-		"_comment3": "identifier linking to the process control data set collected for this experiment",
+		"_comment4": "identifier linking to the process control data set collected for this experiment",
 		"process_control_data": "http://mit.edu/WeissLab/ND/2012-03-12/Run1/Controls",
 
-		"_comment4": "links from sample URIs to each FCS in the collection of experimental data; they will be groups into replicates in the processing configuration",
+		"_comment5": "links from sample URIs to each FCS in the collection of experimental data; they will be groups into replicates in the processing configuration",
 		"samples": [{
 				"sample": "http://mit.edu/Examples/WeissLab/ND/2012-03-12/Run1/ExperimentalData/Dox0.2R1",
 				"file": "s3://data/assay/LacI-CAGop_B4_B04_P3.fcs"

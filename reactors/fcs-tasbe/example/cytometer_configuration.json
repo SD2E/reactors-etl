@@ -4,7 +4,10 @@
 		"_comment1": "the rdf:about field is a URI that persistently identifies this instrument and optical configuration",
 		"rdf:about": "http://mit.edu/WeissLab/Cytometer1/Config2011-Jan-01",
 
-		"_comment2": "the channels list all of the parameters of interest in an FCS file from the instrument",
+		"_comment2": "Compatible TASBE interface version, following Semantic Versioning (semver.org).  Note that underspecifying version allows use of backward compatible upgrades.",
+		"tasbe_version": "https://github.com/SD2E/reactors-etl/releases/tag/2",
+
+		"_comment3": "the channels list all of the parameters of interest in an FCS file from the instrument",
 		"channels": [{
 				"_comment1": "name must exactly match the channel name in the FCS files",
 				"name": "FITC-A",

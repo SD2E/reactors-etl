@@ -4,10 +4,13 @@
 		"_comment1": "the rdf:about field is a URI that persistently identifies this run configuration",
 		"rdf:about": "http://bbn.com/TASBE/Examples/WeissLab/ND/2012-03-12/Run1/Colormodel",
 
-		"_comment2": "identifier linking to the process control data set to be run",
+		"_comment2": "Compatible TASBE interface version, following Semantic Versioning (semver.org).  Note that underspecifying version allows use of backward compatible upgrades.",
+		"tasbe_version": "https://github.com/SD2E/reactors-etl/releases/tag/2",
+
+		"_comment3": "identifier linking to the process control data set to be run",
 		"process_control_data": "http://mit.edu/WeissLab/ND/2012-03-12/Run1/Controls",
 
-		"_comment3": "For each channel, the species and how to process and display it",
+		"_comment4": "For each channel, the species and how to process and display it",
 		"channel_parameters": [{
 				"_comment1": "name must match a channel from the cytometer configuration",
 				"name": "FITC-A",
@@ -37,7 +40,7 @@
 			}
 		],
 
-		"_comment4": "Other processing parameters, to be exposed",
+		"_comment5": "Other processing parameters, to be exposed",
 		"tasbe_config": {
 			"gating": {
 				"type": "auto"
@@ -53,13 +56,13 @@
 			}
 		},
 
-		"_comment5": "Cutoff for bead peak detection",
+		"_comment6": "Cutoff for bead peak detection",
 		"bead_min": 2,
 
-		"_comment6": "Which channel is being used for unit calibration",
+		"_comment7": "Which channel is being used for unit calibration",
 		"ERF_channel_name": "FITC-A",
 
-		"_comment7": "additional parameters controlling data processing and output",
+		"_comment8": "additional parameters controlling data processing and output",
 		"min_valid_count": 100,
 		"pem_drop_threshold": 5,
 		"bin_min": 0,
