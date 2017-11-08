@@ -33,6 +33,13 @@
 			"plots": true,
 			"plots_folder": "plots",
 			"file": "s3://data/output/output.csv"
-		}
+		},
+
+		"_comment7": "additional parameters controlling data processing and output",
+		"min_valid_count": 100,
+		"pem_drop_threshold": 5,
+		"bin_min": 0,
+		"bin_max": 6,
+		"bin_width": 0.1
 	}
 }

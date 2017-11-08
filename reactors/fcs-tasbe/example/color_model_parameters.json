@@ -63,11 +63,6 @@
 		"ERF_channel_name": "FITC-A",
 
 		"_comment8": "additional parameters controlling data processing and output",
-		"min_valid_count": 100,
-		"pem_drop_threshold": 5,
-		"bin_min": 0,
-		"bin_max": 6,
-		"bin_width": 0.1,
 		"translation_plot": false,
 		"noise_plot": false
 	}
