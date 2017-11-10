@@ -1,0 +1,158 @@
+#!/bin/bash
+
+set -e 
+
+# this is where we mount the binary directories
+
+SORTMERNA_DIR=/opt/sortmerna-2.1b/
+TRIMMOMATIC_DIR=/opt/Trimmomatic-0.36/
+
+#out of paranoia make sure our parameters are set
+if [ ${1}x = x ]; then
+   echo READ1 is blank
+   exit 1
+fi
+if [ ${2}x = x ]; then
+   echo READ2 is blank
+   exit 1
+fi
+if [ ${3}x = x ]; then
+   echo TRIM is blank
+   exit 1
+fi
+if [ ${4}x = x ]; then
+   echo ADAPTER is blank
+   exit 1
+fi
+if [ ${5}x = x ]; then
+   echo MINLEN is blank
+   exit 1
+fi
+if [ ${6}x = x ]; then
+   echo SORT is blank
+   exit 1
+fi
+if [ ${7}x = x ]; then
+   echo RNA_DB is blank
+   exit 1
+fi
+
+# get the parameters 1 to 6 ... someday do checking 
+
+R1=${1}
+R2=${2}
+TRIM=${3}
+ADAPTER=${4}
+MINLEN=${5}
+SORT=${6}
+
+# for the RNA DB we have to take the inputs and put their paths inline...after both , and :
+
+SS=`echo $SORTMERNA_DIR | sed 's/\//|/g'`
+RNA_DB=`echo $SORTMERNA_DIR/rRNA_databases/${7} | sed "s/,/,$SS\/rRNA_databases\//g" | sed "s/:/:$SS\/rRNA_databases\//g" | sed "s/|/\//g"`
+
+# get the thread count of this container
+NTHREADS=`cat /proc/cpuinfo | grep processor | wc -l`
+paired=1
+
+# if we get the default R2 value of ENOSUCH, this is an unpaired run
+
+if [ $R2 = "ENOSUCH_R2.fastq.gz" ]; then
+    paired=0
+fi
+
+# parse out the sample id and cell Id from the R1
+array=(${R1//_/ })
+SAMPLE_ID=${array[0]}_${array[1]}
+
+CELL_ID=${array[3]}
+array=(${CELL_ID//./ })
+CELL_ID=(${array[0]})
+
+#unzip these but leave the .gz originals
+
+GZ_SUFFIX=".gz"
+if [[ $R1 =~  $GZ_SUFFIX ]]; then
+   R1=${R1::-3}
+   gunzip -c ${R1}.gz > $R1
+fi
+echo R1 is $R1
+
+# do the same for R2 if we are paired
+
+if [ $paired == 1 ]; then
+    echo R2 is $R2
+    array=(${R2//_/ })
+    SAMPLE_ID2=${array[0]}_${array[1]}
+    
+    if [ ${SAMPLE_ID} != ${SAMPLE_ID2} ]; then
+        echo "readfile convetion not followed: Must start with the same two integers separated by _ "
+        exit -1
+    fi
+    
+    if [[ $R2 =~  $GZ_SUFFIX ]]; then
+       R2=${R2::-3}
+       gunzip -c ${R2}.gz > $R2 
+    fi
+fi
+
+# trim if we are told to 
+
+if [ $TRIM == 1 ]; then
+    if [ $paired == 1 ]; then
+       echo java -jar ${TRIMMOMATIC_DIR}/trimmomatic-0.36.jar PE -phred33 ${R1} ${R2} ${SAMPLE_ID}_R1_${CELL_ID}_paired.fastq ${SAMPLE_ID}_R1_${CELL_ID}_unpaired.fastq ${SAMPLE_ID}_R2_${CELL_ID}_paired.fastq ${SAMPLE_ID}_R2_${CELL_ID}_unpaired.fastq ILLUMINACLIP:${TRIMMOMATIC_DIR}/adapters/${ADAPTER} LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:${MINLEN}
+       java -jar ${TRIMMOMATIC_DIR}/trimmomatic-0.36.jar PE -phred33 ${R1} ${R2} ${SAMPLE_ID}_R1_${CELL_ID}_paired.fastq ${SAMPLE_ID}_R1_${CELL_ID}_unpaired.fastq ${SAMPLE_ID}_R2_${CELL_ID}_paired.fastq ${SAMPLE_ID}_R2_${CELL_ID}_unpaired.fastq ILLUMINACLIP:${TRIMMOMATIC_DIR}/adapters/${ADAPTER} LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:${MINLEN}
+       echo ${SORTMERNA_DIR}/scripts/merge-paired-reads.sh ${SAMPLE_ID}_R1_${CELL_ID}_paired.fastq ${SAMPLE_ID}_R2_${CELL_ID}_paired.fastq ${SAMPLE_ID}_${CELL_ID}_merged-reads.fastq
+       ${SORTMERNA_DIR}/scripts/merge-paired-reads.sh ${SAMPLE_ID}_R1_${CELL_ID}_paired.fastq ${SAMPLE_ID}_R2_${CELL_ID}_paired.fastq ${SAMPLE_ID}_${CELL_ID}_merged-reads.fastq
+       echo SORT_FILE=${SAMPLE_ID}_${CELL_ID}_merged-reads.fastq
+       SORT_FILE=${SAMPLE_ID}_${CELL_ID}_merged-reads.fastq
+    else
+       echo java -jar ${TRIMMOMATIC_DIR}/trimmomatic-0.36.jar PE -phred33 ${R1} ${SAMPLE_ID}_R1_${CELL_ID}_paired.fastq ${SAMPLE_ID}_R1_${CELL_ID}_unpaired.fastq ILLUMINACLIP:${TRIMMOMATIC_DIR}/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+       java -jar ${TRIMMOMATIC_DIR}/trimmomatic-0.36.jar PE -phred33 ${R1} ${SAMPLE_ID}_R1_${CELL_ID}_paired.fastq ${SAMPLE_ID}_R1_${CELL_ID}_unpaired.fastq ILLUMINACLIP:${TRIMMOMATIC_DIR}/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+       echo SORT_FILE=${SAMPLE_ID}_R1_${CELL_ID}_paired.fastq
+       SORT_FILE=${SAMPLE_ID}_R1_${CELL_ID}_paired.fastq
+    fi
+fi
+
+# sort if we are told to
+
+if [ $SORT == 1 ]; then
+    gunzip ${SORTMERNA_DIR}/rRNA_databases/*.gz
+    echo ${SORTMERNA_DIR}/sortmerna --ref ${RNA_DB}  --reads ${SORT_FILE} --num_alignments 1 --fastx --aligned ${SAMPLE_ID}_${CELL_ID}_merged --other ${SAMPLE_ID}_${CELL_ID}_rna_free_reads -a $NTHREADS --log -v --blast 1
+    ${SORTMERNA_DIR}/sortmerna --ref ${RNA_DB}  --reads ${SORT_FILE} --num_alignments 1 --fastx --aligned ${SAMPLE_ID}_${CELL_ID}_merged --other ${SAMPLE_ID}_${CELL_ID}_rna_free_reads -a $NTHREADS --log -v --blast 1
+    if [ $paired == 1 ]; then
+        echo ${SORTMERNA_DIR}/scripts/unmerge-paired-reads.sh ${SAMPLE_ID}_${CELL_ID}_rna_free_reads.fastq ${SAMPLE_ID}_R1_${CELL_ID}_rna_free_reads.fastq ${SAMPLE_ID}_R2_${CELL_ID}_rna_free_reads.fastq
+        ${SORTMERNA_DIR}/scripts/unmerge-paired-reads.sh ${SAMPLE_ID}_${CELL_ID}_rna_free_reads.fastq ${SAMPLE_ID}_R1_${CELL_ID}_rna_free_reads.fastq ${SAMPLE_ID}_R2_${CELL_ID}_rna_free_reads.fastq
+    fi
+fi
+
+# gzip the trimmed inputs 
+
+if [ $TRIM == 1 ]; then
+    if [ $paired == 1 ]; then
+        gzip ${SAMPLE_ID}_R1_${CELL_ID}_paired.fastq &
+        gzip ${SAMPLE_ID}_R2_${CELL_ID}_paired.fastq &
+        wait
+    else 
+        gzip ${SAMPLE_ID}_R1_${CELL_ID}_paired.fastq &
+    fi
+    echo done with all gzips
+fi
+
+
+set +e
+# and clean up... for now leaving hte free reads unzipped
+
+if [ $paired == 1 ]; then
+    rm ${SAMPLE_ID}_${CELL_ID}_rna_free_reads.fastq
+else
+    mv  ${SAMPLE_ID}_${CELL_ID}_rna_free_reads.fastq  ${SAMPLE_ID}_R1_${CELL_ID}_rna_free_reads.fastq
+fi
+rm ${SAMPLE_ID}_${CELL_ID}_merged.fastq
+rm ${SAMPLE_ID}_${CELL_ID}_merged.blast
+rm ${SAMPLE_ID}_${CELL_ID}_merged-reads.fastq
+rm *unpaired.fastq 
+rm *log
+rm $R1
+rm $R2
+

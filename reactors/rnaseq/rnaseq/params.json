@@ -1,0 +1,30 @@
+## Parameters explained
+Trimmomatic
+      trim         -   Yes/no, perform the trimmomatic step (99.9% of time this is yes)
+      paired       -   Paired reads or single-end reads
+      adaptersfile -   Adapters used in the experiment that may contaminate some reads (fasta file)
+      minlen       -   Minimum length of reads to keep for downstream processing. RiboSeq in our work has useful reads
+                   -   as short as 23bp while RNASeq averages higher. Captures shorter fragments (sgRNA).
+SortMeRNA
+      sortmerna    -   Yes/no, perform sortmerna step (99.9% of time yes)
+      filterseqs   -   Sequence files to use during filter, comma separated
+      threads      -   Compute threads
+## Parameters in generic JSON 
+{
+      "name": exp,
+      "appId": "rnaseq-preprocessing",
+      "archive": True,
+      "inputs": {
+        "fastq1": "agave://data-sd2e-community/ingest/Q0/sd2.ginkgo.upload/yeastgates/RNAseq/" + exp + "_R1.fastq",
+        "fastq2": "agave://data-sd2e-community/ingest/Q0/sd2.ginkgo.upload/yeastgates/RNAseq/" + exp + "_R2.fastq"
+      },
+      "parameter": {
+        "trim": "yes",
+        "paired": "yes",
+        "adaptersfile": "{ADAPTERS_DIR}/TruSeq3-PE.fa:2:30:10",
+        "minlen": "36",
+        "sortmerna": "yes",
+        "filterseqs": "{SORTMERNA_DIR}/rRNA_databases/sequence/to/filter",
+        "threads": "${THREADS}",
+      }
+}

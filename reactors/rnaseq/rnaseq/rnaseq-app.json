@@ -1,0 +1,116 @@
+{"available":true,
+         "checkpointable": false,
+        "defaultMemoryPerNode": 256,
+        "defaultProcessorsPerNode": 20,
+        "defaultMaxRunTime": "01:00:00",
+        "defaultNodeCount": 1,
+        "defaultQueue": "normal",
+        "modules": ["load tacc-singularity"],
+        "deploymentPath": "sd2eadm/apps/sailfish-0.10.1",
+        "deploymentSystem": "data-sd2e-projects-users",
+        "executionSystem": "hpc-tacc-maverick",
+        "executionType": "HPC",
+        "helpURI":"http://bioinfo.lifl.fr/RNA/sortmerna/",
+        "label": "RNASeq",
+        "longDescription": "A tool for running RNA-seq on raw data",
+        "name": "rnaseq",
+        "parallelism": "SERIAL",
+        "shortDescription": "RNA-Seq pipeline",
+        "ontology":["http://sswapmeet.sswap.info/agave/apps/Application"],
+        "tags": [
+                "RNA-Seq",
+                "Aligner",
+                "Abundance",
+                "docker://index.docker.io/sd2e/rnaseq:0.1.1"
+        ],
+        "templatePath": "runner-template.sh",
+        "testPath": "tester.sh",
+        "version": "0.1.1",
+ "inputs":[
+    {"id":"read1",
+     "value":
+        {"default":"R1.fastq.gz",
+         "order":0,
+         "required":true,
+         "validator":".fastq.gz$",
+         "visible":true},
+     "semantics":
+        {"ontology":["http://sswapmeet.sswap.info/mime/application/X-fastq"],
+         "minCardinality":1,
+         "fileTypes":["raw-0"]},
+     "details":
+        {"description":"",
+         "label":"The first read to sort",
+         "argument":null,
+         "showArgument": false}},
+    {"id":"read2",
+     "value":
+        {"default":"ENOSUCH_R2.fastq.gz",
+         "order":0,
+         "required":false,
+         "validator":".fastq.gz$",
+         "visible":true},
+     "semantics":
+        {"ontology":["http://sswapmeet.sswap.info/mime/application/X-fastq"],
+         "minCardinality":1,
+         "fileTypes":["raw-0"]},
+     "details":
+        {"description":"",
+         "label":"The second read to sort",
+         "argument":null,
+         "showArgument": false}}
+   ],
+ "parameters":[
+                        "id": "trim",
+                        "value": {
+                                "default": True,
+                                "required": false,
+                                "type": "flag",
+                                "visible": true
+                        },
+                        "id": "sortmerna",
+                        "value": {
+                                "default": True,
+                                "required": false,
+                                "type": "flag",
+                                "visible": true
+                        },
+                        "id": "minlen",
+                        "value": {
+                                "default": 36,
+                                "required": false,
+                                "type": "number",
+                                "visible": true
+                        },
+                        "id": "adaptersfile",
+                        "value": {
+                                "default": "TruSeq3-PE.fa:2:30:10",
+                                "required": false,
+                                "type": "string",
+                                "visible": true
+                        },
+                        "id": "filterseqs",
+                        "value": {
+                                "default": "silva-bac-16s-id90.fasta,silva-bac-16s-db:silva-bac-23s-id98.fasta,silva-bac-23s-db:silva-arc-16s-id95.fasta,silva-arc-16s-db:silva-arc-23s-id98.fasta,silva-arc-23s-db:silva-euk-18s-id95.fasta,silva-euk-18s-db:silva-euk-28s-id98.fasta,silva-euk-28s:rfam-5s-database-id98.fasta,rfam-5s-db:rfam-5.8s-database-id98.fasta,rfam-5.8s-db",
+                                "required": false,
+                                "type": "string",
+                                "visible": true
+                        }
+   ],
+ "outputs":[
+    {"id":"sorted",
+     "value":
+        {"default":"rna_free_reads.fastq",
+         "order":0,
+         "required":false,
+         "validator":"na_free_reads.fastq$",
+         "visible":true},
+     "semantics":
+        {"ontology":["http://sswapmeet.sswap.info/mime/application/X-fastq"],
+         "minCardinality":1,
+         "fileTypes":["raw-0"]},
+     "details":
+        {"description":"",
+         "label":"Sorted BAM file",
+         "argument":null,
+         "showArgument":false}}]}
