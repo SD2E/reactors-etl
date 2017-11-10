@@ -7,6 +7,9 @@ set -e
 SORTMERNA_DIR=/opt/sortmerna-2.1b/
 TRIMMOMATIC_DIR=/opt/Trimmomatic-0.36/
 
+
+DEFAULT_RNA="silva-bac-16s-id90.fasta,silva-bac-16s-db:silva-bac-23s-id98.fasta,silva-bac-23s-db:silva-arc-16s-id95.fasta,silva-arc-16s-db:silva-arc-23s-id98.fasta,silva-arc-23s-db:silva-euk-18s-id95.fasta,silva-euk-18s-db:silva-euk-28s-id98.fasta,silva-euk-28s:rfam-5s-database-id98.fasta,rfam-5s-db:rfam-5.8s-database-id98.fasta,rfam-5.8s-db"
+
 #out of paranoia make sure our parameters are set
 if [ ${1}x = x ]; then
    echo READ1 is blank
@@ -49,7 +52,13 @@ SORT=${6}
 # for the RNA DB we have to take the inputs and put their paths inline...after both , and :
 
 SS=`echo $SORTMERNA_DIR | sed 's/\//|/g'`
-RNA_DB=`echo $SORTMERNA_DIR/rRNA_databases/${7} | sed "s/,/,$SS\/rRNA_databases\//g" | sed "s/:/:$SS\/rRNA_databases\//g" | sed "s/|/\//g"`
+
+RNADB=${7}
+if [ $RNADB == DEFAULT ]; then 
+    RNADB = $DEFAULT_RNA
+fi
+
+RNA_DB=`echo $SORTMERNA_DIR/rRNA_databases/$RNADB | sed "s/,/,$SS\/rRNA_databases\//g" | sed "s/:/:$SS\/rRNA_databases\//g" | sed "s/|/\//g"`
 
 # get the thread count of this container
 NTHREADS=`cat /proc/cpuinfo | grep processor | wc -l`

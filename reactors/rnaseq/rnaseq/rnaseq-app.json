@@ -6,7 +6,7 @@
         "defaultNodeCount": 1,
         "defaultQueue": "normal",
         "modules": ["load tacc-singularity"],
-        "deploymentPath": "sd2eadm/apps/sailfish-0.10.1",
+        "deploymentPath": "sd2eadm/apps/rnaseq-0.1.1",
         "deploymentSystem": "data-sd2e-projects-users",
         "executionSystem": "hpc-tacc-maverick",
         "executionType": "HPC",
@@ -60,42 +60,47 @@
          "argument":null,
          "showArgument": false}}
    ],
- "parameters":[
+ "parameters":[{
                         "id": "trim",
                         "value": {
-                                "default": True,
+                                "default": true,
                                 "required": false,
                                 "type": "flag",
                                 "visible": true
-                        },
+                        }
+                },{
                         "id": "sortmerna",
                         "value": {
-                                "default": True,
+                                "default": true,
                                 "required": false,
                                 "type": "flag",
                                 "visible": true
-                        },
+                        }
+                },{
                         "id": "minlen",
                         "value": {
                                 "default": 36,
                                 "required": false,
                                 "type": "number",
                                 "visible": true
-                        },
+                        }
+                },{
                         "id": "adaptersfile",
                         "value": {
                                 "default": "TruSeq3-PE.fa:2:30:10",
                                 "required": false,
                                 "type": "string",
                                 "visible": true
-                        },
+                        }
+                },{
                         "id": "filterseqs",
                         "value": {
-                                "default": "silva-bac-16s-id90.fasta,silva-bac-16s-db:silva-bac-23s-id98.fasta,silva-bac-23s-db:silva-arc-16s-id95.fasta,silva-arc-16s-db:silva-arc-23s-id98.fasta,silva-arc-23s-db:silva-euk-18s-id95.fasta,silva-euk-18s-db:silva-euk-28s-id98.fasta,silva-euk-28s:rfam-5s-database-id98.fasta,rfam-5s-db:rfam-5.8s-database-id98.fasta,rfam-5.8s-db",
+                                "default": "DEFAULT",
                                 "required": false,
                                 "type": "string",
                                 "visible": true
                         }
+                }
    ],
  "outputs":[
     {"id":"sorted",
