@@ -43,7 +43,8 @@
 		"_comment5": "Other processing parameters, to be exposed",
 		"tasbe_config": {
 			"gating": {
-				"type": "auto"
+				"type": "auto", 
+				"k_components": 2
 			},
 			"autofluorescence": {
 				"type": "placeholder"
