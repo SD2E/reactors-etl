@@ -29,17 +29,17 @@
 		"_comment6": "additional configuration parameters",
 		"output": {
 			"title": "sample_run",
-			"type": "geo_mean_std",
 			"plots": true,
 			"plots_folder": "plots",
-			"file": "s3://data/output/output.csv"
+			"file": "./output/output.csv"
 		},
-
+                "channels": ["EYFP"],
 		"_comment7": "additional parameters controlling data processing and output",
+                "type": "bin_counts",
 		"min_valid_count": 100,
 		"pem_drop_threshold": 5,
-		"bin_min": 0,
-		"bin_max": 6,
+		"bin_min": 6,
+		"bin_max": 10,
 		"bin_width": 0.1
 	}
 }

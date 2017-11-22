@@ -7,6 +7,7 @@ class ProcessControl:
       self.obj = json.load(f)['tasbe_process_control_data']
 
     self.octave = octave
+
   def get_blank_filename(self):
     return self.obj['blank_file']
 
@@ -17,6 +18,9 @@ class ProcessControl:
     b['model'] = self.obj['bead_model']
     b['file']  = self.obj['bead_file']
     return b
+
+  def set_color_model(self,color_model):
+    self.color_model = color_model
 
   def get_color_files(self):
     i = self.octave.eval('length(channels)')
@@ -38,7 +42,10 @@ class ProcessControl:
       for channel in self.obj['channels']:
         if color == channel['name']:
           self.octave.eval('color_channel_files{'+str(i)+'} = \''+channel['calibration_file']+'\'')
-          self.octave.eval('channels{{{}}} = setPrintName(channels{{{}}},\'{}\')'.format(j,j,color))
+          self.octave.eval('channels{{{0}}} = setPrintName(channels{{{0}}},\'{1}\')'.format(j,self.color_model.channel_parameters[color]['label']))
           self.octave.eval('side_channels{'+str(i)+'} = channels{'+str(j)+'};')
-          self.octave.eval('channel_names{'+str(i)+'} = getName(channels{'+str(j)+'})')
+          self.octave.eval('channel_names{'+str(i)+'} = getPrintName(channels{'+str(j)+'})')
           i+=1
+
+
+

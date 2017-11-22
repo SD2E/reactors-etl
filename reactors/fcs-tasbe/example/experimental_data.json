@@ -16,7 +16,7 @@
 		"_comment5": "links from sample URIs to each FCS in the collection of experimental data; they will be groups into replicates in the processing configuration",
 		"samples": [{
 				"sample": "http://mit.edu/Examples/WeissLab/ND/2012-03-12/Run1/ExperimentalData/Dox0.2R1",
-				"file": "/vagrant/reactors-etl/reactors/fcs-tasbe/example/assay/LacI-CAGop_B4_B04_P3.fcs"
+				"file": "./assay/LacI-CAGop_B4_B04_P3.fcs"
 			},
 			{
                                 "sample": "http://mit.edu/Examples/WeissLab/ND/2012-03-12/Run1/ExperimentalData/Dox0.2R2",
