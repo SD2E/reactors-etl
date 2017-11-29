@@ -1,9 +1,0 @@
-{
-  "name": "rnaseq-test-0001",
-  "appId": "rnaseq-0.1.1",
-  "archive": true,
-  "inputs": {
-    "read1": "agave://data-sd2e-community/sample/rnaseq/4311028_S61_R1_001.fastq.gz",
-    "read2": "agave://data-sd2e-community/sample/rnaseq/4311028_S61_R2_001.fastq.gz"
-  }
-}

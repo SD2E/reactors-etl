@@ -2,13 +2,15 @@
 
 set -e 
 
+set +x 
 # this is where we mount the binary directories
 
 SORTMERNA_DIR=/opt/sortmerna-2.1b/
 TRIMMOMATIC_DIR=/opt/Trimmomatic-0.36/
+RNADB_CONFIG="config"
+RNADB_KEY="rnadb_list"
 
-
-DEFAULT_RNA="silva-bac-16s-id90.fasta,silva-bac-16s-db:silva-bac-23s-id98.fasta,silva-bac-23s-db:silva-arc-16s-id95.fasta,silva-arc-16s-db:silva-arc-23s-id98.fasta,silva-arc-23s-db:silva-euk-18s-id95.fasta,silva-euk-18s-db:silva-euk-28s-id98.fasta,silva-euk-28s:rfam-5s-database-id98.fasta,rfam-5s-db:rfam-5.8s-database-id98.fasta,rfam-5.8s-db"
+echo $0 $@
 
 #out of paranoia make sure our parameters are set
 if [ ${1}x = x ]; then
@@ -36,7 +38,7 @@ if [ ${6}x = x ]; then
    exit 1
 fi
 if [ ${7}x = x ]; then
-   echo RNA_DB is blank
+   echo filterseqs is blank
    exit 1
 fi
 
@@ -48,17 +50,28 @@ TRIM=${3}
 ADAPTER=${4}
 MINLEN=${5}
 SORT=${6}
+RNADB_DIR=${7}
 
-# for the RNA DB we have to take the inputs and put their paths inline...after both , and :
 
-SS=`echo $SORTMERNA_DIR | sed 's/\//|/g'`
+rnadb_config=${RNADB_DIR}/${RNADB_CONFIG}
 
-RNADB=${7}
-if [ $RNADB == DEFAULT ]; then 
-    RNADB = $DEFAULT_RNA
+if [ ! -f $rnadb_config ] ; then
+   echo "No RNADB File found called $rnadb_config"
+   exit 1
 fi
 
-RNA_DB=`echo $SORTMERNA_DIR/rRNA_databases/$RNADB | sed "s/,/,$SS\/rRNA_databases\//g" | sed "s/:/:$SS\/rRNA_databases\//g" | sed "s/|/\//g"`
+while IFS=" " read -r key val; do
+  if [ ${key} == ${RNADB_KEY} ]; then
+    RNADB=${val}
+  fi
+done <"$rnadb_config"
+
+if [ ${RNADB}x == x ]; then 
+   echo "No $RNADB_KEY found in RNA database config file $RNADB_CONFIG"
+   exit 1
+else 
+   echo "Using RNADB of $RNADB"
+fi
 
 # get the thread count of this container
 NTHREADS=`cat /proc/cpuinfo | grep processor | wc -l`
@@ -90,7 +103,6 @@ echo R1 is $R1
 # do the same for R2 if we are paired
 
 if [ $paired == 1 ]; then
-    echo R2 is $R2
     array=(${R2//_/ })
     SAMPLE_ID2=${array[0]}_${array[1]}
     
@@ -103,6 +115,7 @@ if [ $paired == 1 ]; then
        R2=${R2::-3}
        gunzip -c ${R2}.gz > $R2 
     fi
+    echo R2 is $R2
 fi
 
 # trim if we are told to 
@@ -121,18 +134,22 @@ if [ $TRIM == 1 ]; then
        echo SORT_FILE=${SAMPLE_ID}_R1_${CELL_ID}_paired.fastq
        SORT_FILE=${SAMPLE_ID}_R1_${CELL_ID}_paired.fastq
     fi
+else 
+  echo "Skipping TRIMOMATIC step based on users request"
 fi
 
 # sort if we are told to
 
 if [ $SORT == 1 ]; then
-    gunzip ${SORTMERNA_DIR}/rRNA_databases/*.gz
-    echo ${SORTMERNA_DIR}/sortmerna --ref ${RNA_DB}  --reads ${SORT_FILE} --num_alignments 1 --fastx --aligned ${SAMPLE_ID}_${CELL_ID}_merged --other ${SAMPLE_ID}_${CELL_ID}_rna_free_reads -a $NTHREADS --log -v --blast 1
-    ${SORTMERNA_DIR}/sortmerna --ref ${RNA_DB}  --reads ${SORT_FILE} --num_alignments 1 --fastx --aligned ${SAMPLE_ID}_${CELL_ID}_merged --other ${SAMPLE_ID}_${CELL_ID}_rna_free_reads -a $NTHREADS --log -v --blast 1
+    gunzip $RNADB_DIR/*.gz
+    echo ${SORTMERNA_DIR}/sortmerna --ref ${RNADB}  --reads ${SORT_FILE} --num_alignments 1 --fastx --aligned ${SAMPLE_ID}_${CELL_ID}_merged --other ${SAMPLE_ID}_${CELL_ID}_rna_free_reads -a $NTHREADS --log -v --blast 1
+    ${SORTMERNA_DIR}/sortmerna --ref ${RNADB}  --reads ${SORT_FILE} --num_alignments 1 --fastx --aligned ${SAMPLE_ID}_${CELL_ID}_merged --other ${SAMPLE_ID}_${CELL_ID}_rna_free_reads -a $NTHREADS --log -v --blast 1
     if [ $paired == 1 ]; then
         echo ${SORTMERNA_DIR}/scripts/unmerge-paired-reads.sh ${SAMPLE_ID}_${CELL_ID}_rna_free_reads.fastq ${SAMPLE_ID}_R1_${CELL_ID}_rna_free_reads.fastq ${SAMPLE_ID}_R2_${CELL_ID}_rna_free_reads.fastq
         ${SORTMERNA_DIR}/scripts/unmerge-paired-reads.sh ${SAMPLE_ID}_${CELL_ID}_rna_free_reads.fastq ${SAMPLE_ID}_R1_${CELL_ID}_rna_free_reads.fastq ${SAMPLE_ID}_R2_${CELL_ID}_rna_free_reads.fastq
     fi
+else 
+  echo "Skipping SORTMERNA step based on users request"
 fi
 
 # gzip the trimmed inputs 
@@ -164,4 +181,5 @@ rm *unpaired.fastq
 rm *log
 rm $R1
 rm $R2
+rm -r $RNADB_DIR
 

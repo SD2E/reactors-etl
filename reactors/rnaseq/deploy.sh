@@ -66,7 +66,7 @@ fi
 if [ -z "$NOUPDATE" ]
 then
 set -x
-    apps-addupdate -F ${APPJSON}
+    apps-addupdate -V -F ${APPJSON}
 set +x
 fi
 
