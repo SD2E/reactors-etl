@@ -55,7 +55,7 @@
 				"order": 0,
 				"required": true,
 				"validator": null,
-				"visible": false 
+				"visible": true 
 			},
 			"semantics": {
 				"ontology": ["http://sswapmeet.sswap.info/mime/application/X-fastq"],
@@ -74,7 +74,7 @@
 				"default": "agave://data-sd2e-community/reference/rna_databases/rRNA_databases",
 				"required": true,
 				"type": "string",
-				"visible": false
+				"visible": true
 			},
 			"details": {
 				"description": "",
