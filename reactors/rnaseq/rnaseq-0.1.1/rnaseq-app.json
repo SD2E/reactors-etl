@@ -51,11 +51,11 @@
 		{
 			"id": "read2",
 			"value": {
-				"default": "ENOSUCH_R2.fastq.gz",
+				"default": "agave://data-sd2e-community/reference/rna_databases/ENOSUCH_R2.fastq.gz",
 				"order": 0,
 				"required": true,
 				"validator": null,
-				"visible": true
+				"visible": false 
 			},
 			"semantics": {
 				"ontology": ["http://sswapmeet.sswap.info/mime/application/X-fastq"],

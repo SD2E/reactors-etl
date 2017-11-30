@@ -129,8 +129,8 @@ if [ $TRIM == 1 ]; then
        echo SORT_FILE=${SAMPLE_ID}_${CELL_ID}_merged-reads.fastq
        SORT_FILE=${SAMPLE_ID}_${CELL_ID}_merged-reads.fastq
     else
-       echo java -jar ${TRIMMOMATIC_DIR}/trimmomatic-0.36.jar PE -phred33 ${R1} ${SAMPLE_ID}_R1_${CELL_ID}_paired.fastq ${SAMPLE_ID}_R1_${CELL_ID}_unpaired.fastq ILLUMINACLIP:${TRIMMOMATIC_DIR}/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
-       java -jar ${TRIMMOMATIC_DIR}/trimmomatic-0.36.jar PE -phred33 ${R1} ${SAMPLE_ID}_R1_${CELL_ID}_paired.fastq ${SAMPLE_ID}_R1_${CELL_ID}_unpaired.fastq ILLUMINACLIP:${TRIMMOMATIC_DIR}/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+       echo java -jar ${TRIMMOMATIC_DIR}/trimmomatic-0.36.jar SE -phred33 ${R1} ${SAMPLE_ID}_R1_${CELL_ID}_paired.fastq ILLUMINACLIP:${TRIMMOMATIC_DIR}/adapters/${ADAPTER} LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:${MINLEN}
+       java -jar ${TRIMMOMATIC_DIR}/trimmomatic-0.36.jar SE -phred33 ${R1} ${SAMPLE_ID}_R1_${CELL_ID}_paired.fastq ILLUMINACLIP:${TRIMMOMATIC_DIR}/adapters/${ADAPTER} LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:${MINLEN}
        echo SORT_FILE=${SAMPLE_ID}_R1_${CELL_ID}_paired.fastq
        SORT_FILE=${SAMPLE_ID}_R1_${CELL_ID}_paired.fastq
     fi
