@@ -11,8 +11,6 @@ class ColorModel:
       self.obj = json.load(f)['tasbe_color_model_parameters']
 
     self.parse_channels()
-    self.make_gating()
-    self.make_color_model()
 
   def parse_channels(self):
     channels = self.obj['channel_parameters']
@@ -21,10 +19,20 @@ class ColorModel:
       self.channel_parameters[c['name']] = c
 
 
-  def make_gating(self):
+  def make_gating(self,experimental_data):
     if self.obj['tasbe_config']['gating']['type'] == 'auto':
       logging.debug('Making gating')
       blank = self.process_control.get_blank_filename()
+      print blank
+      print "++++++++\n\n"
+
+      self.template_file = experimental_data.get_first_experiment_file()
+      if blank == "":
+        blank = self.template_file
+        
+      print blank
+      print "++++ \n\n"
+
       k_components = self.obj['tasbe_config']['gating']['k_components']
       k_components = 3
       self.octave.eval('agp = AutogateParameters(); agp.k_components={};'.format(k_components))
@@ -50,6 +58,9 @@ class ColorModel:
     self.octave.eval('settings = TASBESettings();')
     self.octave.eval('settings = setSetting(settings,\'channel_template_file\',\'{}\');'.format(blank))
     self.octave.eval('settings = setSetting(settings,\'override_units\',1)')
+    self.octave.eval('settings = setSetting(settings,\'override_autofluorescence\', 0)')
+
+    self.octave.eval('settings = setSetting(settings, \'channel_template_file\', \'{}\')'.format(self.template_file))
     #TODO add min
     self.octave.eval('settings = setSetting(settings,\'path\',\'{}\');'.format('plots'))  
     

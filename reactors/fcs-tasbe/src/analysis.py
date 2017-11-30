@@ -1,5 +1,6 @@
 import json
 from pprint import pprint
+import math
 
 class Analysis:
   def __init__(self,analysis_filename,octave):
@@ -24,7 +25,6 @@ class Analysis:
     for i in xrange(1,int(a)+1):
       self.octave.eval('results {{{}}}.channel_names = channel_names'.format(i))
       r = self.octave.eval('results{{{}}};'.format(i))
-      print r
       r['condition'] = self.octave.eval('file_pairs{{{},1 }};'.format(i))
       self.results.append(r)
 
@@ -32,20 +32,17 @@ class Analysis:
 
   def print_bin_counts(self,channels):
 
-    a = self.octave.eval('length(sample_results)')
+    a = self.octave.eval('length(channel_names)')
     color_order = {}
     
-    
-    
     for i in xrange(1,int(a)+1):
-      color_order[self.octave.eval('channel_names{{1,{}}}'.format(i))] = i
+      color_order[self.octave.eval('channel_names{{1,{}}}'.format(i))] = i-1
 
-    #make the header
     with open(self.obj['output']['file'],'w') as output_file: 
-      output_file.write('condition,channel,{}\n'.format(','.join([str(i) for i in self.results[0].bincenters.tolist()[0]])))
-   
+      output_file.write('condition,channel,{}\n'.format(','.join([str(math.log(i,10)) for i in self.results[0].bincenters.tolist()[0]])))
       for c in channels:
         index = color_order[c]
         for r in self.results:
           csv_results = ','.join([str(i[index]) for i in r.bincounts.tolist()])
           output_file.write('{},{},{}\n'.format(r['condition'],c,csv_results))
+

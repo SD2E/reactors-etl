@@ -37,15 +37,17 @@ class ProcessControl:
     self.octave.eval('channel_names = {}')
     i = 1
     j = 0;
+    print '\n\nProcessing channels\n\n'
+    print 'color order:', color_order
     for color in color_order:
       j+=1
       for channel in self.obj['channels']:
+        print color, channel['name']
         if color == channel['name']:
           self.octave.eval('color_channel_files{'+str(i)+'} = \''+channel['calibration_file']+'\'')
           self.octave.eval('channels{{{0}}} = setPrintName(channels{{{0}}},\'{1}\')'.format(j,self.color_model.channel_parameters[color]['label']))
           self.octave.eval('side_channels{'+str(i)+'} = channels{'+str(j)+'};')
           self.octave.eval('channel_names{'+str(i)+'} = getPrintName(channels{'+str(j)+'})')
           i+=1
-
 
 
