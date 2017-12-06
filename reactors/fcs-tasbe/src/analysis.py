@@ -39,10 +39,12 @@ class Analysis:
       color_order[self.octave.eval('channel_names{{1,{}}}'.format(i))] = i-1
 
     with open(self.obj['output']['file'],'w') as output_file: 
-      output_file.write('condition,channel,{}\n'.format(','.join([str(math.log(i,10)) for i in self.results[0].bincenters.tolist()[0]])))
+      print self.results[0]
+      output_file.write('condition,channel,geo_mean,{}\n'.format(','.join([str(math.log(i,10)) for i in self.results[0].bincenters.tolist()[0]])))
       for c in channels:
         index = color_order[c]
         for r in self.results:
           csv_results = ','.join([str(i[index]) for i in r.bincounts.tolist()])
-          output_file.write('{},{},{}\n'.format(r['condition'],c,csv_results))
+          output_file.write('{},{},{},{}\n'.format(r['condition'],c,r['means'],csv_results))
+          print r
 
