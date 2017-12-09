@@ -270,7 +270,7 @@ def map_reads(settings, sample, cores):
     Nbases = min(14, (math.log(genomesize, 2) / 2) - 1)
     cmd_index = 'STAR --runMode genomeGenerate ' + \
                 '--runThreadN ' + str(cores) + ' ' + \
-                '--genomeDir ' + os.path.dirname(settings[sample]['fasta_file']) + ' ' + \
+                '--genomeDir ./ ' + \
                 '--genomeFastaFiles ' + settings[sample]['fasta_file'] + ' ' + \
                 '--genomeSAindexNbases ' + str(Nbases)
 
@@ -283,7 +283,7 @@ def map_reads(settings, sample, cores):
     if settings[sample]['R2_fastq_file'] == '':
         cmd_mapping = 'STAR ' + \
                       ' --runThreadN ' + str(cores) + \
-                      ' --genomeDir ' + os.path.dirname(settings[sample]['fasta_file']) + \
+                      ' --genomeDir ./ ' + \
                       ' --readFilesIn ' + settings[sample]['R1_fastq_file'] + \
                       ' --outSAMtype ' + 'BAM SortedByCoordinate ' + \
                       '--limitBAMsortRAM 40000000 ' + \
@@ -291,7 +291,7 @@ def map_reads(settings, sample, cores):
     else:
         cmd_mapping = 'STAR ' + \
                       ' --runThreadN ' + str(cores) + \
-                      ' --genomeDir ' + os.path.dirname(settings[sample]['fasta_file']) + \
+                      ' --genomeDir ./ ' + \
                       ' --readFilesIn ' + settings[sample]['R1_fastq_file'] + \
                       ' ' + settings[sample]['R2_fastq_file'] + \
                       ' --outSAMtype ' + 'BAM SortedByCoordinate ' + \
@@ -471,7 +471,8 @@ def make_profile(settings, sample, cores):
                            ' > ' + fwd_filename + ' && ' + \
                            'samtools index ' + fwd_filename + ' && ' + \
                            'bedtools coverage -d -abam ' + fwd_filename + ' -b ' + settings[sample]['bed_file'] + \
-                           ' > ' + profile_fwd_filename(settings, sample)
+                           ' > ' + profile_fwd_filename(settings, sample) + \
+                           ' && gzip ' + profile_fwd_filename(settings, sample)
         print("Making forward profile: " + cmd_fwd_coverage)
         subprocess.call(cmd_fwd_coverage, shell=True)
         rev_filename = bam_filename(settings, sample, extension=False) + '.rev.bam'
@@ -480,7 +481,8 @@ def make_profile(settings, sample, cores):
                            ' > ' + rev_filename + ' && ' + \
                            'samtools index ' + rev_filename + ' && ' + \
                            'bedtools coverage -d -abam ' + rev_filename + ' -b ' + settings[sample]['bed_file'] + \
-                           ' > ' + profile_rev_filename(settings, sample)
+                           ' > ' + profile_rev_filename(settings, sample) + \
+                           ' && gzip ' + profile_rev_filename(settings, sample)
         print("Making reverse profile: " + cmd_rev_coverage)
         status = subprocess.call(cmd_rev_coverage, shell=True)
 
@@ -500,7 +502,8 @@ def make_profile(settings, sample, cores):
                            ' ' + fwd1_filename + ' ' + fwd2_filename + ' && ' + \
                            'samtools index ' + fwd_filename + ' && ' + \
                            'bedtools coverage -d -abam ' + fwd_filename + ' -b ' + settings[sample]['bed_file'] + \
-                           ' > ' + profile_fwd_filename(settings, sample)
+                           ' > ' + profile_fwd_filename(settings, sample) + \
+                           ' && gzip ' + profile_fwd_filename(settings, sample)
         print("Making forward profile: " + cmd_fwd_coverage)
         subprocess.call(cmd_fwd_coverage, shell=True)
         rev_filename = bam_filename(settings, sample, extension=False) + '.rev.bam'
@@ -518,7 +521,8 @@ def make_profile(settings, sample, cores):
                            ' ' + rev1_filename + ' ' + rev2_filename + ' && ' + \
                            'samtools index ' + rev_filename + ' && ' + \
                            'bedtools coverage -d -abam ' + rev_filename + ' -b ' + settings[sample]['bed_file'] + \
-                           ' > ' + profile_rev_filename(settings, sample)
+                           ' > ' + profile_rev_filename(settings, sample) + \
+                           ' && gzip ' + profile_rev_filename(settings, sample)
         print("Making reverse profile: " + cmd_rev_coverage)
         status = subprocess.call(cmd_rev_coverage, shell=True)
     return status

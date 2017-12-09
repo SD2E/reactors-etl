@@ -53,7 +53,6 @@ LABEL description="Root directories added to support Singularity @ TACC"
 RUN mkdir -p /work && chown root:root /work
 RUN mkdir -p /gpfs && chown root:root /gpfs
 RUN mkdir -p /data && chown root:root /data
-
 # Test installations
 #RUN STAR
 #RUN bowtie2 --version
@@ -62,17 +61,18 @@ RUN mkdir -p /data && chown root:root /data
 #RUN python -c "print(help('modules'))"
 
 # Setup working directory and scriptfiles
-RUN mkdir -p /home/work/mapping
-RUN mkdir -p /home/work/results
+#RUN mkdir -p /home/work/mapping
+#RUN mkdir /home/work/results
+#RUN mkdir /home/work/test
+RUN mkdir test mapping results
 RUN mkdir -p /opt/scripts/
 ADD /src/rnaseq-broad /opt/rnaseq-broad
 ADD /src/rnaseqbroad.sh /opt/scripts/rnaseqbroad.sh
 RUN chmod 777 /opt/scripts/rnaseqbroad.sh
 RUN chmod 777 /opt/rnaseq-broad/*
-WORKDIR /home/work/
 
 # Transfer our test data
-ADD /rnaseq-broad/test/ /home/work/test
+ADD /rnaseq-broad/test/ /test
 
 # Test python version
 CMD python --version
