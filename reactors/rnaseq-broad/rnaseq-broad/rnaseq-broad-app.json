@@ -9,7 +9,7 @@
     "modules": [
       "load tacc-singularity"
     ],
-    "deploymentPath": "acristo/rnaseq-broad/",
+    "deploymentPath": "acristo/apps/rnaseq-broad/",
     "deploymentSystem": "data-sd2e-projects-users",
     "executionSystem": "hpc-tacc-maverick-acristo",
     "executionType": "HPC",

@@ -15,6 +15,7 @@ def main():
     parser.add_argument("-samples", dest="samples", required=True, help="1,2", metavar="string")
     parser.add_argument("-cores", dest="cores", required=True, help="# cores", metavar="int")
     args = parser.parse_args()
+
     # Run the command
     samples = args.samples.split(',')
     settings = ga.load_settings(args.settings)

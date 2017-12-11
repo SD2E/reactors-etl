@@ -2,7 +2,7 @@
 
 # Path to app bundle
 APP=$1
-DEST=${2-localtest}
+DEST=${2-test}
 
 # If you want to stage in only a subset of data, create another TSV file
 # and override TEST_DATA_CSV variable at run time

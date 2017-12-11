@@ -2,12 +2,12 @@
 
 . _util/container_exec.sh
 
-version=$(cat VERSION)
+version=$(cat ./VERSION)
 export CONTAINER_IMAGE="sd2e/rnaseq-broad:$version"
 
-#./test/4342744_R1_001_rna_free_reads.fastq \
+cp ../test-data-cache/* test/
 DEBUG=1 container_exec ${CONTAINER_IMAGE} /opt/scripts/rnaseqbroad.sh \
-	./test/4342744_R1_rna_free_reads.fastq \
+	./test/4342744_rrna_free_reads_unmerged_R1.fastq \
 	./test/4342744_R2_001_rna_free_reads.fastq \
 	./test/circuit1.fasta \
 	./test/circuit1.gff \
@@ -54,6 +54,7 @@ function cleanup() {
     echo "Cleaning up..."
     rm -rf 4342744*
     rm -f .container_exec.*
+    rm Log.out
 }
 
 trap cleanup EXIT
