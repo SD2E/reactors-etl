@@ -128,6 +128,7 @@ def make_image_matrix_cell(source_matrix):
       markup += "<td><img src='{}' /></td>".format(source_matrix[ri][ci])
     markup += '</tr>\n'
   markup += '</table>'
+  return nbf.v4.new_markdown_cell(markup)
 #   cell_code = \
 #   '''
 # source_matrix = {}
