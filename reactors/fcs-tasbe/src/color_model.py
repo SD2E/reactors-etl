@@ -34,7 +34,7 @@ class ColorModel:
       print "++++ \n\n"
 
       k_components = self.obj['tasbe_config']['gating']['k_components']
-      k_components = 3
+      k_components = 2
       self.octave.eval('agp = AutogateParameters(); agp.k_components={}; agp.density=0;'.format(k_components))
       self.octave.eval('gating = GMMGating(\'{}\',agp,\'plots\');'.format(blank))
 #       self.gating = self.octave.pull('gating')
@@ -48,6 +48,7 @@ class ColorModel:
     self.process_control.get_color_files()
 
     self.octave.eval('TASBEConfig.set(\'heatmapPlotType\',\'contour\')')
+    print 'bead {} \n blank {}'.format(bead_info['file'],blank)
     self.octave.eval('cm = ColorModel(\'{}\',\'{}\',side_channels,color_channel_files,[])'.format(bead_info['file'],blank))
     self.octave.eval('cm = set_translation_plot(cm,false);')
     self.octave.eval('cm = set_noise_plot(cm,false);')
@@ -57,9 +58,9 @@ class ColorModel:
     self.octave.eval('cm = set_bead_batch(cm,\'{}\');'.format(bead_info['batch']))
     self.octave.eval('cm = set_ERF_channel_name(cm,\'{}\');'.format(self.obj['ERF_channel_name']))
     self.octave.eval('settings = TASBESettings();')
-    self.octave.eval('settings = setSetting(settings,\'channel_template_file\',\'{}\');'.format(blank))
-#     self.octave.eval('settings = setSetting(settings,\'override_units\',1)')
-#     self.octave.eval('settings = setSetting(settings,\'override_autofluorescence\', 0)')
+    #self.octave.eval('settings = setSetting(settings,\'channel_template_file\',\'{}\');'.format(blank))
+    #self.octave.eval('settings = setSetting(settings,\'override_units\',1)')
+    #self.octave.eval('settings = setSetting(settings,\'override_autofluorescence\', 0)')
 
     self.octave.eval('settings = setSetting(settings, \'channel_template_file\', \'{}\')'.format(self.template_file))
     #TODO add min
