@@ -1,1 +1,1 @@
-docker run -v $PWD:/data -e "CONFIG=/data/fc.json"  fcs
+docker run -i -t -v $PWD:/data -e "CONFIG=/data/fc.json"  fcs

@@ -1,6 +1,7 @@
 import json
 from pprint import pprint
 import math
+import oct2py
 
 class Analysis:
   def __init__(self,analysis_filename,octave):
@@ -27,7 +28,20 @@ class Analysis:
       r = self.octave.eval('results{{{}}};'.format(i))
       r['condition'] = self.octave.eval('file_pairs{{{},1 }};'.format(i))
       self.results.append(r)
-
+    
+    colormapper = {u'EYFP': '[0.239, 1.0, 0.0]', \
+    	u'mKate': '[1.0, 0.153, 0.0]', \
+    	u'EBFP2': '[0.0, 0.157, 1.0]', \
+    	u'GFP': '[0.0, 1.0, 0.098]'}
+    # From https://www.leica-microsystems.com/science-lab/fluorescent-proteins-introduction-and-photo-spectral-characteristics/
+    # and http://lsrtools.1apps.com/wavetorgb
+    colorspecs = self.octave.pull('channel_names')
+    if type(colorspecs) == oct2py.io.Cell: colorspecs = colorspecs.tolist()
+    if type(colorspecs[0]) == list: colorspecs = colorspecs[0]
+    colorspecs = '{' + ','.join([colormapper[x] for x in colorspecs]) + '}'
+    self.octave.eval('outputsettings = OutputSettings("Exp", "", "", "plots");')
+#     self.octave.eval('outputsettings.FixedInputAxis = [1e4 1e10];')
+    self.octave.eval('plot_batch_histograms(results, sample_results, outputsettings, {}, cm);'.format(colorspecs))
     self.print_bin_counts(self.obj['channels'])
 
   def print_bin_counts(self,channels):

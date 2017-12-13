@@ -1,50 +1,65 @@
 FROM ubuntu:xenial
-ARG OCTAVE_VERSION=4.2
+ARG OCTAVE_VERSION=4.2.1-2~octave~xenial1
 
 ADD src /src
 RUN apt-get update
 RUN apt-get install software-properties-common python-software-properties -y
 
 RUN add-apt-repository ppa:octave/stable
-RUN   apt-get update && \
-    apt-get install -y - \
+
+# RUN apt-get update && \
+# 	apt-get install default-jdk default-jdk-headless epstool gperf hdf5-helpers javahelper libaec-dev libarpack2-dev libblas-dev libbtf1.2.1 libcsparse3.1.4 libexif-dev libfftw3-dev libflac-dev libfltk-cairo1.3 libfltk-forms1.3 libfltk-images1.3 libfltk1.3-dev libftgl-dev libftgl2 libglpk-dev libgraphicsmagick++1-dev libgraphicsmagick1-dev libhdf5-cpp-11 libhdf5-dev libjack-dev libjasper-dev libklu1.3.3 liblapack-dev libldl2.2.1 libogg-dev libosmesa6-dev libportaudiocpp0 libqhull-dev libqrupdate-dev libqscintilla2-dev libqt4-designer libqt4-dev libqt4-dev-bin libqt4-help libqt4-opengl-dev libqt4-qt3support libqt4-scripttools libqt4-svg libqt4-test libsndfile1-dev libspqr2.0.2 libsuitesparse-dev libvorbis-dev libwmf-dev openjdk-8-jdk openjdk-8-jdk-headless portaudio19-dev qt4-linguist-tools qt4-qmake uuid-dev llvm-3.5-dev libpcre3-dev -y
+
+RUN apt-get update && \
+		apt-get install -y \
+				x11-apps \
         wget \
         build-essential \
         cmake \
         bsdtar \
+        curl \
+        libcurl4-openssl-dev \
+        gnuplot \
+        gnuplot-data \
+        gnuplot-tex \
+        gnuplot-x11 \
+        glpk \
+        gperf \
+        flex \
+        bison \
         rsync \
-        unzip\
-        \
-        octave \
+        unzip \
+        libfontconfig1-dev \
+        libfontconfig1 \
+        octave=$OCTAVE_VERSION \
         liboctave-dev \
         octave-info \
-        \
         python3-dev \
         pandoc \
-        ttf-dejavu\
-        libghc-pcre-light-dev \
-        lzip
+        ttf-dejavu
 
-#RUN apt-get install default-jdk default-jdk-headless epstool gperf hdf5-helpers javahelper libaec-dev libarpack2-dev libblas-dev libbtf1.2.1 libcsparse3.1.4 libexif-dev libfftw3-dev libflac-dev libfltk-cairo1.3 libfltk-forms1.3 libfltk-images1.3 libfltk1.3-dev libftgl-dev libftgl2 libglpk-dev libgraphicsmagick++1-dev libgraphicsmagick1-dev libhdf5-cpp-11 libhdf5-dev libjack-dev libjasper-dev libklu1.3.3 liblapack-dev libldl2.2.1 libogg-dev libosmesa6-dev libportaudiocpp0 libqhull-dev libqrupdate-dev libqscintilla2-dev libqt4-designer libqt4-dev libqt4-dev-bin libqt4-help libqt4-opengl-dev libqt4-qt3support libqt4-scripttools libqt4-svg libqt4-test libsndfile1-dev libspqr2.0.2 libsuitesparse-dev libvorbis-dev libwmf-dev openjdk-8-jdk openjdk-8-jdk-headless portaudio19-dev qt4-linguist-tools qt4-qmake uuid-dev llvm-3.5-dev libpcre3-dev -y
 
 RUN apt-get install git -y
-#RUN apt-get install octave-io -y
 RUN apt-get install python -y
 RUN apt-get install python-pip -y
 RUN pip install --upgrade pip
 RUN pip install oct2py 
 RUN pip install --upgrade --force-reinstall octave_kernel
+RUN pip install jupyter
 RUN apt-get install python-numpy -y
 RUN apt-get install python-scipy -y
 
-RUN wget https://github.com/jegentile/TASBEFlowAnalytics/archive/master.zip
-RUN unzip master.zip
+# RUN apt-get install gcc g++ gfortran make libblas-dev liblapack-dev libpcre3-dev libarpack2-dev libcurl4-gnutls-dev epstool libfftw3-dev transfig libfltk1.3-dev libfontconfig1-dev libfreetype6-dev libgl2ps-dev libglpk-dev libreadline-dev gnuplot-x11 libgraphicsmagick++1-dev libhdf5-serial-dev openjdk-8-jdk libsndfile1-dev llvm-dev lpr texinfo libgl1-mesa-dev libosmesa6-dev pstoedit portaudio19-dev libqhull-dev libqrupdate-dev libqscintilla2-dev libqt4-dev libqtcore4 libqtwebkit4 libqt4-network libqtgui4 libqt4-opengl-dev libsuitesparse-dev texlive libxft-dev zlib1g-dev autoconf automake bison flex gperf gzip icoutils librsvg2-bin libtool perl rsync tar -y
+
+# RUN wget ftp://ftp.gnu.org/gnu/octave/octave-4.2.1.tar.gz
+# RUN tar xf octave-4.2.1.tar.gz
+# RUN rm octave-4.2.1.tar.gz
+# RUN cd octave-4.2.1/ && ./configure && make -j8 && make install
+# RUN apt-get install octave-image -y
+
+RUN git clone https://github.com/TASBE/TASBEFlowAnalytics.git
 RUN cd /TASBEFlowAnalytics-master && make install
+RUN cd /TASBEFlowAnalytics-master/code && octave --eval 'addpath(genpath(pwd)); savepath;'
 RUN octave --eval 'pkg install -forge io'
 
-#RUN wget ftp://ftp.gnu.org/gnu/octave/octave-4.2.0.tar.gz
-#RUN tar xf octave-4.2.0.tar.gz
-#RUN rm octave-4.2.0.tar.gz
-#RUN cd octave-4.2.0/ && ./configure && make -j8 && make install
-
-CMD python /src/fc.py --config $CONFIG --octave-method-path /src/
+#CMD python /src/fcs.py --cytometer-configuration $CYT_CONFIG --process-control $PROC_CONTROL --experimental-data $EXP_DATA --color-model-parameters $COLOR_MODEL_PARAMS --analysis-parameters $ANALYSIS_PARAMS

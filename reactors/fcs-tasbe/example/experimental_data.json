@@ -20,11 +20,11 @@
 			},
 			{
                                 "sample": "http://mit.edu/Examples/WeissLab/ND/2012-03-12/Run1/ExperimentalData/Dox0.2R2",
-                                "file": "/vagrant/reactors-etl/reactors/fcs-tasbe/example/assay/LacI-CAGop_B5_B05_P3.fcs"
+                                "file": "./assay/LacI-CAGop_B5_B05_P3.fcs"
                         },
 			{
 				"sample": "http://mit.edu/Examples/WeissLab/ND/2012-03-12/Run1/ExperimentalData/Dox0.5R1",
-				"file": "/vagrant/reactors-etl/reactors/fcs-tasbe/example/assay/LacI-CAGop_B5_B05_P3.fcs"
+				"file": "./assay/LacI-CAGop_B5_B05_P3.fcs"
 			}
 		]
 	}
