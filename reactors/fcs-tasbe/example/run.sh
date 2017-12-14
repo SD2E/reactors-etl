@@ -1,1 +1,1 @@
-docker run -i -t -v $PWD:/data -e "CONFIG=/data/fc.json"  fcs
+docker run -i -t -v $PWD:/data -e "CYT_CONFIG=/data/cytometer_configuration.json" -e "PROC_CONTROL=/data/process_control_data.json" -e "EXP_DATA=/data/experimental_data.json" -e "COLOR_MODEL_PARAMS=/data/color_model_parameters.json" -e "ANALYSIS_PARAMS=/data/analysis_parameters.json" fcs

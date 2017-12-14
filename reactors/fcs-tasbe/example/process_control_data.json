@@ -11,30 +11,30 @@
 		"cyometer_configuration": "http://mit.edu/WeissLab/Cytometer1/Config2011-Jan-01",
 		
 		"_comment4": "all files are URIs to the location of a file on the TA4 infrastructure",
-		"bead_file": "./controls/2012-03-12_Beads_P3.fcs",
+		"bead_file": "/data/controls/2012-03-12_Beads_P3.fcs",
 		"_comment5": "name of the type of beads being used; must match an entry in the TASBE bead catalog https://github.com/TASBE/TASBEFlowAnalytics/blob/master/code/BeadCatalog.xlsx",
 		"bead_model": "SpheroTech URCP-38-2K",
 		"_comment6": "name of the batch of beads being used; must match an entry in the TASBE bead catalog https://github.com/TASBE/TASBEFlowAnalytics/blob/master/code/BeadCatalog.xlsx",
 		"bead_batch": "Lot AJ02",
 
 		"_comment7": "the blank file should be wild-type or null transfection",
-		"blank_file": "./controls/2012-03-12_blank_P3.fcs",
+		"blank_file": "/data/controls/2012-03-12_blank_P3.fcs",
 
 		"_comment8": "each channel should have a strong single positive control of the species it quantifies",
 		"channels": [{
 				"_comment1": "name must match a channel from the cytometer configuration",
 				"name": "FITC-A",
 				"_comment2": "FCS file for single positive control",
-				"calibration_file": "./controls/2012-03-12_EYFP_P3.fcs"
+				"calibration_file": "/data/controls/2012-03-12_EYFP_P3.fcs"
 			},
 
 			{
 				"name": "PE-Tx-Red-YG-A",
-				"calibration_file": "./controls/2012-03-12_mkate_P3.fcs"
+				"calibration_file": "/data/controls/2012-03-12_mkate_P3.fcs"
 			},
 			{
 				"name": "Pacific Blue-A",
-				"calibration_file": "./controls/2012-03-12_ebfp2_P3.fcs"
+				"calibration_file": "/data/controls/2012-03-12_ebfp2_P3.fcs"
 			}
 		],
 
@@ -42,11 +42,11 @@
 		"cross_file_pairs": [{
 				"_comment1": "array of two or three channels: the first two will be compared. If the third is available, it will be used to improve clustering of the first two.", 
 				"channels": ["FITC-A", "PE-Tx-Red-YG-A", "Pacific Blue-A"],
-				"file": "s3://data/controls/2012-03-12_mkate_EBFP2_EYFP_P3.fcs"
+				"file": "/data/controls/2012-03-12_mkate_EBFP2_EYFP_P3.fcs"
 			},
 			{
 				"channels": ["FITC-A", "Pacific Blue-A", "PE-Tx-Red-YG-A"],
-				"file": "s3://data/controls/2012-03-12_mkate_EBFP2_EYFP_P3.fcs"
+				"file": "/data/controls/2012-03-12_mkate_EBFP2_EYFP_P3.fcs"
 			}
 		]
 	}
