@@ -46,11 +46,12 @@ class ColorModel:
     logging.debug('Making color model')
     print bead_info
     self.process_control.get_color_files()
+    self.process_control.get_color_pair_files()
 
     self.octave.eval('TASBEConfig.set(\'heatmapPlotType\',\'contour\')')
     print 'bead {} \n blank {}'.format(bead_info['file'],blank)
-    self.octave.eval('cm = ColorModel(\'{}\',\'{}\',side_channels,color_channel_files,[])'.format(bead_info['file'],blank))
-    self.octave.eval('cm = set_translation_plot(cm,false);')
+    self.octave.eval('cm = ColorModel(\'{}\',\'{}\', side_channels, color_channel_files, colorpairfiles)'.format(bead_info['file'],blank))
+    self.octave.eval('cm = set_translation_plot(cm,true);')
     self.octave.eval('cm = set_noise_plot(cm,false);')
     self.octave.eval('cm = set_bead_model(cm,\'{}\');'.format(bead_info['model']))
     #TODO ADD in channel min

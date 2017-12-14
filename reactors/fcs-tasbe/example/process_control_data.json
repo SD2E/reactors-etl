@@ -42,11 +42,11 @@
 		"cross_file_pairs": [{
 				"_comment1": "array of two or three channels: the first two will be compared. If the third is available, it will be used to improve clustering of the first two.", 
 				"channels": ["FITC-A", "PE-Tx-Red-YG-A", "Pacific Blue-A"],
-				"file": "s3://data/controls/2012-03-12_mkate_EBFP2_EYFP_P3.fcs"
+				"file": "./controls/2012-03-12_mkate_EBFP2_EYFP_P3.fcs"
 			},
 			{
 				"channels": ["FITC-A", "Pacific Blue-A", "PE-Tx-Red-YG-A"],
-				"file": "s3://data/controls/2012-03-12_mkate_EBFP2_EYFP_P3.fcs"
+				"file": "./controls/2012-03-12_mkate_EBFP2_EYFP_P3.fcs"
 			}
 		]
 	}

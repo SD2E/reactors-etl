@@ -21,7 +21,7 @@ class ProcessControl:
 
   def set_color_model(self,color_model):
     self.color_model = color_model
-
+  
   def get_color_files(self):
     i = self.octave.eval('length(channels)')
     color_order = []
@@ -50,4 +50,11 @@ class ProcessControl:
           self.octave.eval('channel_names{'+str(i)+'} = getPrintName(channels{'+str(j)+'})')
           i+=1
 
-
+  # Can't be run until channels is built, by get_color_files
+  def get_color_pair_files(self):
+    pairs = self.obj['cross_file_pairs']
+    self.octave.eval('colorpairfiles = {};')
+    for a in range(1, len(pairs)+1): #index of analysis we're working on
+      for chan in range(1, len(pairs[a-1]['channels']) + 1):
+        self.octave.eval('for c = 1:length(channels); if strcmp(getName(channels{{c}}), "{}"); colorpairfiles{{{}}}{{{}}} = channels{{c}}; end; end;'.format(pairs[a-1]['channels'][chan-1], str(a), str(chan)))
+      self.octave.eval('colorpairfiles{{{}}}{{end+1}} = "{}"'.format(str(a), pairs[a-1]['file']))      

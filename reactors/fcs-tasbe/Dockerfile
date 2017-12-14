@@ -22,7 +22,6 @@ RUN apt-get update && \
         gnuplot-data \
         gnuplot-tex \
         gnuplot-x11 \
-        glpk \
         gperf \
         flex \
         bison \

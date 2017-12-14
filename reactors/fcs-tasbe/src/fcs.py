@@ -66,11 +66,18 @@ def main(args):
   quicklook['cells'].append(nbf.v4.new_markdown_cell(markdown))
   quicklook['cells'].append(make_image_cell('plots/AutomaticGate-FSC-A-vs-SSC-A.png'))
 
-# Channel calibration/autofluorescence  
+# Channel calibration  
+  quicklook['cells'].append(nbf.v4.new_markdown_cell('# Calibration beads'))
   for channel in channelparams:
   	label = channel['label']
-  	quicklook['cells'].append(nbf.v4.new_markdown_cell('# {}'.format(label)))
+  	quicklook['cells'].append(nbf.v4.new_markdown_cell('## {}'.format(label)))
   	quicklook['cells'].append(make_image_cell('plots/bead-calibration-{}.png'.format(label)))
+
+# Channel autofluorescence  
+  quicklook['cells'].append(nbf.v4.new_markdown_cell('# Autofluorescence'))
+  for channel in channelparams:
+  	label = channel['label']
+  	quicklook['cells'].append(nbf.v4.new_markdown_cell('## {}'.format(label)))
   	quicklook['cells'].append(make_image_cell('plots/autofluorescence-{}.png'.format(label)))
 
 # Compensation matrices
@@ -88,10 +95,28 @@ def main(args):
           shutil.copy2('plots/{}'.format(val_imname), target_dir + '/quicklook_plots')
           comp_matrix[-1].append('quicklook_plots/' + comp_imname)
           val_matrix[-1].append('quicklook_plots/' + val_imname)
+    quicklook['cells'].append(nbf.v4.new_markdown_cell('# Compensation models'))
     quicklook['cells'].append(make_image_matrix_cell(comp_matrix))
+    quicklook['cells'].append(nbf.v4.new_markdown_cell('# Compensated positive controls'))
     quicklook['cells'].append(make_image_matrix_cell(val_matrix))
 # Translation matrix
-    
+    trans_matrix = []
+    chan1_ind = 0;
+    for chan1 in channelparams:
+      for chan2 in channelparams[chan1_ind + 1:]:
+        trans_imname = 'color-translation-{}-to-{}.png'.format(chan1['label'], chan2['label'])
+        trans_imname_r = 'color-translation-{}-to-{}.png'.format(chan2['label'], chan1['label'])
+        if os.path.isfile('plots/' + trans_imname) or os.path.isfile('plots/' + trans_imname_r):
+          trans_matrix.append([])
+        if os.path.isfile('plots/' + trans_imname):
+          shutil.copy2('plots/' + trans_imname, target_dir + '/quicklook_plots')
+          trans_matrix[-1].append('quicklook_plots/' + trans_imname)
+        if os.path.isfile('plots/' + trans_imname):
+          shutil.copy2('plots/' + trans_imname_r, target_dir + '/quicklook_plots')
+          trans_matrix[-1].append('quicklook_plots/' + trans_imname_r)
+      chan1_ind += 1
+    quicklook['cells'].append(nbf.v4.new_markdown_cell('# Translation models'))
+    quicklook['cells'].append(make_image_matrix_cell(trans_matrix))
 
 # Data for each sample  
   for sample in experiment_analysis.results:
@@ -107,12 +132,10 @@ def main(args):
       stds = stds[0]
     except:
       stds = [stds]
-    print means
-    print stds
     channel_names = sample['channel_names']
     if type(channel_names) == io.Cell: channel_names = channel_names.tolist()[0]
     if type(channel_names[0]) == list: channel_names = channel_names[0]
-#     quicklook['cells'].append(make_well_summary_cell(octave, sample['condition'], means, stds, channel_names))
+    quicklook['cells'].append(make_well_summary_cell(octave, sample['condition'], means, stds, channel_names))
   
 # Save report
   with open(target_dir + '/quicklook.ipynb', 'w') as ql_file:
@@ -129,19 +152,6 @@ def make_image_matrix_cell(source_matrix):
     markup += '</tr>\n'
   markup += '</table>'
   return nbf.v4.new_markdown_cell(markup)
-#   cell_code = \
-#   '''
-# source_matrix = {}
-# import matplotlib.pyplot as plt
-# n_rows = len(source_matrix)
-# n_cols = len(source_matrix[0])
-# f, axarr = plt.subplots(n_cols, n_rows)
-# for ri in range(n_rows):
-#   for ci in range(n_cols):
-#     img = plt.imread(source_matrix[ri][ci])
-#     axarr[ci, ri].imshow(img)
-#   '''.format(repr(source_matrix))
-#   return nbf.v4.new_code_cell(cell_code)
 
 def make_well_summary_cell(octave, condition, means, stds, channels):
   markdown = '#### Condition: ' + condition;
