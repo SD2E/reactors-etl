@@ -48,6 +48,7 @@ RUN apt-get install python-scipy -y
 
 
 RUN cd / && git clone https://github.com/TASBE/TASBEFlowAnalytics.git
+RUN cd /TASBEFlowAnalytics && git fetch && git pull origin develop && git checkout develop
 RUN cd /TASBEFlowAnalytics && make install
 RUN cd /TASBEFlowAnalytics/code && octave --eval 'addpath(genpath(pwd)); savepath;'
 RUN octave --eval 'pkg install -forge io'

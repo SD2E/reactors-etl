@@ -31,7 +31,9 @@
 			"title": "sample_run",
 			"plots": true,
 			"plots_folder": "plots",
-			"file": "./output/output.csv"
+			"file": "/data/output/output.csv",
+			"quicklook": true,
+			"quicklook_folder": "/data/quicklook"
 		},
                 "channels": ["EYFP"],
 		"_comment7": "additional parameters controlling data processing and output",
