@@ -35,11 +35,12 @@ class Analysis:
     	u'GFP': '[0.0, 1.0, 0.098]'}
     # From https://www.leica-microsystems.com/science-lab/fluorescent-proteins-introduction-and-photo-spectral-characteristics/
     # and http://lsrtools.1apps.com/wavetorgb
+    
     colorspecs = self.octave.pull('channel_names')
     if type(colorspecs) == oct2py.io.Cell: colorspecs = colorspecs.tolist()
     if type(colorspecs[0]) == list: colorspecs = colorspecs[0]
     colorspecs = '{' + ','.join([colormapper[x] for x in colorspecs]) + '}'
-    self.octave.eval('outputsettings = OutputSettings("Exp", "", "", "plots");')
+    self.octave.eval('outputsettings = OutputSettings("Exp", "", "", "{}");'.format(self.obj.get('output', {}).get('plots_folder', 'plots')))
 #     self.octave.eval('outputsettings.FixedInputAxis = [1e4 1e10];')
     self.octave.eval('plot_batch_histograms(results, sample_results, outputsettings, {}, cm);'.format(colorspecs))
     self.print_bin_counts(self.obj['channels'])
