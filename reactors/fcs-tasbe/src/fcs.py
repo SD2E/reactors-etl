@@ -37,7 +37,7 @@ def main(args):
   octave.addpath('/vagrant/TASBEFlowAnalytics/code')
   cytometer = Cytometer(args.cytometer_configuration,octave) 
   process = ProcessControl(args.process_control,octave)
-  color_model = ColorModel(args.color_model_parameters,octave,process,cytometer)
+  color_model = ColorModel(args.color_model_parameters, args.analysis_parameters, octave,process,cytometer)
   experiment_data = Experiment(args.experimental_data,octave)
   experiment_analysis = Analysis(args.analysis_parameters,octave)
 	

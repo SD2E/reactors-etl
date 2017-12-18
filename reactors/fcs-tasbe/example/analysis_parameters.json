@@ -31,6 +31,7 @@
 			"title": "sample_run",
 			"plots": true,
 			"plots_folder": "plots",
+			"output_folder": "/data/output",
 			"file": "/data/output/output.csv",
 			"quicklook": true,
 			"quicklook_folder": "/data/quicklook"

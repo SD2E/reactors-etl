@@ -2,13 +2,17 @@ import json
 import logging
 
 class ColorModel:
-  def __init__(self,color_model_filename,octave,process_control,cytometer): 
+  def __init__(self,color_model_filename, analysis_param_filename, octave,process_control,cytometer): 
     process_control.set_color_model(self)
     self.octave = octave
     self.process_control = process_control
     self.cytometer = cytometer
     with open(color_model_filename) as f:
       self.obj = json.load(f)['tasbe_color_model_parameters']
+    with open(analysis_param_filename) as f:
+      self.analysis_params = json.load(f)['tasbe_analysis_parameters']
+    self.octave.eval('settings = TASBESettings();')
+    self.octave.eval('settings = setSetting(settings,\'output_folder\',\'{}\');'.format(self.analysis_params.get('output', {}).get('output_folder', 'output')))
 
     self.parse_channels()
 
@@ -36,7 +40,7 @@ class ColorModel:
       k_components = self.obj['tasbe_config']['gating']['k_components']
       k_components = 2
       self.octave.eval('agp = AutogateParameters(); agp.k_components={}; agp.density=0;'.format(k_components))
-      self.octave.eval('gating = GMMGating(\'{}\',agp,\'plots\');'.format(blank))
+      self.octave.eval('gating = GMMGating(\'{}\',agp,\'{}\');'.format(blank, self.analysis_params.get('output', {}).get('plots_folder', 'plots')))
 #       self.gating = self.octave.pull('gating')
       
 
@@ -58,7 +62,6 @@ class ColorModel:
     self.octave.eval('cm = set_translation_channel_min(cm,[2,2,2]);')
     self.octave.eval('cm = set_bead_batch(cm,\'{}\');'.format(bead_info['batch']))
     self.octave.eval('cm = set_ERF_channel_name(cm,\'{}\');'.format(self.obj['ERF_channel_name']))
-    self.octave.eval('settings = TASBESettings();')
     #self.octave.eval('settings = setSetting(settings,\'channel_template_file\',\'{}\');'.format(blank))
     #self.octave.eval('settings = setSetting(settings,\'override_units\',1)')
     #self.octave.eval('settings = setSetting(settings,\'override_autofluorescence\', 0)')
