@@ -1,0 +1,19 @@
+---
+inputs:
+parameters:
+outputs:
+app:
+    name: "pyquant"
+    version: "0.1.0"
+    label: "PyQuant!"
+    short_description: "Processing mass spec files"
+    deployment_path: "sd2eadm/apps/lcms-pyquant-0.1.0"
+runtime:
+  container:
+    docker_reg: "index.docker.io"
+    docker_org: "chrismit7"
+    docker_image: "pyquant"
+    image_tag: ""
+  execution_host:
+    system_id: "hpc-tacc-maverick"
+    parallelism: "serial"
