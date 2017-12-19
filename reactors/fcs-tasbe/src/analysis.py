@@ -2,12 +2,15 @@ import json
 from pprint import pprint
 import math
 import oct2py
+from wavelength_to_rgb import wavelength_to_rgb
 
 class Analysis:
-  def __init__(self,analysis_filename,octave):
+  def __init__(self,analysis_filename, cytometer_filename, octave):
     self.octave = octave
     with open(analysis_filename) as f:
       self.obj = json.load(f)['tasbe_analysis_parameters']
+    with open(cytometer_filename) as f:
+      self.cytometer_config = json.load(f)['tasbe_cytometer_configuration']
 
   def analyze(self):
     self.octave.eval('bins = BinSequence(0,0.1,10,\'log_bins\');');
@@ -29,17 +32,13 @@ class Analysis:
       r['condition'] = self.octave.eval('file_pairs{{{},1 }};'.format(i))
       self.results.append(r)
     
-    colormapper = {u'EYFP': '[0.239, 1.0, 0.0]', \
-    	u'mKate': '[1.0, 0.153, 0.0]', \
-    	u'EBFP2': '[0.0, 0.157, 1.0]', \
-    	u'GFP': '[0.0, 1.0, 0.098]'}
-    # From https://www.leica-microsystems.com/science-lab/fluorescent-proteins-introduction-and-photo-spectral-characteristics/
-    # and http://lsrtools.1apps.com/wavetorgb
-    
-    colorspecs = self.octave.pull('channel_names')
-    if type(colorspecs) == oct2py.io.Cell: colorspecs = colorspecs.tolist()
-    if type(colorspecs[0]) == list: colorspecs = colorspecs[0]
-    colorspecs = '{' + ','.join([colormapper[x] for x in colorspecs]) + '}'
+    longnames = self.octave.pull('channel_long_names')
+    if type(longnames) == oct2py.io.Cell: longnames = longnames.tolist()
+    if type(longnames[0]) == list: longnames = longnames[0]
+    colorspecs = []
+    for longname in longnames:
+    		colorspecs.append(wavelength_to_rgb([x['emission_filter']['center'] for x in self.cytometer_config['channels'] if x['name'] == longname][0]))
+    colorspecs = '{' + ','.join(colorspecs) + '}'
     self.octave.eval('outputsettings = OutputSettings("Exp", "", "", "{}");'.format(self.obj.get('output', {}).get('plots_folder', 'plots')))
 #     self.octave.eval('outputsettings.FixedInputAxis = [1e4 1e10];')
     self.octave.eval('plot_batch_histograms(results, sample_results, outputsettings, {}, cm);'.format(colorspecs))

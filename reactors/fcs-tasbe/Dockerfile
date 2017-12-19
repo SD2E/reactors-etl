@@ -47,8 +47,8 @@ RUN apt-get install python-numpy -y
 RUN apt-get install python-scipy -y
 
 
-RUN cd / && git clone https://github.com/TASBE/TASBEFlowAnalytics.git
-RUN cd /TASBEFlowAnalytics && git fetch && git pull origin develop && git checkout develop
+RUN cd / && git clone https://github.com/jedsinger/TASBEFlowAnalytics.git
+RUN cd /TASBEFlowAnalytics && git fetch && git pull origin jed_with_point_clouds && git checkout jed_with_point_clouds
 RUN cd /TASBEFlowAnalytics && make install
 RUN cd /TASBEFlowAnalytics/code && octave --eval 'addpath(genpath(pwd)); savepath;'
 RUN octave --eval 'pkg install -forge io'

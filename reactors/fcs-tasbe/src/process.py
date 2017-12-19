@@ -48,6 +48,7 @@ class ProcessControl:
           self.octave.eval('channels{{{0}}} = setPrintName(channels{{{0}}},\'{1}\')'.format(j,self.color_model.channel_parameters[color]['label']))
           self.octave.eval('side_channels{'+str(i)+'} = channels{'+str(j)+'};')
           self.octave.eval('channel_names{'+str(i)+'} = getPrintName(channels{'+str(j)+'})')
+          self.octave.eval('channel_long_names{'+str(i)+'} = getName(channels{'+str(j)+'})')
           i+=1
 
   # Can't be run until channels is built, by get_color_files
