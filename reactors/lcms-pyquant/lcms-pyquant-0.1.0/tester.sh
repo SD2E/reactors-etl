@@ -8,7 +8,7 @@ CONTAINER_IMAGE="index.docker.io/chrismit7/pyquant"
 # This code is evolving and will eventually become a service on the host
 . _util/container_exec.sh
 
-#COMMAND='pyQuant'
+COMMAND='pyQuant'
 
 PARAMS='--search-file localtest/exp3978-2-ds1266896.msf'
 
