@@ -1,8 +1,8 @@
-CONTAINER_IMAGE="index.docker.io/sd2e/hello-container:0.1.0"
+CONTAINER_IMAGE="index.docker.io/chrismit7/pyquant"
 
 . _util/container_exec.sh
 
-COMMAND='bash'
-PARAMS='/opt/scripts/hello.sh WORLD'
+COMMAND='pyQuant'
+PARAMS='--search-file ${search_file}'
 
 container_exec ${CONTAINER_IMAGE} ${COMMAND} ${PARAMS}
