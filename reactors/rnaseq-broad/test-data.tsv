@@ -1,0 +1,5 @@
+agave://data-sd2e-community/sample/rnaseq-broad/test/4342744_rrna_free_reads_unmerged_R1.40k.fastq	4342744_rrna_free_reads_unmerged_R1.fastq
+agave://data-sd2e-community/sample/rnaseq-broad/test/4342744_rrna_free_reads_unmerged_R2.40k.fastq	4342744_R2_001_rna_free_reads.fastq
+agave://data-sd2e-community/shared-q0-hackathon/yeast-gates/W303_gff_references/yeastgate_references/circuit1.fa	circuit1.fasta
+agave://data-sd2e-community/shared-q0-hackathon/yeast-gates/W303_gff_references/yeastgate_references/circuit1.gff	circuit1.gff
+agave://data-sd2e-community/shared-q0-hackathon/yeast-gates/W303_gff_references/yeastgate_references/circuit1.bed	circuit1.bed

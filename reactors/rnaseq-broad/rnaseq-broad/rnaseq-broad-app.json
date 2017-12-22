@@ -1,0 +1,126 @@
+{
+    "available":true,
+    "checkpointable": false,
+    "defaultMemoryPerNode": 50,
+    "defaultProcessorsPerNode": 20,
+    "defaultMaxRunTime": "03:00:00",
+    "defaultNodeCount": 1,
+    "defaultQueue": "normal",
+    "modules": [
+      "load tacc-singularity"
+    ],
+    "deploymentPath": "acristo/apps/rnaseq-broad/",
+    "deploymentSystem": "data-sd2e-projects-users",
+    "executionSystem": "hpc-tacc-maverick-acristo",
+    "executionType": "HPC",
+    "helpURI":"https://sd2e.org/develop/",
+    "label": "RNASeq-broad",
+    "longDescription": "A tool for mapping, counting, and profiling RNAseq data",
+    "name": "rnaseq-broad",
+    "parallelism": "SERIAL",
+    "shortDescription": "RNA-Seq Broad mapping pipeline",
+    "ontology": [
+      "http://edamontology.org/topic_0091"
+    ],
+    "tags": [
+            "RNA-Seq",
+            "Mapping",
+            "rnaseq-broad",
+            "docker://index.docker.io/sd2e/rnaseq-broad:0.1.1"
+    ],
+    "templatePath": "runner-template.sh",
+    "testPath": "tester.sh",
+    "version": "0.1.1",
+    "inputs":[{
+        "id":"read1",
+        "value":
+            {"default":"read1.rna_free_reads.fastq",
+             "required":true,
+             "validator":"rna_free_reads",
+             "visible":true},
+        "semantics":
+            {"ontology":["https://en.wikipedia.org/wiki/FASTQ_format"],
+             "minCardinality":1,
+             "fileTypes":["proc-0"]},
+        "details":
+            {"description":"",
+             "label":"The first read for mapping",
+             "argument":null,
+             "showArgument": false}},
+    {   "id":"read2",
+        "value":
+            {"default":"DEFAULT.rna_free_reads",
+             "order":0,
+             "required":false,
+             "validator":"rna_free_reads",
+             "visible":true},
+        "semantics":
+            {"ontology":["https://en.wikipedia.org/wiki/FASTQ_format"],
+             "minCardinality":1,
+             "fileTypes":["proc-0"]},
+        "details":
+            {"description":"",
+             "label":"The second read for mapping",
+             "argument":null,
+             "showArgument":false}},
+    {   "id":"fasta",
+        "value":
+           {"default":"circuit1.fa",
+            "order":0,
+            "required":true,
+            "validator":".fa$|.fasta$",
+            "visible":true},
+        "semantics":
+           {"ontology":["https://zhanglab.ccmb.med.umich.edu/FASTA/"],
+            "minCardinality":1,
+            "fileTypes":["metadata"]},
+        "details":
+           {"description":"File containing reference sequences",
+            "label":"Genetic references",
+            "argument":null,
+            "showArgument":false}},
+    {   "id":"gff",
+        "value":
+           {"default":"circuit1.gff",
+            "order":0,
+            "required":true,
+            "validator":".gff$",
+            "visible":true},
+        "semantics":
+           {"ontology":["https://www.ensembl.org/info/website/upload/gff.html"],
+            "minCardinality":1,
+            "fileTypes":["metadata"]},
+        "details":
+           {"description":"File containing gene coordinates",
+            "label":"Genetic references",
+            "argument":null,
+            "showArgument":false}},
+    {   "id":"bed",
+        "value":
+           {"default":"circuit1.bed",
+            "order":0,
+            "required":true,
+            "validator":".bed$",
+            "visible":true},
+        "semantics":
+           {"ontology":["https://genome.ucsc.edu/FAQ/FAQformat.html#format1"],
+            "minCardinality":1,
+            "fileTypes":["metadata"]},
+        "details":
+           {"description":"File containing count of mapped reads",
+            "label":"Count of Mapped Reads",
+            "argument":null,
+            "showArgument":false}}
+   ],
+    "parameters":[
+    {
+        "id": "stranded",
+        "value":
+           {"default": "reverse",
+            "required": false,
+            "type": "string",
+            "visible": true
+           }
+    }
+   ]
+}
