@@ -16,7 +16,7 @@
    "id": "search_file",
    "value": {
     "default": "",
-    "required": true,
+    "required": false,
     "visible": true
    },
    "details": {
