@@ -1,4 +1,4 @@
-FROM index.docker.io/chrismit7/pyquant
+FROM index.docker.io/chrismit7/pyquant:v0.2.2
 
 LABEL origin="index.docker.io/chrismit7/pyquant:v0.2.2"
 LABEL description="Root directories added to support Singularity @ TACC"
