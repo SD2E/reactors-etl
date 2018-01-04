@@ -1,0 +1,45 @@
+{
+	"_comment1": "Information linking experiment mass-spec files to the appropriate cytometer channels, to be supplied by TA1/TA2",
+	"tasbe_analysis_parameters": {
+		"_comment1": "the rdf:about field is a URI that persistently identifies this analysis configuration",
+		"rdf:about": "http://bbn.com/TASBE/Examples/WeissLab/ND/2012-03-12/Run1/Analysis1",
+
+		"_comment2": "Compatible PyQuant interface version, following Semantic Versioning (semver.org).  Note that underspecifying version allows use of backward compatible upgrades.",
+		"tasbe_version": "https://github.com/SD2E/reactors-etl/releases/tag/2",
+
+		"_comment3": "identifier linking to the color model for interpreting units.  Should typically be derived from the same process_control_data as is referenced in the experimental_data",
+		"color_model": "http://bbn.com/TASBE/Examples/WeissLab/ND/2012-03-12/Run1/Colormodel",
+
+		"_comment4": "identifier linking to the data collection to analyze",
+		"experimental_data": "http://mit.edu/Examples/WeissLab/ND/2012-03-12/Run1/ExperimentalData",
+
+		"_comment5": "each replicate group collects a set of samples from the experimental collection under a label",
+		"replicate_groups": [{
+				"label": "Dox 0.2",
+				"samples": ["http://mit.edu/Examples/WeissLab/ND/2012-03-12/Run1/ExperimentalData/Dox0.2R1", 
+					"http://mit.edu/Examples/WeissLab/ND/2012-03-12/Run1/ExperimentalData/Dox0.2R2"
+				]
+			},
+			{
+				"label": "Dox 0.5",
+				"samples": ["http://mit.edu/Examples/WeissLab/ND/2012-03-12/Run1/ExperimentalData/Dox0.5R1"]
+			}
+		],
+
+		"_comment6": "additional configuration parameters",
+		"output": {
+			"title": "sample_run",
+			"type": "geo_mean_std",
+			"plots": true,
+			"plots_folder": "plots",
+			"file": "s3://data/output/output.csv"
+		},
+
+		"_comment7": "additional parameters controlling data processing and output",
+		"min_valid_count": 100,
+		"pem_drop_threshold": 5,
+		"bin_min": 0,
+		"bin_max": 6,
+		"bin_width": 0.1
+	}
+}

@@ -1,0 +1,12 @@
+{
+  "name": "pyquant-job-test",
+  "appId": "lcms-pyquant-0.1.0",
+  "archive": false,
+  "inputs": {
+    "search_file": "agave://data-tacc-work-meslami/exp1720-03-ds259268.msf",
+    "scan_file": "agave://data-tacc-work-meslami/exp1720-03-ds259268.mzML"
+  },
+  "parameters": {
+    "output": "output-exp1720.tsv"
+  }
+}

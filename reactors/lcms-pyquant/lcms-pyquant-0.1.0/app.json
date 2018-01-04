@@ -1,0 +1,60 @@
+{
+    "name": "lcms-pyquant",
+    "version": "0.1.0",
+    "executionSystem": "hpc-tacc-maverick-meslami",
+    "executionType": "HPC",
+    "parallelism": "SERIAL",
+    "deploymentPath": "meslami/apps/lcms-pyquant-0.1.0",
+    "deploymentSystem": "data-sd2e-projects-users",
+    "label": "Pyquant running!",
+    "tags": ["pyquant", "docker://index.docker.io/sd2e/lcms-pyquant-0.1.0:latest"],
+    "modules": ["load tacc-singularity/2.3.1"],
+    "shortDescription": "Processing of mass spec files",
+    "templatePath": "runner-template.sh",
+    "testPath": "tester.sh",
+    "inputs": [{
+   "id": "search_file",
+   "value": {
+    "default": "",
+    "required": false,
+    "visible": true
+   },
+   "details": {
+    "description": "MSF search file exported from Proteome Discoverer",
+    "showArgument": false
+   }
+  },{
+   "id": "scan_file",
+   "value": {
+    "default": "",
+    "required": true,
+    "visible": true
+   },
+   "details": {
+    "description": "mzml scan file",
+    "showArgument": false
+   }
+  }],
+    "parameters": [ {
+   "id": "output",
+   "value": {
+    "order": 1,
+    "required": true,
+    "type": "string",
+    "validator": "",
+    "visible": true,
+    "default": "output"
+   },
+   "semantics": {
+    "ontology": [
+     "xs:string"
+    ]
+   },
+   "details": {
+    "description": "Output directory name",
+    "showArgument": true,
+    "argument": "-o "
+   }
+  }],
+    "outputs": []
+}
