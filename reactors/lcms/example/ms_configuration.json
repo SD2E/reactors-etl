@@ -1,0 +1,62 @@
+{
+	"_comment1" : "Persistent information about a flow cytometer, to be supplied by TA3",
+	"tasbe_cytometer_configuration": {
+		"_comment1": "the rdf:about field is a URI that persistently identifies this instrument and optical configuration",
+		"rdf:about": "http://mit.edu/WeissLab/Cytometer1/Config2011-Jan-01",
+
+		"_comment2": "Compatible TASBE interface version, following Semantic Versioning (semver.org).  Note that underspecifying version allows use of backward compatible upgrades.",
+		"tasbe_version": "https://github.com/SD2E/reactors-etl/releases/tag/2",
+
+		"_comment3": "the channels list all of the parameters of interest in an FCS file from the instrument",
+		"channels": [{
+				"_comment1": "name must exactly match the channel name in the FCS files",
+				"name": "FITC-A",
+				"_comment2": "excitation is the channel laser; these examples show the recommended values",
+				"excitation_wavelength": 488,
+				"_comment3": "emission_filter is the channel optical filter; these examples show the recommended values",
+				"emission_filter": {
+					"type": "bandpass",
+					"center": 530,
+					"width": 30
+				},
+				"_comment4": "emission_filter can also be of type 'longpass', which has cutoff instead of center and width"
+			},
+			{
+				"name": "PE-Tx-Red-YG-A",
+				"excitation_wavelength": 561,
+				"emission_filter": {
+					"type": "bandpass",
+					"center": 610,
+					"width": 20
+				}
+			},
+			{
+				"name": "Pacific Blue-A",
+				"excitation_wavelength": 405,
+				"emission_filter": {
+					"type": "bandpass",
+					"center": 450,
+					"width": 50
+				}
+			},
+			{
+				"name": "FSC-A",
+				"excitation_wavelength": 488,
+				"emission_filter": {
+					"type": "bandpass",
+					"center": 488,
+					"width": 10
+				}
+			},
+			{
+				"name": "SSC-A",
+				"excitation_wavelength": 488,
+				"emission_filter": {
+					"type": "bandpass",
+					"center": 488,
+					"width": 10
+				}
+			}
+		]
+	}
+}

@@ -1,0 +1,70 @@
+{
+	"_comment1": "Parameters controlling conversion of process controls into an ERF color model, plus debugging/graphical outputs, to be supplied by TA1/TA2",
+	"tasbe_color_model_parameters": {
+		"_comment1": "the rdf:about field is a URI that persistently identifies this run configuration",
+		"rdf:about": "http://bbn.com/TASBE/Examples/WeissLab/ND/2012-03-12/Run1/Colormodel",
+
+		"_comment2": "Compatible TASBE interface version, following Semantic Versioning (semver.org).  Note that underspecifying version allows use of backward compatible upgrades.",
+		"tasbe_version": "https://github.com/SD2E/reactors-etl/releases/tag/2",
+
+		"_comment3": "identifier linking to the process control data set to be run",
+		"process_control_data": "http://mit.edu/WeissLab/ND/2012-03-12/Run1/Controls",
+
+		"_comment4": "For each channel, the species and how to process and display it",
+		"channel_parameters": [{
+				"_comment1": "name must match a channel from the cytometer configuration",
+				"name": "FITC-A",
+				"_comment2": "a persistent URI linking to the actual species being quantified",
+				"species": "https://www.ncbi.nlm.nih.gov/protein/AMZ00011.1",
+				"_comment3": "Nickname for the species for charts",
+				"label": "EYFP",
+				"_comment4": "cutoff for analysis",
+				"min": 2,
+				"_comment5": "primary color for lines on certain plots",
+				"chart_color": "y"
+			},
+
+			{
+				"name": "PE-Tx-Red-YG-A",
+				"species": "https://www.ncbi.nlm.nih.gov/protein/3BXC_H",
+				"label": "mKate",
+				"min": 2,
+				"chart_color": "r"
+			},
+			{
+				"name": "Pacific Blue-A",
+				"species": "https://www.ncbi.nlm.nih.gov/protein/AMZ00018.1",
+				"label": "EBFP2",
+				"min": 2,
+				"chart_color": "b"
+			}
+		],
+
+		"_comment5": "Other processing parameters, to be exposed",
+		"tasbe_config": {
+			"gating": {
+				"type": "auto",
+				"k_components" : 1
+			},
+			"autofluorescence": {
+				"type": "placeholder"
+			},
+			"compensation": {
+				"type": "placeholder"
+			},
+			"beads": {
+				"type": "placeholder"
+			}
+		},
+
+		"_comment6": "Cutoff for bead peak detection",
+		"bead_min": 2,
+
+		"_comment7": "Which channel is being used for unit calibration",
+		"ERF_channel_name": "FITC-A",
+
+		"_comment8": "additional parameters controlling data processing and output",
+		"translation_plot": false,
+		"noise_plot": false
+	}
+}
