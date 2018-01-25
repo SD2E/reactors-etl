@@ -50,7 +50,14 @@ environment.
 When run, all cores available to the VM will be used for the processing.
 The applicaition will autodetect the number of cores.
 
-Examples of the job script can be found in the rnaseq-0.1.1 directory
+The outputs from the two steps of this proces (trimmomatic and sortmerna) are
+R1 and R2 files for each input pair plus errors and log files
+* <name>_paired.fastq.gz: for each paired end, from trimmomatic
+* <name>_rna_free_reads.fastq: for each paired end, from sortmeRNA
+* <job_name>-<job_id>.err: trimmomatic: reports # and % paired reads, # and % dropped
+* <job_name>-<job_id>.log: the log file for the overall job
+
+Examples of the job script can be found in the rnaseq-0.1.2 directory
 *rnaseq-job.json.
 
 Once completed, additional post processing steps are carried out 
