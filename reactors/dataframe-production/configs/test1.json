@@ -1,0 +1,20 @@
+{
+    "data": {
+        "label": "data_Description",
+        "files":[
+        {            
+            "filename":["/Users/meslami/Desktop/DARPA/SD2/rnaseq_testdata/quant/4311022_S55_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["4311022_S55_sailfish.out"]
+        },
+        {            
+            "filename":["/Users/meslami/Desktop/DARPA/SD2/rnaseq_testdata/quant/4311023_S56_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["4311023_S56_sailfish.out"]          
+        }
+        ],
+        "entity_labels":["Name"],
+        "entities":[],
+        "aggregate_col":"Name"
+    }
+}

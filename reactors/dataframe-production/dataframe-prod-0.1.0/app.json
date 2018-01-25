@@ -1,0 +1,38 @@
+{
+    "name": "dataframe-prod",
+    "version": "0.1.0",
+    "executionSystem": "hpc-tacc-maverick-meslami",
+    "executionType": "HPC",
+    "parallelism": "SERIAL",
+    "deploymentPath": "meslami/apps/dataframe-prod-0.1.0",
+    "deploymentSystem": "data-sd2e-projects-users",
+    "label": "Dataframe construction",
+    "tags": ["pyquant", "docker://index.docker.io/sd2e/dataframe-prod-0.1.0:latest"],
+    "modules": ["load tacc-singularity/2.3.1"],
+    "shortDescription": "Creation of dataframe across multiple files",
+    "templatePath": "runner-template.sh",
+    "testPath": "tester.sh",
+    "inputs": [],
+    "parameters": [{
+   "id": "output",
+   "value": {
+    "order": 1,
+    "required": true,
+    "type": "string",
+    "validator": "",
+    "visible": true,
+    "default": "output"
+   },
+   "semantics": {
+    "ontology": [
+     "xs:string"
+    ]
+   },
+   "details": {
+    "description": "Output directory name",
+    "showArgument": true,
+    "argument": "-o "
+   }
+  }],
+    "outputs": []
+}
