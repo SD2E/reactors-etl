@@ -9,7 +9,7 @@ RUN apt-get update && \
     apt-get clean
 
 RUN pip install --upgrade pip
-RUN pip install pandas, json, argparse
+RUN pip install pandas
 
 
 WORKDIR /root

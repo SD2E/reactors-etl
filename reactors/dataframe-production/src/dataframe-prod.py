@@ -4,7 +4,8 @@ import json
 
 parser = argparse.ArgumentParser() 
 parser.add_argument('--config',help='Configuration file for for subselection of entries')
-parser.add_argument('--o',help = 'Output to be written')
+parser.add_argument('-o',help = 'Output to be written')
+parser.add_argument('--help',help = 'This program creates a single dataframe from data spread across multiple files.')
 
 #Return a mapping between samples and dataframe columns
 def build_col_mapping(samples,df_cols):

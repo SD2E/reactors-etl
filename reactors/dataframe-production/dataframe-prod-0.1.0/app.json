@@ -7,12 +7,22 @@
     "deploymentPath": "meslami/apps/dataframe-prod-0.1.0",
     "deploymentSystem": "data-sd2e-projects-users",
     "label": "Dataframe construction",
-    "tags": ["pyquant", "docker://index.docker.io/sd2e/dataframe-prod-0.1.0:latest"],
     "modules": ["load tacc-singularity/2.3.1"],
     "shortDescription": "Creation of dataframe across multiple files",
     "templatePath": "runner-template.sh",
     "testPath": "tester.sh",
-    "inputs": [],
+    "inputs": [{
+	    "id":"config_json",
+	   "value": {
+	    "default": "",
+	    "required": true,
+	    "visible": true
+	   },
+	   "details": {
+	    "description": "Input json that contains the list of files to fetch. TODO: NEED TO FIX THE AGAVE READING OF MULTIPLE FILES!!",
+	    "showArgument": false
+	   }
+	}],
     "parameters": [{
    "id": "output",
    "value": {
