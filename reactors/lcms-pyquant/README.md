@@ -9,6 +9,8 @@ The core library that is being used is called pyquant and more detailed document
 
 ![Alt Image Text](./ETLProteomics.bmp "lcms-pyquant Processing Pipeline")
 
+Note: Currently the Proteowizard and ProteomeDiscover are not done on TACC -- Ginkgo has been providing those runs for us. ProteomeDiscoverer may be replaced with X!Tandem in the near future.
+
 ## Running the Container
 To run the container, you will need msf and its associated mzml file to be in the same directory. Go to the lcms-pyquant-job.json file and you will see an example that looks like this:
 
