@@ -4,6 +4,9 @@
 
 FROM sd2e/base:ubuntu16
 
+ENV CONFIG_FILENAME=config.json
+ENV OUTPUT_FILENAME=output.csv
+
 RUN apt-get update && \
     apt-get install python python-pip -y && \
     apt-get clean
@@ -18,4 +21,6 @@ RUN mkdir -p /opt/scripts
 
 ADD src /opt/scripts
 
-CMD python /opt/scripts/dataframe-prod.py --help
+VOLUME ["/files"]
+
+CMD python /opt/scripts/dataframe-prod.py --config /files/$CONFIG_FILENAME -o /files/$OUTPUT_FILENAME
