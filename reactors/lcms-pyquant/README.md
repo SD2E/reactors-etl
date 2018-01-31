@@ -66,6 +66,7 @@ Things that have yet to be added are:
 The most important parameters to be aware of in the mzml file are:
 * spectrumList = this variable will tell you total how many spectra are measured. You will have that many <spectrum index=”..” > entries each of which will have a <scanList> which tells you how many scans are in the spectrum that is being described. Most stuff we will be working with will have a <scanList count=”1”> which means there is only one scan in the spectrum that is there. Note, each ion that flies off the sample generates its own spectrum. 
 The spectrum has a another set of parameters as well such as:
+
 * Mslevel
 * Positive scan
 * Base peak m/z → the m/z that has the highest intensity
