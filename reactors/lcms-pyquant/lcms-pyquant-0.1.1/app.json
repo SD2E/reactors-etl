@@ -71,7 +71,7 @@
    },
    "details": {
     "description": "Type of labeling scheme used",
-    "showArgument": true,
+    "showArgument": false,
     "argument": "--label-method "
    }
   },{
