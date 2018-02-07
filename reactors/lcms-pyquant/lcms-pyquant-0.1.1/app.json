@@ -11,7 +11,7 @@
     "modules": ["load tacc-singularity/2.3.1"],
     "shortDescription": "Processing of mass spec files",
     "templatePath": "runner-template.sh",
-    "testPath": "tester.sh",
+    "testPath":"tester.sh",
     "inputs": [{
    "id": "search_file",
    "value": {
@@ -34,19 +34,7 @@
     "description": "mzml scan file",
     "showArgument": false
    }
-   },
-   {
-   "id": "msn_peaklist",
-   "value": {
-    "default": "",
-    "required": false,
-    "visible": true
-   },
-   "details": {
-    "description": "peaks of interest for metabolomcis",
-    "showArgument": false
-   } 
-  }],"parameters": [{
+   }],"parameters": [{
    "id": "output",
    "value": {
     "order": 1,
@@ -91,7 +79,7 @@
    "value": {
     "order": 1,
     "required": false,
-    "type": "boolean",
+    "type": "bool",
     "validator": "",
     "visible": true,
     "default": true
@@ -111,7 +99,7 @@
    "value": {
     "order": 1,
     "required": false,
-    "type": "boolean",
+    "type": "bool",
     "validator": "",
     "visible": true,
     "default": true

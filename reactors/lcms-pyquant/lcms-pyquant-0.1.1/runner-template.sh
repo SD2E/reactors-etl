@@ -5,39 +5,34 @@ CONTAINER_IMAGE="sd2e/lcms-pyquant-0.1.1:latest"
 COMMAND='pyQuant'
 
 PARAMS=''
-if [ -z "${search_file}" ]
+if [ -n "${search_file}" ]
 then
     PARAMS='${PARAMS} --search-file ${search_file}'
 fi
 
-if [ -z "${scan_file_dir}" ]
+if [ -n "${scan_file_dir}" ]
 then
     PARAMS='${PARAMS} --scan-file-dir ${scan_file_dir}'
 fi
 
-if [ -z "${scan_file}" ]
+if [ -n "${scan_file}" ]
 then
     PARAMS='${PARAMS} --scan-file ${scan_file}'
 fi
 
-if [ -z "${label_method}" ]
+if [ -n "${label_method}" ]
 then
     PARAMS='${PARAMS} --label-method ${label_method}'
 fi
 
-if [ -z "${isobaric_tags}" ]
+if [ -n "${isobaric_tags}" ]
 then
     PARAMS='${PARAMS} --isobaric-tags'
 fi
 
-if [ -z "${html_output}" ]
+if [ -n "${html_output}" ]
 then
     PARAMS='${PARAMS} --html'
-fi
-
-if [ -z "${msn_peaklist}" ]
-then
-    PARAMS='${PARAMS} --msn-peaklist ${msn_peaklist}'
 fi
 
 echo ${PARAMS}
