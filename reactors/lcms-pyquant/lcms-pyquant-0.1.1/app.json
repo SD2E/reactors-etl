@@ -42,7 +42,7 @@
     "type": "string",
     "validator": "",
     "visible": true,
-    "default": "output"
+    "default": "output.tsv"
    },
    "semantics": {
     "ontology": [
@@ -51,7 +51,7 @@
    },
    "details": {
     "description": "Output directory name",
-    "showArgument": true,
+    "showArgument": false,
     "argument": "-o "
    }
   },{

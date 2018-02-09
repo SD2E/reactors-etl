@@ -37,6 +37,8 @@ then
     PARAMS=${PARAMS}' --html'
 fi
 
+PARAMS=${PARAMS}' -o '${output}
+
 echo ${PARAMS}
 
 container_exec ${CONTAINER_IMAGE} ${COMMAND} ${PARAMS}
