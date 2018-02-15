@@ -67,7 +67,7 @@ def mapped_reads_matrix_filename(settings):
 
 
 def gene_length_filename(settings, sample):
-    return settings[sample]['output_path'] + sample + '.gene.lengths.txt'
+    return settings[sample]['output_path'] + sample + '.feature.lengths.txt'
 
 
 def profile_filename(settings, sample):
@@ -434,25 +434,21 @@ def count_matrix(settings):
                       settings['None']['output_path'] + 'read_count.matrix')
 
 
-def gene_lengths(settings, sample, features='gene', attribute='Name'):
+def gene_lengths(settings, sample):
     """ Calculate the gene lengths from set of GTF references
     """
     len_file = gene_length_filename(settings, sample)
     f_out = open(len_file, 'w')
     f_out.write('gene_name\tlength\n')
-    seen = []
     data_reader = csv.reader(open(settings[sample]['gff_file'], 'rU'), delimiter='\t')
     for row in data_reader:
-        for feature in features:
-            if len(row) == 9 and row[2] == feature:
-                attribs = row[8].split(';')
-                for el in attribs:
-                    key = el.split('=')[0]
-                    value = el.split('=')[1]
-                    if key == attribute and value not in seen:
-                        gene_length = int(row[4]) - int(row[3]) + 1
-                        f_out.write(value + '\t' + str(gene_length) + '\n')
-                        seen.append(value)
+        if not row[0].startswith('#'):
+            attribs = row[8].split(';')[0]
+            key = attribs.split('=')[0]
+            value = attribs.split('=')[1]
+            if "hypothetical" not in value.lower():
+                gene_length = int(row[4]) - int(row[3]) + 1
+                f_out.write(value + '\t' + str(gene_length) + '\n')
     f_out.close()
     if os.stat(len_file).st_size == 0:
         return 1

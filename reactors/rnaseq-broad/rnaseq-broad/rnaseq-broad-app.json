@@ -26,11 +26,11 @@
             "RNA-Seq",
             "Mapping",
             "rnaseq-broad",
-            "docker://index.docker.io/sd2e/rnaseq-broad:0.1.1"
+            "docker://index.docker.io/sd2e/rnaseq-broad:0.1.2"
     ],
     "templatePath": "runner-template.sh",
     "testPath": "tester.sh",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "inputs":[{
         "id":"read1",
         "value":

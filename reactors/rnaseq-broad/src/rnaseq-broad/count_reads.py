@@ -30,7 +30,7 @@ def main():
     for s in samples:
         features = ga.load_features(settings, s)
         status1 = ga.mapped_reads(settings, s, cores)
-        status2 = ga.gene_lengths(settings, s, features=features)
+        status2 = ga.gene_lengths(settings, s)
         for f in features:
             status3 = ga.count_reads(settings, s, feature=f, attribute=attribute, strand_opt=s_opt)
             if status3 == 0:
