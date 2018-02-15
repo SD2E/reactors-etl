@@ -1,0 +1,12 @@
+{
+  "name": "pyquant-job-test",
+  "appId": "lcms-pyquant-0.1.0",
+  "archive": false,
+  "inputs": {
+    "search_file": "agave://data-sd2e-community/archive/ingest/Q0/sd2.ginkgo.upload/protease/proteomics/exp3978/exp3978-2-ds1266896.msf",
+	"scan_file":"agave://data-sd2e-community/archive/ingest/Q0/sd2.ginkgo.upload/protease/proteomics/exp3978/exp3978-2-ds1266896.mzML"
+  },
+  "parameters": {
+    "output": "output-exp3978.tsv"
+  }
+}

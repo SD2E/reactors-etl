@@ -3,7 +3,7 @@
 ## LCMS .msf Example
 Assumes you have a working, authenticated sd2e client. Abbreviated steps for this below.
 
-TACC's documentation is also quite good if you want to try that out as well: [http://sd2e.org/api-user-guide/](http://sd2e.org/api-user-guide/)
+TACC's documentation is also quite good if you want to try that out as well: [https://sd2e.github.io/api-user-guide/](https://sd2e.github.io/api-user-guide/)
 
 	# Should only need to do all of this this once...
 	curl -L https://raw.githubusercontent.com/sd2e/sd2e-cli/master/install/	install.sh | sh

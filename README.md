@@ -43,6 +43,19 @@ This repository holds source code and test materials for developing various ETL 
     * ubuntu16 (recommended)
     * ubuntu14
 
+## Best practices for developing containerized app bundles
+
+1. Write a clean Dockerfile so there is no question of source code / version provenance. Minimize image size where possible by removing, e.g. source code tarballs and installation directories.
+2. Design a robust, but small and portable test case to package with the app bundle. Make liberal use of error checking in `tester.sh` and `runner_template.sh`.
+3. Use only command line arguments when calling the containerized executable (with the `container_exec` function). If the executable requires a configuration file, use a wrapper script inside the container to parse inputs from the command line and generate the appropriate configuration file.
+4. Explicitly declare all inputs, and explicitly write all outputs. This includes file name and full path.
+5. Package and curate outputs into a user-friendly format. Some use cases may benefit from a tarball of all output files; some use cases may benefit from individual files.
+6. Make output file names deterministic and predictable to facilitate scripting and job chaining.
+7. Document all expected outputs in the `tester.sh` and `runner-template.sh` wrapper scripts. Where appropriate, validate output and provide helpful error messaging.
+8. Share your Docker images and app bundles with the SD2E community to benefit others and elicit feedback.
+
+*Best practices were adapted from the [Computational Genomics Lab][10].*
+
 [1]: http://developer.agaveapi.co/
 [2]: https://cyverse.org/
 [3]: https://www.designsafe-ci.org/
@@ -52,3 +65,4 @@ This repository holds source code and test materials for developing various ETL 
 [7]: https://hub.docker.com/r/sd2e/python2/
 [8]: https://sd2e.github.io/api-user-guide/
 [9]: https://hub.docker.com/r/sd2e/python3/
+[10]: https://toil.readthedocs.io/en/3.12.0/developingWorkflows/developing.html#best-practices-for-dockerizing-toil-workflows

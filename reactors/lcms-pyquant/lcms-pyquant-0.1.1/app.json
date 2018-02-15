@@ -1,0 +1,120 @@
+{
+    "name": "lcms-pyquant",
+    "version": "0.1.1",
+    "executionSystem": "hpc-tacc-maverick-meslami",
+    "executionType": "HPC",
+    "parallelism": "SERIAL",
+    "deploymentPath": "meslami/apps/lcms-pyquant-0.1.1",
+    "deploymentSystem": "data-sd2e-projects-users",
+    "label": "Pyquant running!",
+    "tags": ["pyquant", "docker://index.docker.io/sd2e/lcms-pyquant-0.1.1:latest"],
+    "modules": ["load tacc-singularity/2.3.1"],
+    "shortDescription": "Processing of mass spec files",
+    "templatePath": "runner-template.sh",
+    "testPath":"tester.sh",
+    "inputs": [{
+   "id": "search_file",
+   "value": {
+    "default": "",
+    "required": false,
+    "visible": true
+   },
+   "details": {
+    "description": "MSF search file exported from Proteome Discoverer",
+    "showArgument": false
+   }
+  },{
+   "id": "scan_file",
+   "value": {
+    "default": "",
+    "required": false,
+    "visible": true
+   },
+   "details": {
+    "description": "mzml scan file",
+    "showArgument": false
+   }
+   }],"parameters": [{
+   "id": "output",
+   "value": {
+    "order": 1,
+    "required": true,
+    "type": "string",
+    "validator": "",
+    "visible": true,
+    "default": "output.tsv"
+   },
+   "semantics": {
+    "ontology": [
+     "xs:string"
+    ]
+   },
+   "details": {
+    "description": "Output directory name",
+    "showArgument": false,
+    "argument": "-o "
+   }
+  },{
+   "id": "label_method",
+   "value": {
+    "order": 1,
+    "required": false,
+    "type": "string",
+    "validator": "",
+    "visible": true,
+    "default": "TMT10"
+   },
+   "semantics": {
+    "ontology": [
+     "xs:string"
+    ]
+   },
+   "details": {
+    "description": "Type of labeling scheme used",
+    "showArgument": false,
+    "argument": "--label-method "
+   }
+  },{
+   "id": "isobaric_tags",
+   "value": {
+    "order": 1,
+    "required": false,
+    "type": "bool",
+    "validator": "",
+    "visible": true,
+    "default": true
+   },
+   "semantics": {
+    "ontology": [
+     "xs:string"
+    ]
+   },
+   "details": {
+    "description": "Set some parameters if you are using isobaric tags",
+    "showArgument": true,
+    "argument": "--isobaric-tags "
+   }
+  },{
+   "id": "html_output",
+   "value": {
+    "order": 1,
+    "required": false,
+    "type": "bool",
+    "validator": "",
+    "visible": true,
+    "default": true
+   },
+   "semantics": {
+    "ontology": [
+     "xs:string"
+    ]
+   },
+   "details": {
+    "description": "Output an interactive html",
+    "showArgument": true,
+    "argument": "--html "
+   }
+  }
+  ],
+    "outputs": []
+}
