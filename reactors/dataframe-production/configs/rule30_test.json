@@ -3,12 +3,12 @@
         "label": "data_Description",
         "files":[
         {            
-            "filename":["~/Desktop/DARPA/SD2/TA3/Example_data/rnaseq_testdata/quant/4311022_S55_sailfish.out/quant.sf"],
+            "filename":["./Rule30/4311022_S55SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
             "samples": ["TPM"],
             "new_col_names":["4311022_S55_sailfish.out"]
         },
         {            
-            "filename":["~/Desktop/DARPA/SD2/TA3/Example_data/rnaseq_testdata/quant/4311023_S56_sailfish.out/quant.sf"],
+            "filename":["./Rule30/4311023_S56SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
             "samples": ["TPM"],
             "new_col_names":["4311023_S56_sailfish.out"]          
         }

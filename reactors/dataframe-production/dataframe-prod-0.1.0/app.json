@@ -19,9 +19,21 @@
 	    "visible": true
 	   },
 	   "details": {
-	    "description": "Input json that contains the list of files to fetch. TODO: NEED TO FIX THE AGAVE READING OF MULTIPLE FILES!!",
+	    "description": "Input json that contains the list of files to fetch. The files in the json should be listed relative to the input directory",
 	    "showArgument": false
 	   }
+	   },
+	   {
+	   "id":"input_dir",
+	   "value":{
+	   "default":"",
+	   "required":true,
+	   "visible":true
+	   },
+	   	"details":{
+	   	"description": "Input directory that will contain the files needed",
+	    "showArgument": false
+	   	}
 	}],
     "parameters": [{
    "id": "output",
@@ -40,7 +52,7 @@
    },
    "details": {
     "description": "Output directory name",
-    "showArgument": true,
+    "showArgument": false,
     "argument": "-o "
    }
   }],

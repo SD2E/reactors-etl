@@ -4,9 +4,6 @@
 
 FROM sd2e/base:ubuntu16
 
-ENV CONFIG_FILENAME=config.json
-ENV OUTPUT_FILENAME=output.csv
-
 RUN apt-get update && \
     apt-get install python python-pip -y && \
     apt-get clean
@@ -14,13 +11,19 @@ RUN apt-get update && \
 RUN pip install --upgrade pip
 RUN pip install pandas
 
-
 WORKDIR /root
 
-RUN mkdir -p /opt/scripts
+# Root directories added to support Singularity @ TACC
+LABEL description="Root directories added to support Singularity @ TACC"
+RUN mkdir -p /work && chown root:root /work
+RUN mkdir -p /gpfs && chown root:root /gpfs
+RUN mkdir -p /data && chown root:root /data
 
-ADD src /opt/scripts
+RUN mkdir -p /opt/scripts/
+ADD /src/dataframe-prod.sh /opt/scripts/dataframe-prod.sh
+ADD /src/py /opt/py
 
-VOLUME ["/files"]
+RUN chmod 777 /opt/scripts/dataframe-prod.sh
+RUN chmod 777 /opt/py/*
 
-CMD python /opt/scripts/dataframe-prod.py --config /files/$CONFIG_FILENAME -o /files/$OUTPUT_FILENAME
+CMD python --version
