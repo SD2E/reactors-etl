@@ -94,7 +94,7 @@ python /opt/rnaseq-broad/transcription_profile.py -settings settings.txt -sample
 mkdir $SAMPLE
 cp results/* $SAMPLE/
 cp mapping/*sortedByCoord.out.bam $SAMPLE/
-mv Log.final.out $SAMPLE.star.final.report.out
-mv Log.out $SAMPLE.star.log.out
+mv mapping/*Log.final.out $SAMPLE.star.final.report.out
+mv mapping/*Log.out $SAMPLE.star.log.out
 # Cleanup
 rm -rf $R1 $R2 $FASTA $GFF $BED mapping results *.fastq *.fa *.gff chr*.txt Genome genomeParameters.txt SA SAindex settings.txt

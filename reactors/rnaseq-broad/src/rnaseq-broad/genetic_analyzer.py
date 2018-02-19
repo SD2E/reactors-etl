@@ -326,12 +326,14 @@ def count_reads(settings, sample, feature='gene', attribute='name', strand_opt='
 
 
 def mapped_reads(settings, sample, cores):
-    cmd_total = 'samtools view -@ ' + str(cores) + ' -c -F 4' + \
-                ' ' + bam_filename(settings, sample, extension=True, sorted=True) + \
-                ' > ' + mapped_reads_filename(settings, sample)
-    print("Total mapped reads: " + cmd_total)
-    status = subprocess.call(cmd_total, shell=True)
-    return status
+    mapped_reads_file = settings[sample]['temp_path'] + sample + '.Aligned.sortedByCoord.out.bam'
+    with open(mapped_reads_file) as mrf:
+        data = mrf.readlines()
+    for line in data:
+        if 'Uniquely mapped reads number' in line:
+            with open(mapped_reads_filename(settings, sample), 'w') as outf:
+                outf.write(line.split('|')[1].strip())
+    return 0
 
 
 def load_mapped_reads(settings, sample):
