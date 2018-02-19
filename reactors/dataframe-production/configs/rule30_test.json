@@ -1,0 +1,20 @@
+{
+    "data": {
+        "label": "data_Description",
+        "files":[
+        {            
+            "filename":["./Rule30/4311022_S55SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN4036_not_1"]
+        },
+        {            
+            "filename":["./Rule30/4311023_S56SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN4036_iptg_1"]          
+        }
+        ],
+        "entity_labels":["Name"],
+        "entities":[],
+        "aggregate_col":"Name"
+    }
+}

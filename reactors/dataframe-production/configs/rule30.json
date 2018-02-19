@@ -1,0 +1,370 @@
+{
+    "data": {
+        "label": "data_Description",
+        "files":[
+        {            
+            "filename":["./Rule30/4311022_S55SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN4036_not_1"]
+        },
+        {            
+            "filename":["./Rule30/4311023_S56SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN4036_iptg_1"]          
+        },
+        {            
+            "filename":["./Rule30/4311024_S57SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN4036_atc_1"]          
+        },
+        {            
+            "filename":["./Rule30/4311025_S58SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN4036_atc-iptg_1"]          
+        },
+        {            
+            "filename":["./Rule30/4311026_S59SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN4036_ara_1"]          
+        },
+        {            
+            "filename":["./Rule30/4311027_S60SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN4036_ara-iptg_1"]          
+        },
+        {            
+            "filename":["./Rule30/4311028_S61SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN4036_atc-ara_1"]          
+        },
+        {            
+            "filename":["./Rule30/4311029_S62SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN4036_atc-ara-iptg_1"]          
+        },
+        {            
+            "filename":["./Rule30/4311030_S63SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN4036_not_2"]          
+        },
+        {            
+            "filename":["./Rule30/4311031_S64SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN4036_iptg_2"]          
+        },
+        {            
+            "filename":["./Rule30/4311032_S65SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN4036_atc_2"]          
+        },
+        {            
+            "filename":["./Rule30/4311033_S66SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN4036_atc-iptg_2"]          
+        },
+        {            
+            "filename":["./Rule30/4311034_S67SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN4036_ara_2"]          
+        },
+        {            
+            "filename":["./Rule30/4311035_S68SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN4036_ara-iptg_2"]          
+        },
+        {            
+            "filename":["./Rule30/4311036_S69SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN4036_atc-ara_2"]          
+        },
+        {            
+            "filename":["./Rule30/4311037_S70SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN4036_atc-ara-iptg_2"]          
+        },
+        {            
+            "filename":["./Rule30/4311038_S71SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN4036_not_3"]          
+        },
+        {            
+            "filename":["./Rule30/4311039_S72SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN4036_iptg_3"]          
+        },
+        {            
+            "filename":["./Rule30/4311040_S1SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN4036_atc_3"]          
+        },
+        {            
+            "filename":["./Rule30/4311041_S2SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN4036_atc-iptg_3"]          
+        },
+        {            
+            "filename":["./Rule30/4311042_S3SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN4036_ara_3"]          
+        },
+        {            
+            "filename":["./Rule30/4311043_S4SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN4036_ara-iptg_3"]          
+        },
+        {            
+            "filename":["./Rule30/4311044_S5SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN4036_atc-ara_3"]          
+        },
+        {            
+            "filename":["./Rule30/4311045_S6SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN4036_atc-ara-iptg_3"]          
+        },
+               {
+            "filename":["./Rule30/4311046_S7SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1201_not_1"]
+        },
+        {            
+            "filename":["./Rule30/4311047_S8SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1201_iptg_1"]          
+        },
+        {            
+            "filename":["./Rule30/4311048_S9SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1201_atc_1"]          
+        },
+        {            
+            "filename":["./Rule30/4311049_S10SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1201_atc-iptg_1"]          
+        },
+        {            
+            "filename":["./Rule30/4311050_S11SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1201_ara_1"]          
+        },
+        {            
+            "filename":["./Rule30/4311051_S12SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1201_ara-iptg_1"]          
+        },
+        {            
+            "filename":["./Rule30/4311052_S13SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1201_atc-ara_1"]          
+        },
+        {            
+            "filename":["./Rule30/4311053_S14SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1201_atc-ara-iptg_1"]          
+        },
+        {            
+            "filename":["./Rule30/4311054_S15SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1201_not_2"]          
+        },
+        {            
+            "filename":["./Rule30/4311055_S16SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1201_iptg_2"]          
+        },
+        {            
+            "filename":["./Rule30/4311056_S17SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1201_atc_2"]          
+        },
+        {            
+            "filename":["./Rule30/4311057_S18SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1201_atc-iptg_2"]          
+        },
+        {            
+            "filename":["./Rule30/4311058_S19SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1201_ara_2"]          
+        },
+        {            
+            "filename":["./Rule30/4311059_S20SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1201_ara-iptg_2"]          
+        },
+        {            
+            "filename":["./Rule30/4311060_S21SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1201_atc-ara_2"]          
+        },
+        {            
+            "filename":["./Rule30/4311061_S22SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1201_atc-ara-iptg_2"]          
+        },
+        {            
+            "filename":["./Rule30/4311062_S23SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1201_not_3"]          
+        },
+        {            
+            "filename":["./Rule30/4311063_S24SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1201_iptg_3"]          
+        },
+        {            
+            "filename":["./Rule30/4311064_S25SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1201_atc_3"]          
+        },
+        {            
+            "filename":["./Rule30/4311065_S26SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1201_atc-iptg_3"]          
+        },
+        {            
+            "filename":["./Rule30/4311066_S27SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1201_ara_3"]          
+        },
+        {            
+            "filename":["./Rule30/4311067_S28SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1201_ara-iptg_3"]          
+        },
+        {            
+            "filename":["./Rule30/4311068_S29SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1201_atc-ara_3"]          
+        },
+        {            
+            "filename":["./Rule30/4311069_S30SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1201_atc-ara-iptg_3"]          
+        },
+               {
+            "filename":["./Rule30/4311070_S31SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1717_not_1"]
+        },
+        {            
+            "filename":["./Rule30/4311071_S32SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1717_iptg_1"]          
+        },
+        {            
+            "filename":["./Rule30/4311072_S33SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1717_atc_1"]          
+        },
+        {            
+            "filename":["./Rule30/4311073_S34SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1717_atc-iptg_1"]          
+        },
+        {            
+            "filename":["./Rule30/4311074_S35SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1717_ara_1"]          
+        },
+        {            
+            "filename":["./Rule30/4311075_S36SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1717_ara-iptg_1"]          
+        },
+        {            
+            "filename":["./Rule30/4311076_S37SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1717_atc-ara_1"]          
+        },
+        {            
+            "filename":["./Rule30/4311077_S38SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1717_atc-ara-iptg_1"]          
+        },
+        {            
+            "filename":["./Rule30/4311078_S39SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1717_not_2"]          
+        },
+        {            
+            "filename":["./Rule30/4311079_S40SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1717_iptg_2"]          
+        },
+        {            
+            "filename":["./Rule30/4311080_S41SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1717_atc_2"]          
+        },
+        {            
+            "filename":["./Rule30/4311081_S42SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1717_atc-iptg_2"]          
+        },
+        {            
+            "filename":["./Rule30/4311082_S43SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1717_ara_2"]          
+        },
+        {            
+            "filename":["./Rule30/4311083_S44SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1717_ara-iptg_2"]          
+        },
+        {            
+            "filename":["./Rule30/4311084_S45SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1717_atc-ara_2"]          
+        },
+        {            
+            "filename":["./Rule30/4311085_S46SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1717_atc-ara-iptg_2"]          
+        },
+        {            
+            "filename":["./Rule30/4311086_S47SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1717_not_3"]          
+        },
+        {            
+            "filename":["./Rule30/4311087_S48SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1717_iptg_3"]          
+        },
+        {            
+            "filename":["./Rule30/4311088_S49SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1717_atc_3"]          
+        },
+        {            
+            "filename":["./Rule30/4311089_S50SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1717_atc-iptg_3"]          
+        },
+        {            
+            "filename":["./Rule30/4311090_S51SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1717_ara_3"]          
+        },
+        {            
+            "filename":["./Rule30/4311091_S52SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1717_ara-iptg_3"]          
+        },
+        {            
+            "filename":["./Rule30/4311092_S53SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1717_atc-ara_3"]          
+        },
+        {            
+            "filename":["./Rule30/4311093_S54SD2_Rule_30_transcripts_ref_cds_sailfish.out/quant.sf"],
+            "samples": ["TPM"],
+            "new_col_names":["pAN1717_atc-ara-iptg_3"]          
+        }
+        ],
+        "entity_labels":["Name"],
+        "entities":[],
+        "aggregate_col":"Name"
+    }
+}
