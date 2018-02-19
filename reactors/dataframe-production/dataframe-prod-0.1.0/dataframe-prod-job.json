@@ -4,7 +4,7 @@
   "archive": false,
   "inputs": {
     "input_dir": "agave://data-tacc-work-meslami/rnaseq_files/Rule30",
-    "config_json": "agave://data-tacc-work-meslami/rnaseq_files/configs/rule30_test.json"
+    "config_json": "agave://data-tacc-work-meslami/rnaseq_files/configs/rule30.json"
   },
   "parameters": {
     "output": "transcription_profile.csv"
