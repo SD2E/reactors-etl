@@ -26,8 +26,8 @@ function run_tests() {
 
 function check_counts() {
 
-	local PROFILEIDS=$(grep -c pMOD ./4342744.circuit1/4342744.circuit1.syn.counts.txt)
-	if [ $PROFILEIDS == 5 ]
+	local PROFILEIDS=$(grep -c pMOD ./4342744.circuit1/4342744.circuit1.feature.counts.txt)
+	if [ "$PROFILEIDS" -eq 5 ]
 		then
 			return 0
 		else
@@ -40,7 +40,7 @@ function check_counts() {
 function check_mapped_reads() {
 
 	local MAPPED=$(cat ./4342744.circuit1/4342744.circuit1.mapped.reads.txt)
-	if [ $MAPPED == 19997 ]
+	if [ ""$MAPPED" -eq 19997 ]
 		then
 			return 0
 		else
@@ -52,17 +52,17 @@ function check_mapped_reads() {
 function cleanup() {
 
     echo "Cleaning up..."
-    rm -rf 4342744*
+    #rm -rf 4342744*
     rm -f .container_exec.*
     rm Log.out
 }
 
 trap cleanup EXIT
 run_tests
-if [ $? -eq 0 ]; then
+if [ ""$?" -eq 0 ]; then
     echo "Success!"
     exit 0
 else
-    echo "Test failed!"!
+    echo "Test failed!"
     exit 1
 fi

@@ -96,5 +96,7 @@ cp results/* $SAMPLE/
 cp mapping/*sortedByCoord.out.bam $SAMPLE/
 mv mapping/*Log.final.out $SAMPLE.star.final.report.out
 mv mapping/*Log.out $SAMPLE.star.log.out
+grep -hv -f /opt/scripts/terms_skip.txt $SAMPLE/*counts.txt | sort >> $SAMPLE/$SAMPLE.feature.counts.txt
 # Cleanup
 rm -rf $R1 $R2 $FASTA $GFF $BED mapping results *.fastq *.fa *.gff chr*.txt Genome genomeParameters.txt SA SAindex settings.txt
+rm -rf test tester.sh runner-template.sh _util *json

@@ -53,6 +53,7 @@ LABEL description="Root directories added to support Singularity @ TACC"
 RUN mkdir -p /work && chown root:root /work
 RUN mkdir -p /gpfs && chown root:root /gpfs
 RUN mkdir -p /data && chown root:root /data
+
 # Test installations
 #RUN STAR
 #RUN bowtie2 --version
@@ -68,6 +69,7 @@ RUN mkdir test mapping results
 RUN mkdir -p /opt/scripts/
 ADD /src/rnaseq-broad /opt/rnaseq-broad
 ADD /src/rnaseqbroad.sh /opt/scripts/rnaseqbroad.sh
+ADD /src/terms_skip.txt /opt/scripts/terms_skip.txt
 RUN chmod 777 /opt/scripts/rnaseqbroad.sh
 RUN chmod 777 /opt/rnaseq-broad/*
 

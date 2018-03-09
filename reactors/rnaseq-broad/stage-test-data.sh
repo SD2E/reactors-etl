@@ -9,7 +9,7 @@ DEST=${2-test}
 TEST_DATA_CSV=${TEST_DATA_CSV:-test-data.tsv}
 TEST_DATA_CACHE=${TEST_DATA_CACHE:-test-data-cache}
 
-mkdir -p $APP/$DEST
+mkdir -p $APP/test
 
 function stage_data() {
 
@@ -24,7 +24,7 @@ function stage_data() {
             RECURSE=""
             ;;
     esac
-    cp -Rf $APATH $APP/$DEST ; touch "$APP/$DEST/.dirty"
+    cp -Rf $APATH $APP/test ; touch "$APP/test/.dirty"
 
 }
 

@@ -326,7 +326,7 @@ def count_reads(settings, sample, feature='gene', attribute='name', strand_opt='
 
 
 def mapped_reads(settings, sample, cores):
-    mapped_reads_file = settings[sample]['temp_path'] + sample + '.Aligned.sortedByCoord.out.bam'
+    mapped_reads_file = settings[sample]['temp_path'] + sample + '.Log.final.out'
     with open(mapped_reads_file) as mrf:
         data = mrf.readlines()
     for line in data:
