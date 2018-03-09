@@ -1,0 +1,5 @@
+__no_feature
+__ambiguous
+__too_low_aQual
+__not_aligned
+__alignment_not_unique
