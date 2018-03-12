@@ -1,4 +1,4 @@
-CONTAINER_IMAGE="index.docker.io/sd2e/sailfish:0.10.1--1"
+CONTAINER_IMAGE="index.docker.io/jurrutia/sailfish:0.10.1--1"
 
 . _util/container_exec.sh
 
@@ -39,4 +39,3 @@ function validate_ids() {
 }
 
 run_tests && echo "Success" && rm -rf local.output || echo "Failure"
-

@@ -6,9 +6,9 @@
 	"defaultNodeCount": 1,
 	"defaultQueue": "normal",
 	"modules": ["load tacc-singularity"],
-	"deploymentPath": "sd2eadm/apps/sailfish-0.10.1",
-	"deploymentSystem": "data-sd2e-projects-users",
-	"executionSystem": "hpc-tacc-maverick",
+	"deploymentPath": "maverick/apps/sailfish-0.10.1",
+	"deploymentSystem": "data-tacc-work-urrutia",
+	"executionSystem": "hpc-tacc-maverick-urrutia",
 	"executionType": "HPC",
 	"helpURI": "http://sailfish.readthedocs.io/en/master/index.html",
 	"label": "Sailfish",
@@ -28,7 +28,7 @@
 	],
 	"templatePath": "runner-template.sh",
 	"testPath": "tester.sh",
-	"version": "0.10.1",
+	"version": "0.10.2",
 	"inputs": [{
 			"id": "transcripts",
 			"value": {
