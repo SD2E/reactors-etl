@@ -37,6 +37,15 @@ RUN wget https://launchpad.net/ubuntu/+archive/primary/+files/bedtools_2.17.0.or
 RUN tar zfx /bedtools_2.17.0.orig.tar.gz && cd bedtools-2.17.0 && make
 ENV PATH=/bedtools-2.17.0/bin:$PATH
 
+# Install git and bioawk
+RUN apt-get install -y git
+RUN apt-get install make
+RUN apt-get install bison -y
+RUN apt-get install byacc -y
+#RUN git clone git://github.com/lh3/bioawk.git && cd bioawk && make && mv awk bioawk && cp bioawk /usr/local/bin/
+RUN git clone git://github.com/lh3/bioawk.git && cd bioawk && make && cp bioawk /usr/local/bin/
+RUN bioawk -version
+
 # Install our aligner
 RUN wget https://github.com/alexdobin/STAR/archive/2.5.3a.tar.gz
 RUN tar xfz 2.5.3a.tar.gz && rm 2.5.3a.tar.gz
@@ -74,7 +83,7 @@ RUN chmod 777 /opt/scripts/rnaseqbroad.sh
 RUN chmod 777 /opt/rnaseq-broad/*
 
 # Transfer our test data
-ADD /rnaseq-broad/test/ /test
+ADD /test-data-cache/ /test
 
 # Test python version
 CMD python --version

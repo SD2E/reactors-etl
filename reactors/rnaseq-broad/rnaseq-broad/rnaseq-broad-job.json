@@ -1,13 +1,12 @@
 {
   "name": "rnaseq-broad_test-0001",
-  "appId": "rnaseq-broad-0.1.4",
+  "appId": "rnaseq-broad-0.1.5",
   "archive": false,
   "inputs": {
     "read1":  "agave://data-sd2e-community/archive/processed/Q0/rule30/sd2.ginkgo/RNAseq/170925_NB501485_0078_AHHC3WBGX3/4311022_S55_R1_001_rna_free_reads.fastq",
     "read2": "agave://data-sd2e-community/archive/processed/Q0/rule30/sd2.ginkgo/RNAseq/170925_NB501485_0078_AHHC3WBGX3/4311022_S55_R2_001_rna_free_reads.fastq",
     "fasta": "agave://data-sd2e-community/archive/shared-q0-hackathon/yeast-gates/W303_gff_references/yeastgate_references/circuit1.fa",
-    "gff": "agave://data-sd2e-community/archive/shared-q0-hackathon/yeast-gates/W303_gff_references/yeastgate_references/circuit1.gff",
-    "bed": "agave://data-sd2e-community/archive/shared-q0-hackathon/yeast-gates/W303_gff_references/yeastgate_references/circuit1.bed"
+    "gff": "agave://data-sd2e-community/archive/shared-q0-hackathon/yeast-gates/W303_gff_references/yeastgate_references/circuit1.gff"
   },
   "parameters": {
     "stranded": "yes"

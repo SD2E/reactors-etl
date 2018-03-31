@@ -21,13 +21,25 @@ if [[ ${R2} =~ \.gz$ ]]; then
 else
    echo READ2 is not gzipped
 fi
+BED=${bed}
+bioawk -version >> vers
+echo ${vers}
+if [ ${BED}x = x ]; then
+   echo BED is blank, creating bed
+   
+   bioawk -c fastx '{print $name"\t0\t"length($seq)}' ${fasta}
+   bioawk -c fastx '{print $name"\t0\t"length($seq)}' ${fasta} >> created_bed.bed
+   BED=created_bed.bed
+fi
 
+
+# ## FIX THIS!
 echo "read1 is ${R1}"
 echo "read2 is ${R2}"
 echo "fasta is ${fasta}"
 echo "gff is ${gff}"
-echo "bed is ${bed}"
+echo "bed is ${BED}"
 echo "stranded is ${stranded}"
 
-echo DEBUG=1 container_exec ${CONTAINER_IMAGE} /opt/scripts/rnaseqbroad.sh ${R1} ${R2} ${fasta} ${gff} ${bed} ${stranded}
-DEBUG=1 container_exec ${CONTAINER_IMAGE} /opt/scripts/rnaseqbroad.sh ${R1} ${R2} ${fasta} ${gff} ${bed} ${stranded}
+echo DEBUG=1 container_exec ${CONTAINER_IMAGE} /opt/scripts/rnaseqbroad.sh ${R1} ${R2} ${fasta} ${gff} ${BED} ${stranded}
+#DEBUG=1 container_exec ${CONTAINER_IMAGE} /opt/scripts/rnaseqbroad.sh ${R1} ${R2} ${fasta} ${gff} ${BED} ${stranded}
