@@ -26,8 +26,6 @@ if [ ${BED}x = x ]; then
    bed=""
 fi
 
-
-# ## FIX THIS!
 echo "read1 is ${R1}"
 echo "read2 is ${R2}"
 echo "fasta is ${fasta}"
