@@ -9,9 +9,9 @@
     "modules": [
       "load tacc-singularity"
     ],
-    "deploymentPath": "maverick/apps/rnaseq-broad/",
-    "deploymentSystem": "data-tacc-work-meslami",
-    "executionSystem": "hpc-tacc-maverick-meslami",
+    "deploymentPath": "maverick/apps/troubleshooting/rnaseq-broad/",
+    "deploymentSystem": "data-tacc-work-urrutia",
+    "executionSystem": "hpc-tacc-maverick-urrutia",
     "executionType": "HPC",
     "helpURI":"https://sd2e.org/develop/",
     "label": "RNASeq-broad",
@@ -26,11 +26,11 @@
             "RNA-Seq",
             "Mapping",
             "rnaseq-broad",
-            "docker://index.docker.io/sd2e/rnaseq-broad:0.1.5"
+            "docker://index.docker.io/sd2e/rnaseq-broad:0.1.6"
     ],
     "templatePath": "runner-template.sh",
     "testPath": "tester.sh",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "inputs":[{
         "id":"read1",
         "value":

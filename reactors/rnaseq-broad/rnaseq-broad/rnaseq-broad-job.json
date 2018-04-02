@@ -1,6 +1,6 @@
 {
   "name": "rnaseq-broad_test-0001",
-  "appId": "rnaseq-broad-0.1.5",
+  "appId": "rnaseq-broad-0.1.6",
   "archive": false,
   "inputs": {
     "read1":  "agave://data-sd2e-community/archive/processed/Q0/rule30/sd2.ginkgo/RNAseq/170925_NB501485_0078_AHHC3WBGX3/4311022_S55_R1_001_rna_free_reads.fastq",

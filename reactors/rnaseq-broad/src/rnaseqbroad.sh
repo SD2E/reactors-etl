@@ -17,11 +17,8 @@ if [ ${4}x = x ]; then
    echo GFF is blank
    exit 1
 fi
+
 if [ ${5}x = x ]; then
-   echo BED is blank
-   exit 1
-fi
-if [ ${6}x = x ]; then
    echo STRANDED is blank, using default.
    STRANDED='reverse'
 fi
@@ -30,8 +27,14 @@ R1=${1}
 R2=${2}
 FASTA=${3}
 GFF=${4}
-BED=${5}
-STRANDED=${6}
+STRANDED=${5}
+BED=${6}
+
+if [ ${BED}x = x ]; then
+   echo BED is blank, creating bed
+   bioawk -c fastx '{print $name"\t0\t"length($seq)}' ${FASTA} >> created_bed.bed
+   BED=created_bed.bed
+fi
 
 # This pattern match will take processed rRNA & trimmed fastq files or unprocessed raw fastq files
 PATTERN='^(.*)_R[1-2]_00[1-8]_rna_free_reads.fastq$'
