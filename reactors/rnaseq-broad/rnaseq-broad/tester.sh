@@ -3,7 +3,7 @@
 . _util/container_exec.sh
 
 version=$(cat ./VERSION)
-export CONTAINER_IMAGE="jurrutia/rnaseq-broad:$version"
+export CONTAINER_IMAGE="sd2e/rnaseq-broad:$version"
 
 cp ../test-data-cache/* test/
 DEBUG=1 container_exec ${CONTAINER_IMAGE} /opt/scripts/rnaseqbroad.sh \
