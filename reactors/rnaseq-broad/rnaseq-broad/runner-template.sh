@@ -21,6 +21,10 @@ if [[ ${R2} =~ \.gz$ ]]; then
 else
    echo READ2 is not gzipped
 fi
+if [ ${BED}x = x ]; then
+   echo BED is blank, will create from fasta
+   bed=""
+fi
 
 echo "read1 is ${R1}"
 echo "read2 is ${R2}"
@@ -29,5 +33,5 @@ echo "gff is ${gff}"
 echo "bed is ${bed}"
 echo "stranded is ${stranded}"
 
-echo DEBUG=1 container_exec ${CONTAINER_IMAGE} /opt/scripts/rnaseqbroad.sh ${R1} ${R2} ${fasta} ${gff} ${bed} ${stranded}
-DEBUG=1 container_exec ${CONTAINER_IMAGE} /opt/scripts/rnaseqbroad.sh ${R1} ${R2} ${fasta} ${gff} ${bed} ${stranded}
+echo DEBUG=1 container_exec ${CONTAINER_IMAGE} /opt/scripts/rnaseqbroad.sh ${R1} ${R2} ${fasta} ${gff} ${stranded} ${bed}
+DEBUG=1 container_exec ${CONTAINER_IMAGE} /opt/scripts/rnaseqbroad.sh ${R1} ${R2} ${fasta} ${gff} ${stranded} ${bed}

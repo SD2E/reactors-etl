@@ -37,6 +37,15 @@ RUN wget https://launchpad.net/ubuntu/+archive/primary/+files/bedtools_2.17.0.or
 RUN tar zfx /bedtools_2.17.0.orig.tar.gz && cd bedtools-2.17.0 && make
 ENV PATH=/bedtools-2.17.0/bin:$PATH
 
+# Install git and bioawk
+
+FROM continuumio/miniconda:4.4.10
+RUN conda config --add channels defaults
+RUN conda config --add channels conda-forge
+RUN conda config --add channels bioconda
+RUN conda install bioawk
+CMD bioawk -version
+
 # Install our aligner
 RUN wget https://github.com/alexdobin/STAR/archive/2.5.3a.tar.gz
 RUN tar xfz 2.5.3a.tar.gz && rm 2.5.3a.tar.gz
@@ -74,7 +83,7 @@ RUN chmod 777 /opt/scripts/rnaseqbroad.sh
 RUN chmod 777 /opt/rnaseq-broad/*
 
 # Transfer our test data
-ADD /rnaseq-broad/test/ /test
+ADD /test-data-cache/ /test
 
 # Test python version
 CMD python --version
