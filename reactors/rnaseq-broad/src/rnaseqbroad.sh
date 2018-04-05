@@ -40,6 +40,7 @@ fi
 PATTERN='^(.*)_R[1-2]_00[1-8]_rna_free_reads.fastq$'
 PATTERN2='^(.*)_rrna_free_reads_unmerged_R[1-2].fastq$'
 TESTPATTERN='^(.*)_rrna_free_reads_unmerged_R[1-2].40k.fastq$'
+PATTERN3='^(.*)_R[1-2]_00[1-8]_paired.fastq$'
 SAMPLE=$(basename $R1)
 SAMPLEFASTA=$(echo $(basename $FASTA) | cut -f 1 -d '.')
 if [[ $SAMPLE =~ $PATTERN ]]
@@ -51,6 +52,10 @@ if [[ $SAMPLE =~ $PATTERN2 ]]
         SAMPLE="${BASH_REMATCH[1]}.$SAMPLEFASTA"
 fi
 if [[ $SAMPLE =~ $TESTPATTERN ]]
+    then
+        SAMPLE="${BASH_REMATCH[1]}.$SAMPLEFASTA"
+fi
+if [[ $SAMPLE =~ $PATTERN3 ]]
     then
         SAMPLE="${BASH_REMATCH[1]}.$SAMPLEFASTA"
 fi
