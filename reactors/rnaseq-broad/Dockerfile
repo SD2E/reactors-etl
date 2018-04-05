@@ -1,4 +1,4 @@
-From sd2e/python2:ubuntu16
+From sd2e/apps:python2
 
 # Make apt-get secure and up to date
 RUN apt-get update
@@ -38,12 +38,11 @@ RUN tar zfx /bedtools_2.17.0.orig.tar.gz && cd bedtools-2.17.0 && make
 ENV PATH=/bedtools-2.17.0/bin:$PATH
 
 # Install git and bioawk
-
-FROM continuumio/miniconda:4.4.10
-RUN conda config --add channels defaults
-RUN conda config --add channels conda-forge
-RUN conda config --add channels bioconda
-RUN conda install bioawk
+RUN apt-get install -y git
+RUN apt-get install make
+RUN apt-get install bison -y
+RUN apt-get install byacc -y
+RUN git clone git://github.com/lh3/bioawk.git && cd bioawk && make && cp bioawk /usr/local/bin/
 CMD bioawk -version
 
 # Install our aligner
