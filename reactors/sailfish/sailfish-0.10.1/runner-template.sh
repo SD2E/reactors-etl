@@ -1,4 +1,4 @@
-CONTAINER_IMAGE="index.docker.io/sd2e/sailfish:0.10.1--1"
+CONTAINER_IMAGE="index.docker.io/jurrutia/sailfish:0.10.1--1"
 
 . _util/container_exec.sh
 
@@ -28,3 +28,6 @@ echo fastq2 is ${R2}
 
 container_exec ${CONTAINER_IMAGE} sailfish index -t ${transcripts} -o ${output}
 container_exec ${CONTAINER_IMAGE} sailfish quant ${vbopt} -i ${output} -1 ${R1} -2 ${R2} -o ${output} ${libtype}
+
+echo rm -rf ${R1} ${R2} ${transcripts}
+rm -rf ${R1} ${R2} ${transcripts}

@@ -2,7 +2,8 @@
 # xenial = 16.0.4 LTS
 # trusty = 14.0.4 LTS
 
-FROM sd2e/base:ubuntu16
+#FROM sd2e/base:ubuntu16
+From sd2e/apps:python2
 
 RUN apt-get update && \
     apt-get install python python-pip -y && \

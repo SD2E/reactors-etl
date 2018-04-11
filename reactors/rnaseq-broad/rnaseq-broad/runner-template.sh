@@ -3,7 +3,7 @@
 . _util/container_exec.sh
 
 version=$(cat ./VERSION)
-CONTAINER_IMAGE="sd2e/rnaseq-broad:$version"
+CONTAINER_IMAGE="jurrutia/rnaseq-broad:$version"
 
 R1=${read1}
 R2=${read2}
@@ -35,3 +35,9 @@ echo "stranded is ${stranded}"
 
 echo DEBUG=1 container_exec ${CONTAINER_IMAGE} /opt/scripts/rnaseqbroad.sh ${R1} ${R2} ${fasta} ${gff} ${stranded} ${bed}
 DEBUG=1 container_exec ${CONTAINER_IMAGE} /opt/scripts/rnaseqbroad.sh ${R1} ${R2} ${fasta} ${gff} ${stranded} ${bed}
+
+echo removing
+echo rm -rf ${R1} ${R2} ${fasta} ${gff} ${bed} mapping results *.fastq *.fa *.gff chr*.txt Genome genomeParameters.txt SA SAindex settings.txt
+echo rm -rf test tester.sh runner-template.sh _util *json
+rm -rf ${R1} ${R2} ${fasta} ${gff} ${bed} mapping results *.fastq *.fa *.gff chr*.txt Genome genomeParameters.txt SA SAindex settings.txt
+rm -rf test tester.sh runner-template.sh _util *json
