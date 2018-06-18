@@ -1,0 +1,42 @@
+{
+  "checkpointable": false,
+  "name": "df-helper-wrangler",
+  "executionSystem": "hpc-tacc-wrangler",
+  "executionType": "HPC",
+  "deploymentPath": "sd2eadm/apps/df-helper-0.1.0",
+  "deploymentSystem": "data-sd2e-projects-users",
+  "helpURI": "https://sd2e.org/develop/",
+  "label": "Dataframe helper [TACC Wrangler]",
+  "longDescription": "",
+  "modules": ["load tacc-singularity/2.3.1"],
+  "ontology": ["http://edamontology.org/topic_3520"],
+  "parallelism": "SERIAL",
+  "shortDescription": "Dataframe helper",
+  "tags": ["df-helper", "docker://index.docker.io/sd2e/df-helper:latest"],
+  "templatePath": "runner-template.sh",
+  "testPath": "tester.sh",
+  "version": "0.1.0",
+  "inputs": [{
+    "id": "manifestFile",
+    "details": {
+      "label": "manifest file",
+      "showAttribute": false,
+      "attribute": "--manifest "
+    },
+    "semantics": {
+      "minCardinality": 1,
+      "maxCardinality": 1,
+      "ontology": [
+        "http://edamontology.org/format_1929",
+        "http://edamontology.org/format_2332",
+        "http://edamontology.org/format_3245"
+      ]
+    },
+    "value": {
+      "default": "agave://data-sd2e-community/sample/biofab/yeast-gates_q0/3/manifest/107795-manifest.json",
+      "required": true,
+      "visible": true
+    }
+  }],
+  "defaultMaxRunTime": "00:30:00"
+}

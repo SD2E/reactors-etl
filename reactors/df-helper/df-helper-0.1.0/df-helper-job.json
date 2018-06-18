@@ -1,0 +1,8 @@
+{
+  "name": "df-helper-test-1507148614",
+  "appId": "df-helper-maverick-0.1.0",
+  "archive": false,
+  "inputs": {
+    "manifestFile": "agave://data-sd2e-community/sample/biofab/yeast-gates_q0/3/manifest/107795-manifest.json"
+  },
+}

@@ -1,0 +1,29 @@
+---
+inputs:
+  manifestFile:
+    default_value: "agave://data-sd2e-community/sample/biofab/yeast-gates_q0/3/manifest/107795-manifest.json"
+    test_value: "localtest/107795-manifest.json"
+    label: "experiment manifest"
+runtime:
+  template_script: "runner-template.sh"
+  test_script: "tester.sh"
+  container:
+    docker_org: "sd2e/"
+    docker_image: "df-helper"
+    image_tag: ":latest"
+app:
+    name: "df-helper"
+    version: "0.1.0"
+    deploymentPath: "sd2eadm/apps/df-helper-0.1.0"
+runtime:
+  container:
+    docker_reg: "index.docker.io"
+    docker_org: "sd2e"
+    docker_image: "df-helper"
+    image_tag: "latest"
+  execution_host:
+    system_id: "hpc-tacc-maverick"
+# The app.yml file is not yet part of the official TACC Agave and Reactors platform
+# but over the course of the next ~60 days we will be deploying template-driven
+# tools for application & ETL component development will both generate and consume
+# files in this (or a related) format. Consider this advance notice.
